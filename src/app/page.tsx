@@ -1,20 +1,25 @@
-import Head from 'next/head';
+import HeroSection from "@/components/HeroSection";
+import ServiceBar from "@/components/ServiceBar";
+import DernierCollection from "@/components/DernierCollection";
+import AppelezNousMaintenant from "@/components/AppelezNousMaintenant";
+import AiderlesIndividus from "@/components/AiderlesIndividus";
+import ParcourezLeGamme from "@/components/ParcourezLeGamme";
+import OfrireMeilleurService from "@/components/OfrireMeilleurService";
+import AppelezNouTwo from "@/components/AppelezNouTwo";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Welcome Home</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to <span className="text-blue-600">Your New Home Page!</span>
-        </h1>
-      </main>
-
-
-    </div>
+    <div >
+       
+      <HeroSection />
+      <ServiceBar/>
+      <DernierCollection/>
+      <AppelezNousMaintenant/>
+      <AiderlesIndividus/>
+      <ParcourezLeGamme/>
+      <OfrireMeilleurService/>
+      <AppelezNouTwo/>
+        </div>     
+    
   );
 }
