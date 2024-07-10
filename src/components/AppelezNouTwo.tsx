@@ -12,6 +12,13 @@ function AppelezNouTwo() {
             className="w-full h-full object-cover rounded-xl"
           />
         </div>
+        <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:h-full flex-shrink-0 lg:flex-shrink img-container">
+          <img
+            alt="img"
+            src="/img/IMG/porte-5.jpg"
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </div>
       </div>
       <div className="flex flex-col justify-center gap-6 lg:py-36 lg:w-1/2">
           <h2 className="text-3xl font-bold sm:text-4xl text-orange-400 ">APPELEZ NOUS MAINTENANT</h2>
