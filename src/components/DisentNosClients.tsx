@@ -9,7 +9,7 @@ function DisentNosClients() {
         <p>Fusce venenatis tellus a felis scelerisque, non pulvinar est pellentesque.</p>
         <div className="flex gap-4 ">
           <a
-            className="inline-block rounded-full border border-sky-600 p-3 text-sky-600 hover:bg-sky-600 hover:text-white focus:outline-none focus:ring active:bg-sky-500"
+            className="inline-block rounded-full border border-sky-500 p-3 text-sky-500 hover:bg-sky-500 hover:text-white focus:outline-none focus:ring active:bg-sky-500"
             href="#"
           >
             <span className="sr-only">Next A Gauche</span>
@@ -29,7 +29,7 @@ function DisentNosClients() {
             </svg>
           </a>
           <a
-            className="inline-block rounded-full border border-sky-600 p-3 text-sky-600 hover:bg-sky-600 hover:text-white focus:outline-none focus:ring active:bg-sky-500"
+            className="inline-block rounded-full border border-sky-500 p-3 text-sky-500 hover:bg-sky-500 hover:text-white focus:outline-none focus:ring active:bg-sky-500"
             href="#"
           >
             <span className="sr-only">Next A Droite</span>

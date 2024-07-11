@@ -10,7 +10,7 @@ function JoignezVous() {
         <div className='flex justify-center'>
   <label
     htmlFor="UserEmail"
-    className="relative overflow-hidden rounded-md border border-blue-600 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 flex items-center"
+    className="relative overflow-hidden rounded-md border border-sky-500 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 flex items-center"
   >
     <input
       type="email"
@@ -23,7 +23,7 @@ function JoignezVous() {
       Email
     </span>
 
-    <a href="#" className="bg-blue-500 rounded-md text-white px-4 py-2 ml-2">
+    <a href="#" className="bg-sky-500 rounded-md text-white px-4 py-2 ml-2">
       Envoye
     </a>
   </label>

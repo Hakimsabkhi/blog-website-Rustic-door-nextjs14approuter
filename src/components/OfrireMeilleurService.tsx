@@ -10,11 +10,11 @@ function OfrireMeilleurService() {
       </div>
       <div className="flex flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:flex-row lg:px-8 lg:py-16">
         <a
-          className="block rounded-xl border p-8 shadow-xl transition hover:border-blue-500/10 hover:shadow-blue-500/10 flex-1 text-center"
+          className="block rounded-xl border p-8 shadow-xl transition hover:border-sky-500/10 hover:shadow-sky-500/10 flex-1 text-center"
           href="#"
         >
           <div className="flex justify-center mb-4">
-            <div className="rounded-full bg-blue-500 p-2">
+            <div className="rounded-full bg-sky-500 p-2">
               <ShoppingCartIcon className="h-6 w-6 text-white" />
             </div>
           </div>
@@ -25,11 +25,11 @@ function OfrireMeilleurService() {
           </p>
         </a>
         <a
-          className="block rounded-xl border p-8 shadow-xl transition hover:border-blue-500/10 hover:shadow-blue-500/10 flex-1 text-center"
+          className="block rounded-xl border p-8 shadow-xl transition hover:border-sky-500/10 hover:shadow-sky-500/10 flex-1 text-center"
           href="#"
         >
           <div className="flex justify-center mb-4">
-            <div className="rounded-full bg-blue-500 p-2">
+            <div className="rounded-full bg-sky-500 p-2">
               <CheckCircleIcon className="h-6 w-6 text-white" />
             </div>
           </div>
@@ -40,11 +40,11 @@ function OfrireMeilleurService() {
           </p>
         </a>
         <a
-          className="block rounded-xl border p-8 shadow-xl transition hover:border-blue-500/10 hover:shadow-blue-500/10 flex-1 text-center"
+          className="block rounded-xl border p-8 shadow-xl transition hover:border-sky-500/10 hover:shadow-sky-500/10 flex-1 text-center"
           href="#"
         >
           <div className="flex justify-center mb-4">
-            <div className="rounded-full bg-blue-500 p-2">
+            <div className="rounded-full bg-sky-500 p-2">
               <TruckIcon className="h-6 w-6 text-white" />
             </div>
           </div>

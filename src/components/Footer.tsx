@@ -4,7 +4,7 @@ import { Mail, Info, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-blue-600 text-white p-4 mt-8 ">
+    <footer className="bg-sky-500 text-white p-4 mt-8 ">
 
   <div className="centred max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col justify-center">
     <div className="lg:flex lg:items-start lg:gap-8">
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
               />
 
               <button
-                className="mt-1 w-full bg-wtext-white px-6 py-3 text-sm font-bold uppercase bg-blue-500 tracking-wide text-white transition-none hover:bg-blue-200 sm:mt-0 sm:w-auto sm:shrink-0 rounded-3xl"
+                className="mt-1 w-full bg-wtext-white px-6 py-3 text-sm font-bold uppercase bg-sky-500 tracking-wide text-white transition-none hover:bg-blue-200 sm:mt-0 sm:w-auto sm:shrink-0 rounded-3xl"
               >
                 Envoye
               </button>
