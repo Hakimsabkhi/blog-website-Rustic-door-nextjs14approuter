@@ -6,11 +6,11 @@ import AiderlesIndividus from "@/components/AiderlesIndividus";
 import ParcourezLeGamme from "@/components/ParcourezLeGamme";
 import OfrireMeilleurService from "@/components/OfrireMeilleurService";
 import AppelezNouTwo from "@/components/AppelezNouTwo";
+import DisentNosClients from "@/components/DisentNosClients";
 
 export default function HomePage() {
   return (
     <div >
-       
       <HeroSection />
       <ServiceBar/>
       <DernierCollection/>
@@ -19,6 +19,7 @@ export default function HomePage() {
       <ParcourezLeGamme/>
       <OfrireMeilleurService/>
       <AppelezNouTwo/>
+      <DisentNosClients/>
         </div>     
     
   );
