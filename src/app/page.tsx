@@ -8,6 +8,7 @@ import OfrireMeilleurService from "@/components/OfrireMeilleurService";
 import AppelezNouTwo from "@/components/AppelezNouTwo";
 import DisentNosClients from "@/components/DisentNosClients";
 import DernierBlog from "@/components/DernierBlog";
+import JoignezVous from "@/components/JoignezVous";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <AppelezNouTwo/>
       <DisentNosClients/>
       <DernierBlog/>
+      <JoignezVous/>
 
     </div>     
     
