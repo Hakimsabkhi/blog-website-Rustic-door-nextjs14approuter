@@ -2,7 +2,7 @@ import React from 'react';
 
 function AppelezNousMaintenant() {
   return (
-    <section className="flex justify-center py-8 sm:py-12 lg:py-16 centred ">
+    <section className="flex justify-center py-8 sm:py-12 lg:py-16 centred  ">
       <div className="w-4/5 max-w-screen-xl flex flex-col lg:flex-row gap-8 lg:gap-16">
         <div className="flex flex-col justify-center gap-6 lg:py-36 lg:w-1/2">
           <h2 className="text-3xl font-bold sm:text-4xl text-orange-400 ">APPELEZ NOUS MAINTENANT</h2>
