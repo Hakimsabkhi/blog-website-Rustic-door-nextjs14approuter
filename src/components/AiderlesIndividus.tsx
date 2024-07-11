@@ -55,12 +55,7 @@ function AiderlesIndividus() {
           Information
         </strong>
 
-        <h3 className="mt-4 text-[15px] font-medium">
-          <a href="mailto:ProjectName@gmail.com" className="hover:underline text-gray-400 font-medium flex items-center gap-2">
-            <Mail className="w-4 h-4 text-gray-400" /> {/* Email icon */}
-            email : ProjectName@gmail.com
-          </a>
-        </h3>
+        c
 
         <h3 className="mt-2 text-[15px] font-medium">
           <a href="#" className="hover:underline text-gray-400 font-medium flex items-center gap-2">
