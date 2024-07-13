@@ -1,6 +1,8 @@
 import React from 'react';
 import { Phone, PhoneCall, Printer } from 'lucide-react';
 import { Mail, Info, MapPin } from 'lucide-react';
+import Image from 'next/image';
+import {Logo} from 'public/img/image'
 
 const Footer: React.FC = () => {
   return (
@@ -9,7 +11,7 @@ const Footer: React.FC = () => {
   <div className="centred max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col justify-center">
     <div className="lg:flex lg:items-start lg:gap-8">
       <div className="text-white">
-       <img src="/img/logo.png" alt="logo" className='bg-white rounded-xl mt-3 ' />
+       <Image src={Logo} alt="logo" className='bg-white rounded-xl mt-3 ' />
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">
