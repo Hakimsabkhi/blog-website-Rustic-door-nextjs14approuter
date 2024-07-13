@@ -1,6 +1,8 @@
 import React from 'react';
-import { Phone, PhoneCall, Printer } from 'lucide-react';
+import { Import, Phone, PhoneCall, Printer } from 'lucide-react';
 import { Mail, Info, MapPin } from 'lucide-react';
+import Image from 'next/image';
+import {AiderImg, AiderImg1, AiderImg2} from 'public/img/image'
 
 function AiderlesIndividus() {
   return (
@@ -75,8 +77,8 @@ function AiderlesIndividus() {
         <div className="flex flex-col lg:flex-row gap-8 items-center lg:w-1/2">
           {/* First Image Section on the right */}
           <div className="flex flex-col gap-8">
-            <img
-              src="/img/IMG/map.jpg"
+            <Image
+              src={AiderImg}
               alt="Map"
               className="rounded-lg object-cover w-[360px]"
             />
@@ -84,13 +86,13 @@ function AiderlesIndividus() {
 
           {/* Second Image Section on the right */}
           <div className="flex flex-col gap-6">
-            <img
-              src="/img/IMG/P15.jpg"
+            <Image
+              src={AiderImg1}
               alt="Image 1"
               className="rounded-lg object-cover w-[200px]"
             />
-            <img
-              src="/img/IMG/Port-12.jpg"
+            <Image
+              src={AiderImg2}
               alt="Image 2"
               className="rounded-lg object-cover w-[200px]"
             />

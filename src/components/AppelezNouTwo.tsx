@@ -1,13 +1,15 @@
 import React from 'react';
+import Image from 'next/image';
+import {AppelezImg} from 'public/img/image'
 
 function AppelezNouTwo() {
   return (
     <section className="centred flex justify-center py-8 sm:py-12 lg:py-16 flex-col items-center ">
       <div className="w-4/5 max-w-screen-xl flex flex-col lg:flex-row gap-8 lg:gap-20">
         <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:h-full flex-shrink-0 lg:flex-shrink img-container">
-          <img
+          <Image
             alt="img"
-            src="/img/IMG/porte-5.jpg"
+            src={AppelezImg}
             className="w-full h-full object-cover rounded-xl"
           />
         </div>
@@ -27,6 +29,7 @@ function AppelezNouTwo() {
           </a>
         </div>
       </div>
+      
     </section>
   );
 }
