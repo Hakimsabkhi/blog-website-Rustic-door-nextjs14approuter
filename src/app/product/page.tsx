@@ -1,34 +1,8 @@
 import React from 'react';
 import { FaThumbsUp, FaComment } from 'react-icons/fa';
 import Image from 'next/image';
-import {Product1,Product2,Product3} from 'public/img/image'
+import { products } from 'public/data'
 
-const products = [
-    {
-        imgSrc: Product1,
-        title: 'SIDI BOUSAID DOOR',
-        description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
-        likes: 6,
-        comments: 18,
-        savoir: 'SAVOIR PLUS',
-    },
-    {
-        imgSrc: Product2,
-        title: 'RADIAS',
-        description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
-        likes: 6,
-        comments: 18,
-        savoir: 'SAVOIR PLUS',
-    },
-    {
-        imgSrc: Product3,
-        title: 'TUNIS',
-        description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
-        likes: 6,
-        comments: 18,
-        savoir: 'SAVOIR PLUS',
-    },
-];
 
 function Page() { 
     return (
@@ -98,15 +72,15 @@ function Page() {
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                     <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.likes} likes</h3>
+                                    <h3 className="text-gray-400">{product.likes} likes</h3>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <FaComment className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.comments} comments</h3>
+                                    <h3 className="text-gray-400">{product.comments} comments</h3>
                                 </div>
                             </div>
                             <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-blue-600 text-sm mb-4">{product.description}</p>
+                            <p className="text-gray-400 text-sm mb-4">{product.description}</p>
                             <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
                                 {product.savoir}
                             </button>
@@ -123,22 +97,21 @@ function Page() {
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                     <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.likes} likes</h3>
+                                    <h3 className="text-gray-400">{product.likes} likes</h3>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <FaComment className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.comments} comments</h3>
+                                    <h3 className="text-gray-400">{product.comments} comments</h3>
                                 </div>
                             </div>
                             <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-blue-600 text-sm mb-4">{product.description}</p>
+                            <p className="text-gray-400 text-sm mb-4">{product.description}</p>
                             <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
                                 {product.savoir}
                             </button>
                         </div>
                     </div>
                 ))}
-
 
                 {products.map((product, index) => (
                     <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
@@ -149,21 +122,21 @@ function Page() {
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                     <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.likes} likes</h3>
+                                    <h3 className="text-gray-400">{product.likes} likes</h3>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <FaComment className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.comments} comments</h3>
+                                    <h3 className="text-gray-400">{product.comments} comments</h3>
                                 </div>
                             </div>
                             <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-blue-600 text-sm mb-4">{product.description}</p>
+                            <p className="text-gray-400 text-sm mb-4">{product.description}</p>
                             <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
                                 {product.savoir}
                             </button>
                         </div>
                     </div>
-                ))} 
+                ))}
 
                 {products.map((product, index) => (
                     <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
