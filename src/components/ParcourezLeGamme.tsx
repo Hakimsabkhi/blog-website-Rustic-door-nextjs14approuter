@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+import {Gamme1, Gamme2, Gamme3 ,Gamme4 ,Gamme5 } from 'public/img/image'
 
 function ParcourezLeGamme() {
   return (
@@ -9,9 +11,9 @@ function ParcourezLeGamme() {
       
       <div className='gap-8 justify-between flex'>
         <a href="#" className="group relative block bg-black w-full rounded-xl">
-          <img
-            alt=""
-            src="/img/Carrousel/p11.jpg"
+          <Image
+            alt="GAMME1"
+            src={Gamme1}
             className="w-full h-64 object-cover opacity-75 transition-opacity group-hover:opacity-50 rounded-xl"
           />
           <div className="absolute inset-0 flex items-center ml-5">
@@ -27,9 +29,9 @@ function ParcourezLeGamme() {
         </a>
 
         <a href="#" className="group relative block bg-black w-full rounded-xl">
-          <img
+          <Image
             alt=""
-            src="/img/Carrousel/p8.jpg"
+            src={Gamme2}
             className="w-full h-64 object-cover opacity-75 transition-opacity group-hover:opacity-50 rounded-xl"
           />
           <div className="absolute inset-0 flex items-center ml-5">
@@ -45,9 +47,9 @@ function ParcourezLeGamme() {
         </a>
 
         <a href="#" className="group relative block bg-black w-full rounded-xl">
-          <img
+          <Image
             alt=""
-            src="/img/Carrousel/p10.jpg"
+            src={Gamme3}
             className="w-full h-64 object-cover opacity-75 transition-opacity group-hover:opacity-50 rounded-xl"
           />
           <div className="absolute inset-0 flex items-center ml-5">
@@ -65,9 +67,9 @@ function ParcourezLeGamme() {
 
       <div className='gap-8 justify-between flex'>
         <a href="#" className="group relative block bg-black w-full rounded-xl">
-          <img
+          <Image
             alt=""
-            src="/img/IMG/Port8.jpg"
+            src={Gamme4}
             className="w-full h-64 object-cover opacity-75 transition-opacity group-hover:opacity-50 rounded-xl"
           />
           <div className="absolute inset-0 flex items-center ml-5">
@@ -83,9 +85,9 @@ function ParcourezLeGamme() {
         </a>
 
         <a href="#" className="group relative block bg-black w-full rounded-xl">
-          <img
+          <Image
             alt=""
-            src="/img/IMG/Porte-3.jpg"
+            src={Gamme5}
             className="w-full h-64 object-cover opacity-75 transition-opacity group-hover:opacity-50 rounded-xl"
           />
           <div className="absolute inset-0 flex items-center ml-5">
