@@ -1,86 +1,97 @@
-"use client";
-
-import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faMapMarkerAlt, faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Header: React.FC = () => {
-  const { data: session } = useSession();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleToggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-      setIsDropdownOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-4 shadow-md">
-      <nav className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold">
-          <Link href="/">
-            My Blog
-          </Link>
+    <header className="bg-white">
+       <div className="bg-blue-600 text-white p-4 text-center">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        <div className="flex items-center justify-center sm:justify-start">
+          <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-1" />
+          <span>RUSTIKA HOUSE, 5080 Teboulba, Monastir, Tunisie</span>
         </div>
-        <div className="flex items-center space-x-4">
-          <Link href="/" className="hover:text-gray-300 transition-colors duration-300">Home</Link>
-          <Link href="/about" className="hover:text-gray-300 transition-colors duration-300">About Us</Link>
-          <Link href="/services" className="hover:text-gray-300 transition-colors duration-300">Services</Link>
-          <Link href="/contact" className="hover:text-gray-300 transition-colors duration-300">Contact</Link>
-          <Link href="/blog" className="hover:text-gray-300 transition-colors duration-300">Blog</Link>
-          {session ? (
-            <div className="relative inline-block" ref={dropdownRef}>
-              <span
-                onClick={handleToggleDropdown}
-                className="cursor-pointer hover:text-gray-300 transition-colors duration-300"
-              >
-                {session.user?.name || session.user?.email}
-              </span>
-              {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 z-20">
-                  <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
-                    Profile
-                  </Link>
-                  {session.user?.role === 'Admin' && (
-                    <Link href="/admin/dashboard" className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
-                      Dashboard
-                    </Link>
-                  )}
-                  <button
-                    onClick={() => signOut()}
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors duration-300"
-                  >
-                    Log Out
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <>
-              <button onClick={() => signIn()} className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded transition-colors duration-300">
-                Sign In
-              </button>
-              <Link href="/auth/signup">
-                <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition-colors duration-300">
-                  Sign Up
-                </button>
-              </Link>
-            </>
-          )}
+        <div className="flex items-center justify-center sm:justify-start">
+          <FontAwesomeIcon icon={faPhoneAlt} className="mr-1" />
+          <span>+1 206-214-2298</span>
         </div>
-      </nav>
+        <div className="flex items-center justify-center sm:justify-start">
+          <FontAwesomeIcon icon={faEnvelope} className="mr-1" />
+          <span>support@rezilla.com</span>
+        </div>
+      </div>
+    </div>
+      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex h-16 my-5 items-center justify-between">
+        <div className="md:flex md:items-center md:gap-12">
+          <a className="block text-sky-600" href="#">
+            <span className="sr-only">Home</span>
+            <img src="/img/logo.png" alt="logo" className="w-3/4" />
+          </a>
+        </div>
+
+        <div className="hidden md:block">
+          <nav aria-label="Global">
+            <ul className="flex items-center gap-6 text-sm">
+              <li>
+                <a className="text-gray-500 transition hover:text-sky-600" href="#">Home</a>
+              </li>
+              <li>
+                <a className="text-gray-500 transition hover:text-sky-600" href="#">About Us</a>
+              </li>
+              <li>
+                <a className="text-gray-500 transition hover:text-sky-600" href="#">Blog</a>
+              </li>
+              <li>
+                <a className="text-gray-500 transition hover:text-sky-600" href="#">Products</a>
+              </li>
+              <li>
+                <a className="text-gray-500 transition hover:text-sky-600" href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div className="sm:flex sm:gap-4">
+            <a
+              className="rounded-full bg-sky-500 px-5 py-2.5 text-sm font-medium text-white shadow transition hover:bg-sky-700"
+              href="#"
+            >
+              Login
+            </a>
+          </div>
+
+          <div className="sm:flex sm:gap-4">
+            <a
+              className="rounded-full bg-gray-100 px-5 py-2.5 text-sm font-medium text-sky-500 transition hover:bg-gray-200"
+              href="#"
+            >
+              Register
+            </a>
+          </div>
+        </div>
+
+        <div className="block md:hidden">
+          <button className="rounded-full bg-gray-100 p-2 text-gray-600 transition hover:text-sky-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </header>
   );
 };
