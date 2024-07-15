@@ -74,8 +74,8 @@ const Footer: React.FC = () => {
             <li>
               <a href="#" className="text-white transition hover:opacity-75"> <h3 className="mt-4 text-[15px] text-sm">
           <a href="tel:+21612345678" className="hover:underline text-white flex items-center gap-2">
-            <Phone className="w-6 h-6 text-white" /> {/* Phone icon */}
-            Numéro de téléphone : +(216) 12 345 678
+            <Mail className="w-6 h-6 text-white" /> {/* Email icon */}
+            Email : rustikahouse@gmail.com
           </a>
         </h3> </a>
             </li>

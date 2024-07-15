@@ -1,6 +1,9 @@
 import Logo from 'public/img/logo.png'; 
 import Logo2 from 'public/img/logo2.png';
-import UserImg from 'public/img/PNG/usreimg.png'
+import locationIcone from 'public/img/PNG/location-icone.png';
+import phoneIcone from 'public/img/PNG/phone-icone.png';
+import emailIcone from 'public/img/PNG/email-icone.png'
+import UserImg from 'public/img/PNG/usreimg.png';
 import HeroImg from 'public/img/IMG/p16.jpg'; 
 import CollectionImg1 from 'public/img/IMG/Port-7.jpg'; 
 import CollectionImg2 from 'public/img/IMG/p9.jpg'; 
@@ -33,6 +36,9 @@ import Product3 from 'public/img/IMG/tunis_01.jpg';
 export {
     Logo,
     Logo2,
+    locationIcone,
+    phoneIcone,
+    emailIcone,
     UserImg,
     HeroImg, 
     CollectionImg1, 

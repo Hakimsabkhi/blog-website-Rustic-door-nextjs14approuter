@@ -4,7 +4,7 @@ import {HeroImg} from 'public/img/image';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className='centred py-8 flex items-center gap-4 flex-col justify-center md:flex-row'>
+    <section className='centred py-8 flex items-center gap-8 flex-col justify-center md:flex-row'>
     
         {/* Image Section */}
         <div className="flex justify-between items-center centred ">
