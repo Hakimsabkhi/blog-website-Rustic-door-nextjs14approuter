@@ -10,7 +10,7 @@ function AppelezNouTwo() {
           <Image
             alt="img"
             src={AppelezImg}
-            className="w-full h-full object-cover rounded-xl"
+            className=" object-cover rounded-xl"
           />
         </div>
         <div className="flex flex-col justify-center gap-6 lg:py-36 lg:w-1/2">

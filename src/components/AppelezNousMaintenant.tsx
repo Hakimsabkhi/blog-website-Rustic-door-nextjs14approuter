@@ -28,7 +28,7 @@ function AppelezNousMaintenant() {
           <Image
             alt="img"
             src={AppelezImg} // Use the imported image
-            className="w-full h-full object-cover rounded-xl"
+            className=" object-cover rounded-xl"
           />
         </div>
       </div>

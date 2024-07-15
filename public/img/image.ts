@@ -1,5 +1,6 @@
 import Logo from 'public/img/logo.png'; 
 import Logo2 from 'public/img/logo2.png';
+import UserImg from 'public/img/PNG/usreimg.png'
 import HeroImg from 'public/img/IMG/p16.jpg'; 
 import CollectionImg1 from 'public/img/IMG/Port-7.jpg'; 
 import CollectionImg2 from 'public/img/IMG/p9.jpg'; 
@@ -10,6 +11,7 @@ import CollectionImg6 from 'public/img/IMG/porte-6.jpg';
 import CollectionImg7 from 'public/img/IMG/p3.jpg';
 import CollectionImg8 from 'public/img/IMG/p5.jpg';
 import AppelezImg from 'public/img/IMG/porte-5.jpg';
+import AppelezImg2 from 'public/img/IMG/porte-5-inverse.png';
 import AiderImg from 'public/img/IMG/map.jpg';
 import AiderImg1 from 'public/img/IMG/P15.jpg';
 import AiderImg2 from 'public/img/IMG/Port-12.jpg';
@@ -30,7 +32,8 @@ import Product3 from 'public/img/IMG/tunis_01.jpg';
 
 export {
     Logo,
-    Logo2, 
+    Logo2,
+    UserImg,
     HeroImg, 
     CollectionImg1, 
     CollectionImg2, 
@@ -40,7 +43,8 @@ export {
     CollectionImg6, 
     CollectionImg7, 
     CollectionImg8, 
-    AppelezImg, 
+    AppelezImg,
+    AppelezImg2, 
     AiderImg, 
     AiderImg1, 
     AiderImg2, 
