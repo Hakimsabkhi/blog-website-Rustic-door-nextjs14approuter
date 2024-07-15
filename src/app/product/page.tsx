@@ -17,14 +17,11 @@ function Page() {
                         id="Category"
                         className="text-blue-600 sm:text-sm px-4 py-2 border-r-2"
                     >
-                        <option value="">All Category</option>
-                        <option value="JM">John Mayer</option>
-                        <option value="SRV">Stevie Ray Vaughn</option>
-                        <option value="JH">Jimi Hendrix</option>
-                        <option value="BBK">B.B King</option>
-                        <option value="AK">Albert King</option>
-                        <option value="BG">Buddy Guy</option>
-                        <option value="EC">Eric Clapton</option>
+                        <option value="All Category">All Category</option>
+                        <option value="p2">p2</option>
+                        <option value="p3">p3</option>
+                        <option value="p4">p4</option>
+                       
                     </select>
 
                     <div className="relative w-full max-w-xs">
@@ -38,7 +35,7 @@ function Page() {
                             className="w-full py-2.5 pe-10 sm:text-sm"
                         />
 
-                        <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                        <span className="absolute inset-y-0 end-0 grid w-15 place-content-center">
                             <button type="button" className="bg-sky-500 rounded-md text-white px-2 py-3">
                                 <span className="sr-only">Search</span>
                                 <svg

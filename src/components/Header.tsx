@@ -15,22 +15,22 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-white">
-      <div className="bg-blue-600 text-white p-4 text-center">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-          <div className="flex items-center justify-center sm:justify-start">
-            <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-1" />
-            <span>RUSTIKLink HOUSE, 5080 Teboulba, Monastir, Tunisie</span>
-          </div>
-          <div className="flex items-center justify-center sm:justify-start">
-            <FontAwesomeIcon icon={faPhoneAlt} className="mr-1" />
-            <span>+1 206-214-2298</span>
-          </div>
-          <div className="flex items-center justify-center sm:justify-start">
-            <FontAwesomeIcon icon={faEnvelope} className="mr-1" />
-            <span>support@rezilla.com</span>
-          </div>
+    <div className="bg-blue-600 text-white p-2 text-center">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 centred">
+            <div className="flex items-center justify-center sm:justify-start text-xl sm:text-xl">
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-1" />
+                <span>RUSTIKLink HOUSE, 5080 Teboulba, Monastir, Tunisie</span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start text-xl sm:text-xl">
+                <FontAwesomeIcon icon={faPhoneAlt} className="mr-1" />
+                <span>+1 206-214-2298</span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start text-xl sm:text-xl">
+                <FontAwesomeIcon icon={faEnvelope} className="mr-1" />
+                <span>support@rezilla.com</span>
+            </div>
         </div>
-      </div>
+    </div>
       <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex h-16 my-5 items-center justify-between">
         <div className="md:flex md:items-center md:gap-12">
           <Link className="block text-sky-600" href="/">

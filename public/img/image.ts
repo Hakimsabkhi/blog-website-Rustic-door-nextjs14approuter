@@ -1,4 +1,5 @@
 import Logo from 'public/img/logo.png'; 
+import Logo2 from 'public/img/logo2.png';
 import HeroImg from 'public/img/IMG/p16.jpg'; 
 import CollectionImg1 from 'public/img/IMG/Port-7.jpg'; 
 import CollectionImg2 from 'public/img/IMG/p9.jpg'; 
@@ -28,7 +29,8 @@ import Product3 from 'public/img/IMG/tunis_01.jpg';
 
 
 export {
-    Logo, 
+    Logo,
+    Logo2, 
     HeroImg, 
     CollectionImg1, 
     CollectionImg2, 

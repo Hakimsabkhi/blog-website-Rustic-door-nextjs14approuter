@@ -4,17 +4,15 @@ import {HeroImg} from 'public/img/image';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className='centred py-8 flex items-center gap-10 flex-col justify-center md:flex-row'>
+    <section className='centred py-8 flex items-center  flex-col justify-center md:flex-row'>
     
         {/* Image Section */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center centred ">
           <Image
             alt="HeroImg"
             src={HeroImg}
-            className="max-w-[1200x] md:max-w-[1000px] lg:max-w-[1000px] xl:max-w-[2000px] rounded-xl"
-            layout="responsive"
-            width={1200}
-            height={800}
+            className="max-w-[1200px] md:max-w-[1000px] lg:max-w-[1000px] xl:max-w-[2000px]  rounded-xl"
+           
           />
         </div>
 
