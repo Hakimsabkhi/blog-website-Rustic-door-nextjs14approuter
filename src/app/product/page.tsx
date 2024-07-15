@@ -1,13 +1,31 @@
-import React from 'react';
-import { FaThumbsUp, FaComment } from 'react-icons/fa';
+"use client";
+import React, { useState } from 'react';
+import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
-import { products } from 'public/data'
+import { products } from 'public/data';
+import Link from 'next/link';
 
+function Page() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [category, setCategory] = useState('All Category');
 
-function Page() { 
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const handleCategoryChange = (event) => {
+        setCategory(event.target.value);
+    };
+
+    const filteredProducts = products.filter(product => {
+        const matchesCategory = category === 'All Category' || product.category === category;
+        const matchesSearchTerm = product.title.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesCategory && matchesSearchTerm;
+    });
+
     return (
-        <section className='centred flex flex-col gap-8'>
-            <div className='flex flex-col justify-center items-center'>
+        <section className='centred flex flex-col gap-8 py-8'>
+            <div className='flex flex-col justify-center items-center '>
                 <h1 className='text-center text-4xl text-blue-400 font-bold mb-4'>Our Collection Of Products</h1>
 
                 <div className='flex items-center rounded-md gap-1 shadow-xl'>
@@ -15,13 +33,14 @@ function Page() {
                     <select
                         name="Category"
                         id="Category"
+                        value={category}
+                        onChange={handleCategoryChange}
                         className="text-blue-600 sm:text-sm px-4 py-2 border-r-2"
                     >
                         <option value="All Category">All Category</option>
-                        <option value="p2">p2</option>
-                        <option value="p3">p3</option>
-                        <option value="p4">p4</option>
-                       
+                        <option value="SIDI BOUSAID DOOR">SIDI BOUSAID DOOR</option>
+                        <option value="RADIAS">RADIAS</option>
+                        <option value="TUNIS">TUNIS</option>
                     </select>
 
                     <div className="relative w-full max-w-xs">
@@ -32,6 +51,8 @@ function Page() {
                             type="text"
                             id="Search"
                             placeholder="Search for..."
+                            value={searchTerm}
+                            onChange={handleSearchChange}
                             className="w-full py-2.5 pe-10 sm:text-sm"
                         />
 
@@ -59,101 +80,26 @@ function Page() {
             </div>
 
             {/* Products Blog */}
-            <div className="flex flex-wrap gap-10 justify-center">
-                {products.map((product, index) => (
-                    <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
+            <div className="flex flex-wrap gap-10 justify-center ">
+                {filteredProducts.map((product, index) => (
+                    <div key={index} className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
                         <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" className="w-full h-64 object-cover rounded-xl mb-4" />
+                            <Image src={product.imgSrc} alt="Product" className="w-full h-96 object-cover rounded-xl mb-4 " />
                         </div>
-                        <div className="flex flex-col gap-2 bg-white p-4 rounded-xl">
-                            <div className="flex items-center justify-between">
+                        <div className="flex flex-col  bg-white  rounded-xl shadow-lg">
+                            <div className="flex items-center gap-4 mb-4">
                                 <div className="flex items-center gap-2">
-                                    <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.likes} likes</h3>
+                                    <AiOutlineHeart className="text-[25px]" />
+                                    <Link href='#' className="text-gray-400">{product.likes} likes</Link>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <FaComment className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.comments} comments</h3>
+                                    <AiOutlineComment className="text-[25px]" />
+                                    <Link href='#' className="text-gray-400">{product.comments} comments</Link>
                                 </div>
                             </div>
                             <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
                             <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
-                                {product.savoir}
-                            </button>
-                        </div>
-                    </div>
-                ))}
-
-                {products.map((product, index) => (
-                    <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
-                        <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" className="w-full h-64 object-cover rounded-xl mb-4" />
-                        </div>
-                        <div className="flex flex-col gap-2 bg-white p-4 rounded-xl">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.likes} likes</h3>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <FaComment className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.comments} comments</h3>
-                                </div>
-                            </div>
-                            <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
-                                {product.savoir}
-                            </button>
-                        </div>
-                    </div>
-                ))}
-
-                {products.map((product, index) => (
-                    <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
-                        <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" className="w-full h-64 object-cover rounded-xl mb-4" />
-                        </div>
-                        <div className="flex flex-col gap-2 bg-white p-4 rounded-xl">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.likes} likes</h3>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <FaComment className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.comments} comments</h3>
-                                </div>
-                            </div>
-                            <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
-                                {product.savoir}
-                            </button>
-                        </div>
-                    </div>
-                ))}
-
-                {products.map((product, index) => (
-                    <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
-                        <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" className="w-full h-64 object-cover rounded-xl mb-4" />
-                        </div>
-                        <div className="flex flex-col gap-2 bg-white p-4 rounded-xl">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.likes} likes</h3>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <FaComment className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.comments} comments</h3>
-                                </div>
-                            </div>
-                            <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-blue-600 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
+                            <button className='text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md'>
                                 {product.savoir}
                             </button>
                         </div>
@@ -161,7 +107,7 @@ function Page() {
                 ))}
             </div>
 
-            {/*.Pagination*/}
+            {/* Pagination */}
             <div className="flex justify-center mt-6">
                 <ol className="flex items-center space-x-2">
                     <li>
