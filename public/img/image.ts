@@ -31,6 +31,17 @@ import Blog5 from 'public/img/IMG/Port-team.jpg';
 import Product1 from 'public/img/IMG/sidi-bou-said.jpg';
 import Product2 from 'public/img/IMG/radias.jpg';
 import Product3 from 'public/img/IMG/tunis_01.jpg';
+import Product4 from 'public/img/IMG/10 Downing Street Door.jpg';
+import Product5 from 'public/img/IMG/Adobe Doors.jpg';
+import Product6 from 'public/img/IMG/Buranos Vibrant Doors.jpg';
+import Product7 from 'public/img/IMG/Cartagenas Colorful Doors.jpg';
+import Product8 from 'public/img/IMG/Columbus Doors.jpg';
+import Product9 from 'public/img/IMG/Elizabeth Arden Red Doors.jpg';
+import Product10 from 'public/img/IMG/Shakespeares Birthplace Door.jpg';
+import Product11 from 'public/img/IMG/Traditional Indian Doors.jpg';
+import ProductDetail1 from 'public/img/IMG/sidi-bou-said-3.jpg';
+
+
 
 
 export {
@@ -66,5 +77,14 @@ export {
     Blog5,
     Product1,
     Product2,
-    Product3 
+    Product3,
+    Product4,
+    Product5,
+    Product6,
+    Product7,
+    Product8,
+    Product9,
+    Product10,
+    Product11,
+    ProductDetail1
 };

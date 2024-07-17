@@ -1,4 +1,4 @@
-import {Product1,Product2,Product3} from 'public/img/image';
+import { Product1, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Product10, Product11, } from 'public/img/image';
 import {Blog1, Blog2,Blog3,Blog4,Blog5} from 'public/img/image';
 import { CollectionImg7, CollectionImg6, CollectionImg5, UserImg } from 'public/img/image';
 
@@ -67,6 +67,7 @@ export const posts = [
   {/*All Peoduct IN Product Page*/}
   export const products = [
     {
+        category:'SIDI BOUSAID',
         imgSrc: Product1,
         title: 'SIDI BOUSAID DOOR',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
@@ -74,7 +75,8 @@ export const posts = [
         comments: 18,
         savoir: 'SAVOIR PLUS',
     },
-    {
+    {   
+        category:'RADIAS',
         imgSrc: Product2,
         title: 'RADIAS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
@@ -82,7 +84,8 @@ export const posts = [
         comments: 18,
         savoir: 'SAVOIR PLUS',
     },
-    {
+    {   
+        category:'TUNIS',
         imgSrc: Product3,
         title: 'TUNIS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
@@ -90,4 +93,91 @@ export const posts = [
         comments: 18,
         savoir: 'SAVOIR PLUS',
     },
+    
+
 ];
+
+{/*All Peoduct IN Product Page 2*/}
+export const productpagetwo = [
+  { 
+    category:'DOWING STREET',
+    imgSrc: Product4,
+    title: 'DOWING STREET',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+    savoir: 'SAVOIR PLUS',
+},
+{
+  category:'ADOBE',
+  imgSrc: Product5,
+  title: 'ADOBE',
+  description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+  likes: 6,
+  comments: 18,
+  savoir: 'SAVOIR PLUS',
+},
+{
+category:'BURNOS VIBRANT',  
+imgSrc: Product6,
+title: 'BURANOS VIBRANT',
+description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+likes: 6,
+comments: 18,
+savoir: 'SAVOIR PLUS',
+},
+]
+
+
+{/*All Peoduct IN Product Page 3*/}
+export const productpagethree = [
+  { 
+    category:'CARTAGENAS COLORFUL',
+    imgSrc: Product7,
+    title: 'CARTAGENAS COLORFUL',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+    savoir: 'SAVOIR PLUS',
+  },
+  {
+    category:'COLOMBOS',
+    imgSrc: Product8,
+    title: 'COLUMBOS',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+    savoir: 'SAVOIR PLUS',
+  },
+  {
+    category:'ELIZABETH',
+    imgSrc: Product9,
+    title: 'ELIZABETH',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+    savoir: 'SAVOIR PLUS',
+  },
+]
+
+{/*All Peoduct IN Product Page 4*/}
+export const productpagefor = [
+  {
+    category:'SHAKESPEARS',
+    imgSrc: Product10,
+    title: 'SHAKESPEARS',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+    savoir: 'SAVOIR PLUS',
+  },
+  { 
+    category:'INDIAN',
+    imgSrc: Product11,
+    title: 'INDIAN',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+    savoir: 'SAVOIR PLUS',
+  },
+]

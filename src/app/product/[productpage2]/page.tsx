@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
-import { products } from 'public/data';
+import {productpagetwo } from 'public/data';
 import Link from 'next/link';
 
-function Page() {
-    const [searchTerm, setSearchTerm] = useState('');
+function page() {
+  const [searchTerm, setSearchTerm] = useState('');
     const [category, setCategory] = useState('All Category');
 
     const handleSearchChange = (event) => {
@@ -17,7 +17,7 @@ function Page() {
         setCategory(event.target.value);
     };
 
-    const filteredProducts = products.filter(product => {
+    const filtereproductpagetwo =productpagetwo.filter(product => {
         const matchesCategory = category === 'All Category' || product.category === category;
         const matchesSearchTerm = product.title.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesCategory && matchesSearchTerm;
@@ -26,7 +26,7 @@ function Page() {
     return (
         <section className='centred flex flex-col gap-8 py-8'>
             <div className='flex flex-col justify-center items-center '>
-                <h1 className='text-center text-4xl text-blue-400 font-bold mb-4'>Our Collection Of Products</h1>
+                <h1 className='text-center text-4xl text-blue-400 font-bold mb-4'>Our Collection Ofproductpagetwo</h1>
 
                 <div className='flex items-center rounded-md gap-1 shadow-xl'>
                     {/* Select Category */}
@@ -38,7 +38,7 @@ function Page() {
                         className="text-blue-600 sm:text-sm px-4 py-2 border-r-2"
                     >
                         <option value="All Category">All Category</option>
-                        <option value="SIDI BOUSAID">SIDI BOUSAID </option>
+                        <option value="SIDI BOUSAID DOOR">SIDI BOUSAID DOOR</option>
                         <option value="RADIAS">RADIAS</option>
                         <option value="TUNIS">TUNIS</option>
                     </select>
@@ -79,9 +79,9 @@ function Page() {
                 </div>
             </div>
 
-            {/* Products Blog */}
+            {/*productpagetwo Blog */}
             <div className="flex flex-wrap gap-10 justify-center ">
-                {filteredProducts.map((product, index) => (
+                {filtereproductpagetwo.map((product, index) => (
                     <div key={index} className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
                         <div className="relative">
                             <Image src={product.imgSrc} alt="Product" className="w-full h-96 object-cover rounded-xl mb-4 " />
@@ -106,9 +106,10 @@ function Page() {
                     </div>
                 ))}
             </div>
-             {/* Products Blog */}
-             <div className="flex flex-wrap gap-10 justify-center ">
-                {filteredProducts.map((product, index) => (
+
+            {/*productpagetwo Blog */}
+            <div className="flex flex-wrap gap-10 justify-center ">
+                {filtereproductpagetwo.map((product, index) => (
                     <div key={index} className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
                         <div className="relative">
                             <Image src={product.imgSrc} alt="Product" className="w-full h-96 object-cover rounded-xl mb-4 " />
@@ -133,9 +134,10 @@ function Page() {
                     </div>
                 ))}
             </div>
-             {/* Products Blog */}
-             <div className="flex flex-wrap gap-10 justify-center ">
-                {filteredProducts.map((product, index) => (
+
+            {/*productpagetwo Blog */}
+            <div className="flex flex-wrap gap-10 justify-center ">
+                {filtereproductpagetwo.map((product, index) => (
                     <div key={index} className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
                         <div className="relative">
                             <Image src={product.imgSrc} alt="Product" className="w-full h-96 object-cover rounded-xl mb-4 " />
@@ -165,21 +167,21 @@ function Page() {
             <div className="flex justify-center mt-6">
                 <ol className="flex items-center space-x-2">
                     <li>
-                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="/product" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &lt; {/* Left arrow */}
                         </Link>
                     </li>
                     <li>
-                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">1</Link>
+                        <Link href="/product" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">1</Link>
                     </li>
                     <li>
-                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">2</Link>
+                        <Link href="/prductpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">2</Link>
                     </li>
                     <li>
                         <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</Link>
                     </li>
                     <li>
-                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &gt; {/* Right arrow */}
                         </Link>
                     </li>
@@ -189,4 +191,4 @@ function Page() {
     );
 }
 
-export default Page;
+export default page

@@ -7,7 +7,7 @@ import { blogs } from 'public/data'
 
 const NosBlog: React.FC = () => {
   return (
-    <section className='centred flex flex-col gap-8 py-8'>
+    <section className='centred flex flex-col gap-8 py-16'>
       <h1 className='text-center text-4xl text-orange-400 font-bold'>DECOUVRE NOS BLOG</h1>
       <h2 className='text-center text-gray-400 font-mono'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
       

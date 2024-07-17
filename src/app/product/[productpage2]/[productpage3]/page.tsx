@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
-import { products } from 'public/data';
+import { productpagethree } from 'public/data';
 import Link from 'next/link';
 
 function Page() {
@@ -17,7 +17,7 @@ function Page() {
         setCategory(event.target.value);
     };
 
-    const filteredProducts = products.filter(product => {
+    const filteredproductpagethree = productpagethree.filter(product => {
         const matchesCategory = category === 'All Category' || product.category === category;
         const matchesSearchTerm = product.title.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesCategory && matchesSearchTerm;
@@ -26,7 +26,7 @@ function Page() {
     return (
         <section className='centred flex flex-col gap-8 py-8'>
             <div className='flex flex-col justify-center items-center '>
-                <h1 className='text-center text-4xl text-blue-400 font-bold mb-4'>Our Collection Of Products</h1>
+                <h1 className='text-center text-4xl text-blue-400 font-bold mb-4'>Our Collection Of productpagethree</h1>
 
                 <div className='flex items-center rounded-md gap-1 shadow-xl'>
                     {/* Select Category */}
@@ -79,9 +79,9 @@ function Page() {
                 </div>
             </div>
 
-            {/* Products Blog */}
+            {/* productpagethree Blog */}
             <div className="flex flex-wrap gap-10 justify-center ">
-                {filteredProducts.map((product, index) => (
+                {filteredproductpagethree.map((product, index) => (
                     <div key={index} className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
                         <div className="relative">
                             <Image src={product.imgSrc} alt="Product" className="w-full h-96 object-cover rounded-xl mb-4 " />
@@ -106,9 +106,9 @@ function Page() {
                     </div>
                 ))}
             </div>
-             {/* Products Blog */}
+             {/* productpagethree Blog */}
              <div className="flex flex-wrap gap-10 justify-center ">
-                {filteredProducts.map((product, index) => (
+                {filteredproductpagethree.map((product, index) => (
                     <div key={index} className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
                         <div className="relative">
                             <Image src={product.imgSrc} alt="Product" className="w-full h-96 object-cover rounded-xl mb-4 " />
@@ -133,9 +133,9 @@ function Page() {
                     </div>
                 ))}
             </div>
-             {/* Products Blog */}
+             {/* productpagethree Blog */}
              <div className="flex flex-wrap gap-10 justify-center ">
-                {filteredProducts.map((product, index) => (
+                {filteredproductpagethree.map((product, index) => (
                     <div key={index} className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
                         <div className="relative">
                             <Image src={product.imgSrc} alt="Product" className="w-full h-96 object-cover rounded-xl mb-4 " />
@@ -165,12 +165,12 @@ function Page() {
             <div className="flex justify-center mt-6">
                 <ol className="flex items-center space-x-2">
                     <li>
-                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &lt; {/* Left arrow */}
                         </Link>
                     </li>
                     <li>
-                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">1</Link>
+                        <Link href="/product" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">1</Link>
                     </li>
                     <li>
                         <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">2</Link>
@@ -179,7 +179,7 @@ function Page() {
                         <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</Link>
                     </li>
                     <li>
-                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &gt; {/* Right arrow */}
                         </Link>
                     </li>

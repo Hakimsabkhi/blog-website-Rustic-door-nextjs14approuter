@@ -14,7 +14,7 @@ import {
 function DernierCollection() {
   return (
     <section className="flex flex-col gap-8 sm:gap-12 lg:gap-16 py-8 items-center centred">
-      <div className="w-4/5 flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center gap-8">
         <header className="text-center">
           <h2 className="text-4xl font-bold text-orange-400 sm:text-4xl">DERNIER COLLECTION</h2>
           <div className="flex justify-center">
@@ -25,7 +25,7 @@ function DernierCollection() {
           </div>
         </header>
 
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 w-full">
+        <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 w-full">
           <li>
             <a href="#" className="group block overflow-hidden">
               <Image
@@ -72,7 +72,7 @@ function DernierCollection() {
           </li>
         </ul>
 
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 w-full">
+        <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 w-full">
           <li>
             <a href="#" className="group block overflow-hidden">
               <Image
