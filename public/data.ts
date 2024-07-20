@@ -10,7 +10,7 @@ export const blogs = [
     Catégorie: 'Catégorie',
     title: 'Porte Traditionnelle 101',
     description:
-      'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+      'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis ',
     likes: 6,
     comments: 18,
     userImgSrc: UserImg,
@@ -32,15 +32,17 @@ export const blogs = [
   {
     imgSrc: CollectionImg5,
     Catégorie: 'Catégorie 3',
-    title: 'Porte Traditionnelle 103',
+    title: 'Porte Traditionnelle 102',
     description:
-      'Un voyage fascinant à travers les âges, explorez les événements marquants qui ont façonné notre monde.',
-    likes: 15,
-    comments: 30,
+      'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
+    likes: 12,
+    comments: 22,
     userImgSrc: UserImg,
-    userName: 'User4',
-    date: '2023-07-12',
+    userName: 'User3',
+    date: '2023-07-11',
   },
+  
+  
 ];
 
 
@@ -67,34 +69,35 @@ export const posts = [
   {/*All Peoduct IN Product Page*/}
   export const products = [
     {
-        category:'SIDI BOUSAID',
-        imgSrc: Product1,
+        id: 1,
+        category: 'SIDI BOUSAID',
+        imgSrc: 'Product1',
         title: 'SIDI BOUSAID DOOR',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
-        savoir: 'SAVOIR PLUS',
+        savoir: 'SAVOIR PLUS'
     },
-    {   
-        category:'RADIAS',
-        imgSrc: Product2,
+    {
+        id: 2,
+        category: 'RADIAS',
+        imgSrc: 'Product2',
         title: 'RADIAS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
-        savoir: 'SAVOIR PLUS',
+        savoir: 'SAVOIR PLUS'
     },
-    {   
-        category:'TUNIS',
-        imgSrc: Product3,
+    {
+        id: 3,
+        category: 'TUNIS',
+        imgSrc: 'Product3',
         title: 'TUNIS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
-        savoir: 'SAVOIR PLUS',
-    },
-    
-
+        savoir: 'SAVOIR PLUS'
+    }
 ];
 
 {/*All Peoduct IN Product Page 2*/}

@@ -2,59 +2,27 @@ import React from 'react';
 import { Phone, PhoneCall, Printer } from 'lucide-react';
 import { Mail, Info, MapPin } from 'lucide-react';
 import Image from 'next/image';
-import {Logo2} from 'public/img/image'
+import {Logo3} from 'public/img/image'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-sky-500 text-white p-4 mt-8 ">
+    <footer className="bg-primary text-white p-4 mt-8 ">
 
   <div className="centred max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col justify-center">
     <div className="lg:flex lg:items-start lg:gap-8">
-      <div className="text-white">
-       <Image src={Logo2} alt="logo" className=' mt-3 ' />
-      </div>
+      
 
       <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">
-        <div className="col-span-2">
-          <div>
-            <h2 className="text-2xl font-bold text-white">Get the latest news!</h2>
-
-            <p className="mt-4 text-white">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non cupiditate quae nam
-              molestias.
-            </p>
-          </div>
-        </div>
-
-        <div className="col-span-2 lg:col-span-3 lg:flex lg:items-end">
-          <form className="w-full">
-            <label htmlFor="UserEmail" className="sr-only"> Email </label>
-
-            <div
-              className="border border-white p-2 focus-within:ring sm:flex sm:items-center sm:gap-4 bg-white rounded-3xl"
-            >
-              <input
-                type="email"
-                id="UserEmail"
-                placeholder="john@rhcp.com"
-                className="w-full border-none focus:border-transparent focus:ring-transparent sm:text-sm "
-              />
-
-              <button
-                className="mt-1 w-full bg-wtext-white px-6 py-3 text-sm font-bold uppercase bg-sky-500 tracking-wide text-white transition-none hover:bg-blue-200 sm:mt-0 sm:w-auto sm:shrink-0 rounded-3xl"
-              >
-                Envoye
-              </button>
-            </div>
-          </form>
-        </div>
+        
  
-        <div className="col-span-2 sm:col-span-1">
-          <p className="font-medium text-white">Company</p>
+        <div className="col-span-2 sm:col-span-1 ">
+        <div className="text-white centred">
+       <Image src={Logo3} alt="logo" className=' ' />
+         </div>
 
-          <ul className="mt-6 space-y-4 text-sm">
+          <ul className="mt-6 space-y-4 text-sm centred">
             <li>
-              <a href="#" className="text-white transition hover:opacity-75"><h3 className="mt-2 text-[15px] text-sm">
+              <a href="#" className="text-white  transition hover:opacity-75"><h3 className="mt-2 text-[15px] text-sm">
           <a href="#" className="hover:underline text-white text-sm flex items-center gap-2">
             <MapPin className="w-6 h-6 text-white" /> {/* Address icon */}
             Address : 5080 Teboulba, Monastir, Tunisie
@@ -129,29 +97,53 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
+         {/* Abonnez-vouz-Blog*/}
         <div className="col-span-2 sm:col-span-1">
-          <p className="font-medium text-white">Legal</p>
+          <p className="font-medium text-white">Abonnez-vous à notre newsletter!</p>
 
           <ul className="mt-6 space-y-4 text-sm">
+          <div className="row-span-2 lg:row-span-3 lg:flex lg:items-end">
+  <form className="w-full">
+    <label htmlFor="UserEmail" className="sr-only">Email</label>
+    <div className="flex  border border-white px-4 py-2 focus-within:ring sm:flex sm:items-center sm:gap-4 bg-white rounded-full">
+      <input
+        type="email"
+        id="UserEmail"
+        placeholder="john@rhcp.com"
+        className="w-full border-none focus:border-transparent focus:ring-transparent sm:text-sm"
+      />
+      <a
+        className="-mr-2 inline-block rounded-full border border-orange-400 p-3 text-orange hover:bg-orange-100 bg-orange-400 hover:text-orange-400 text-white focus:outline-none focus:ring active:bg-orange-400"
+        href="#"
+      >
+        <span className="sr-only">Next A Droite</span>
+        <svg
+          className="h-5 w-5 rtl:rotate-180"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M14 5l7 7m0 0l-7 7m7-7H3"
+          />
+        </svg>
+      </a>
+    </div>
+  </form>
+</div>
+
             <li>
-              <a href="#" className="text-white transition hover:opacity-75"> Accessibility </a>
+              <a href="#" className="text-white transition hover:opacity-75"> Suivez-nous sur </a>
             </li>
 
             <li>
-              <a href="#" className="text-white transition hover:opacity-75"> Returns Policy </a>
-            </li>
 
-            <li>
-              <a href="#" className="text-white transition hover:opacity-75"> Refund Policy </a>
-            </li>
-
-            <li>
-              <a href="#" className="text-white transition hover:opacity-75"> Hiring Statistics </a>
-            </li>
-          </ul>
-        </div>
-
-        <ul className="col-span-2 flex justify-start gap-6 lg:col-span-5 lg:justify-end">
+              {/*Media Icon */}
+            <ul className="col-span-2 flex justify-start gap-6 lg:col-span-5 lg:justify-start">
           <li>
             <a
               href="#"
@@ -170,7 +162,6 @@ const Footer: React.FC = () => {
               </svg>
             </a>
           </li>
-
           <li>
             <a
               href="#"
@@ -208,28 +199,21 @@ const Footer: React.FC = () => {
           </li>
           
         </ul>
+            </li>
+          </ul>
+        </div>
+
+        
       </div>
     </div>
 
-    <div className="mt-8 border-t border-white pt-8">
-      <div className="sm:flex sm:justify-between">
-        <p className="text-xs text-white">&copy; 2022. Company Name. All rights reserved.</p>
-
-        <ul className="mt-8 flex flex-wrap justify-start gap-4 text-xs sm:mt-0 lg:justify-end">
-          <li>
-            <a href="#" className="text-white transition hover:opacity-75"> Terms & Conditions </a>
-          </li>
-
-          <li>
-            <a href="#" className="text-white transition hover:opacity-75"> Privacy Policy </a>
-          </li>
-
-          <li>
-            <a href="#" className="text-white transition hover:opacity-75"> Cookies </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <div className="fixed inset-x-0 bottom-0">
+  <div className="bg-white px-4 py-3 text-primary">
+    <p className="text-center text-sm font-medium">
+      <a href="#" className="inline-block underline"> ©RUSTIKAHOUSE – All rights reserved </a>
+    </p>
+  </div>
+</div>
   </div>
 </footer>
   );

@@ -1,5 +1,6 @@
 import Logo from 'public/img/logo.png'; 
 import Logo2 from 'public/img/logo2.png';
+import Logo3 from  'public/img/logo3.png';
 import locationIcone from 'public/img/PNG/location-icone.png';
 import phoneIcone from 'public/img/PNG/phone-icone.png';
 import emailIcone from 'public/img/PNG/email-icone.png'
@@ -47,6 +48,7 @@ import ProductDetail1 from 'public/img/IMG/sidi-bou-said-3.jpg';
 export {
     Logo,
     Logo2,
+    Logo3,
     locationIcone,
     phoneIcone,
     emailIcone,

@@ -1,25 +1,25 @@
 import React from 'react';
 import Image from 'next/image';
-import {HeroImg} from 'public/img/image';
+import {HeroImg} from 'public/img/image'; 
+import Link from 'next/link';
 
 const HeroSection: React.FC = () => {
   return (
     <section className='centred py-8 flex items-center gap-8 flex-col justify-center md:flex-row'>
     
         {/* Image Section */}
-        <div className="flex justify-between items-center centred ">
-          <Image
-            alt="HeroImg"
-            src={HeroImg}
-            className="max-w-[1200px] md:max-w-[1000px] lg:max-w-[1000px] xl:max-w-[2000px]  rounded-xl"
-            layout='responsive'
+        
+        <Image
+  alt="HeroImg"
+  src={HeroImg}
+  className="rounded-xl w-full h-auto sm:h-full sm:w-auto md:max-w-[1200px] lg:max-w-[1200px] xl:max-w-[3000px] object-cover"
           />
-        </div>
+        
 
         {/* Text Content Section */}
-        <div className="flex flex-col gap-4 text-center md:text-left">
-          <h1 className="font-mono text-lg text-sky-400">BIENVENUE SUR RUSTIKA HOUSE</h1>
-          <h2 className="text-3xl font-bold sm:text-4xl text-orange-400">
+        <div className="flex flex-col gap-4  md:text-left sm:text-left">
+          <h1 className="font-mono  lg:text-lg md:text-lg sm:text-sm text-primary">BIENVENUE SUR RUSTIKA HOUSE</h1>
+          <h2 className="lg:text-4xl md:text-4xl sm:text-2xl font-bold  text-orange-400">
             CONSTRUISEZ VOTRE RÊVE ÉLÉGAN TRADIIONNELLE PORTE
           </h2>
 
@@ -30,18 +30,18 @@ const HeroSection: React.FC = () => {
           </p>
           
           <div className="flex gap-4 justify-center md:justify-end">
-            <a
+          <Link
               href="#"
-              className="inline-block flex-initial rounded-full bg-sky-500 px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-400 focus:outline-none"
-            >
-              APPELLER
-            </a>
-            <a
-              href="#"
-              className="rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-500 transition hover:bg-blue-100 focus:outline-none border border-blue-400"
+              className="rounded-full bg-white px-6 py-3 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary"
             >
               CONTACTER NOUS
-            </a>
+            </Link>  
+            <Link
+              href="#"
+              className="inline-block flex-initial rounded-full bg-primary  px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-300 focus:outline-none"
+            >
+              APPELLER
+            </Link>
           </div>
         </div>
 

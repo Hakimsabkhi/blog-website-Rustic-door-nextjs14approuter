@@ -4,8 +4,8 @@ import {AppelezImg} from 'public/img/image'
 
 function AppelezNouTwo() {
   return (
-    <section className="centred flex justify-center py-8 sm:py-12 lg:py-16 flex-col items-center ">
-      <div className="w-4/5 max-w-screen-xl flex flex-col lg:flex-row gap-8 lg:gap-20">
+    <section className="flex justify-center py-8 sm:py-12 lg:py-16 flex-col items-center bg-gray-100 ">
+      <div className="w-4/5 max-w-screen-xl flex flex-col lg:flex-row gap-8 lg:gap-20 ">
         <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:h-full flex-shrink-0 lg:flex-shrink img-container">
           <Image
             alt="img"
@@ -21,12 +21,13 @@ function AppelezNouTwo() {
             quidem quam repellat.
           </p>
           <a
-            href="#"
-            className="inline-block rounded-full bg-sky-500 px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-400"
-            style={{ maxWidth: '300px' }}
-          >
-            EXPLOREZ MAINTENANT
-          </a>
+  href="#"
+  className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-400 flex items-center justify-center"
+  style={{ maxWidth: '300px' }}
+>
+  EXPLOREZ MAINTENANT
+</a>
+
         </div>
       </div>
       

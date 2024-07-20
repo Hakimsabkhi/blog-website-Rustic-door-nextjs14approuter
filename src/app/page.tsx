@@ -19,8 +19,8 @@ export default function HomePage() {
       <DernierCollection/>
       <AppelezNousMaintenant/>
       <ParcourezLeGamme/>
-      <AiderlesIndividus/>
       <OfrireMeilleurService/>
+      <AiderlesIndividus/>
       <AppelezNouTwo/>
       <DisentNosClients/>
       <NosBlog/>
