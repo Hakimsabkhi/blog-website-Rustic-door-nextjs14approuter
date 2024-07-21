@@ -4,12 +4,12 @@ function DisentNosClients() {
   return (
     <section className='flex flex-col lg:flex-row gap-8 px-4 centred'>
       <div className='flex flex-col w-full lg:w-1/2 justify-center gap-2'>
-        <h1 className='text-blue-400 font-mono'>TEMOIGNAGES</h1>
-        <h2 className='text-orange-400 font-bold text-4xl'>REGARDEZ CE QUE DISENT NOS CLIENTS !</h2>
+        <h1 className='text-primary font-mono text-xl sm:text-xl md:text-md lg:text-md '>TEMOIGNAGES</h1>
+        <h2 className='text-orange-400 font-bold text-md sm:text-md md:text-3xl lg:text-4xl'>REGARDEZ CE QUE DISENT NOS CLIENTS !</h2>
         <p>Fusce venenatis tellus a felis scelerisque, non pulvinar est pellentesque.</p>
-        <div className="flex gap-4 ">
+        <div className="flex gap-8  justify-center sm:justify-center md:justify-start lg:justify-start ">
           <a
-            className="inline-block rounded-full border border-sky-500 p-3 text-sky-500 hover:bg-sky-500 hover:text-white focus:outline-none focus:ring active:bg-sky-500"
+            className="inline-block rounded-full border border-primary p-3 text-primary hover:bg-primary hover:text-white focus:outline-none focus:ring active:bg-primary"
             href="#"
           >
             <span className="sr-only">Next A Gauche</span>
@@ -29,7 +29,7 @@ function DisentNosClients() {
             </svg>
           </a>
           <a
-            className="inline-block rounded-full border border-sky-500 p-3 text-sky-500 hover:bg-sky-500 hover:text-white focus:outline-none focus:ring active:bg-sky-500"
+            className="inline-block rounded-full border border-primary p-3 text-primary hover:bg-primary hover:text-white focus:outline-none focus:ring active:bg-primary"
             href="#"
           >
             <span className="sr-only">Next A Droite</span>

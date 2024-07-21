@@ -1,4 +1,10 @@
 import Logo from 'public/img/logo.png'; 
+import Logo2 from 'public/img/logo2.png';
+import Logo3 from  'public/img/logo3.png';
+import locationIcone from 'public/img/PNG/location-icone.png';
+import phoneIcone from 'public/img/PNG/phone-icone.png';
+import emailIcone from 'public/img/PNG/email-icone.png'
+import UserImg from 'public/img/PNG/usreimg.png';
 import HeroImg from 'public/img/IMG/p16.jpg'; 
 import CollectionImg1 from 'public/img/IMG/Port-7.jpg'; 
 import CollectionImg2 from 'public/img/IMG/p9.jpg'; 
@@ -9,6 +15,7 @@ import CollectionImg6 from 'public/img/IMG/porte-6.jpg';
 import CollectionImg7 from 'public/img/IMG/p3.jpg';
 import CollectionImg8 from 'public/img/IMG/p5.jpg';
 import AppelezImg from 'public/img/IMG/porte-5.jpg';
+import AppelezImg2 from 'public/img/IMG/porte-5-inverse.png';
 import AiderImg from 'public/img/IMG/map.jpg';
 import AiderImg1 from 'public/img/IMG/P15.jpg';
 import AiderImg2 from 'public/img/IMG/Port-12.jpg';
@@ -25,10 +32,27 @@ import Blog5 from 'public/img/IMG/Port-team.jpg';
 import Product1 from 'public/img/IMG/sidi-bou-said.jpg';
 import Product2 from 'public/img/IMG/radias.jpg';
 import Product3 from 'public/img/IMG/tunis_01.jpg';
+import Product4 from 'public/img/IMG/10 Downing Street Door.jpg';
+import Product5 from 'public/img/IMG/Adobe Doors.jpg';
+import Product6 from 'public/img/IMG/Buranos Vibrant Doors.jpg';
+import Product7 from 'public/img/IMG/Cartagenas Colorful Doors.jpg';
+import Product8 from 'public/img/IMG/Columbus Doors.jpg';
+import Product9 from 'public/img/IMG/Elizabeth Arden Red Doors.jpg';
+import Product10 from 'public/img/IMG/Shakespeares Birthplace Door.jpg';
+import Product11 from 'public/img/IMG/Traditional Indian Doors.jpg';
+import ProductDetail1 from 'public/img/IMG/sidi-bou-said-3.jpg';
+
+
 
 
 export {
-    Logo, 
+    Logo,
+    Logo2,
+    Logo3,
+    locationIcone,
+    phoneIcone,
+    emailIcone,
+    UserImg,
     HeroImg, 
     CollectionImg1, 
     CollectionImg2, 
@@ -38,7 +62,8 @@ export {
     CollectionImg6, 
     CollectionImg7, 
     CollectionImg8, 
-    AppelezImg, 
+    AppelezImg,
+    AppelezImg2, 
     AiderImg, 
     AiderImg1, 
     AiderImg2, 
@@ -54,5 +79,14 @@ export {
     Blog5,
     Product1,
     Product2,
-    Product3 
+    Product3,
+    Product4,
+    Product5,
+    Product6,
+    Product7,
+    Product8,
+    Product9,
+    Product10,
+    Product11,
+    ProductDetail1
 };

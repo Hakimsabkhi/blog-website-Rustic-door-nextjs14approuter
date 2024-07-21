@@ -1,44 +1,76 @@
-import React from 'react';
-import { FaThumbsUp, FaComment } from 'react-icons/fa';
+
+"use client";
+import React, { useState, ChangeEvent } from 'react';
+import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
-import { products } from 'public/data'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { products } from 'public/data'; // Ensure this import path is correct
 
+interface Product {
+    id: number;
+    category: string;
+    imgSrc: string;
+    title: string;
+    description: string;
+    likes: number;
+    comments: number;
+    savoir: string;
+}
 
-function Page() { 
+const Page: React.FC = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [category, setCategory] = useState('All Category');
+    const router = useRouter();
+
+    const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        setCategory(event.target.value);
+    };
+
+    const handleNavigate = (productId: number) => {
+        router.push(`/product/${productId}`);
+    };
+
+    const filteredProducts = products.filter((product: Product) => {
+        const matchesCategory = category === 'All Category' || product.category === category;
+        const matchesSearchTerm = product.title.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesCategory && matchesSearchTerm;
+    });
+
     return (
-        <section className='centred flex flex-col gap-8'>
-            <div className='flex flex-col justify-center items-center'>
+        <section className='centred flex flex-col gap-8 py-8'>
+            <div className='flex flex-col justify-center items-center '>
                 <h1 className='text-center text-4xl text-blue-400 font-bold mb-4'>Our Collection Of Products</h1>
-
                 <div className='flex items-center rounded-md gap-1 shadow-xl'>
                     {/* Select Category */}
                     <select
                         name="Category"
                         id="Category"
+                        value={category}
+                        onChange={handleCategoryChange}
                         className="text-blue-600 sm:text-sm px-4 py-2 border-r-2"
                     >
-                        <option value="">All Category</option>
-                        <option value="JM">John Mayer</option>
-                        <option value="SRV">Stevie Ray Vaughn</option>
-                        <option value="JH">Jimi Hendrix</option>
-                        <option value="BBK">B.B King</option>
-                        <option value="AK">Albert King</option>
-                        <option value="BG">Buddy Guy</option>
-                        <option value="EC">Eric Clapton</option>
+                        <option value="All Category">All Category</option>
+                        <option value="SIDI BOUSAID">SIDI BOUSAID </option>
+                        <option value="RADIAS">RADIAS</option>
+                        <option value="TUNIS">TUNIS</option>
                     </select>
-
                     <div className="relative w-full max-w-xs">
                         <label htmlFor="Search" className="sr-only">Search</label>
-                        
                         {/* Search Bar */}
                         <input
                             type="text"
                             id="Search"
                             placeholder="Search for..."
+                            value={searchTerm}
+                            onChange={handleSearchChange}
                             className="w-full py-2.5 pe-10 sm:text-sm"
                         />
-
-                        <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                        <span className="absolute inset-y-0 end-0 grid w-15 place-content-center">
                             <button type="button" className="bg-sky-500 rounded-md text-white px-2 py-3">
                                 <span className="sr-only">Search</span>
                                 <svg
@@ -60,131 +92,57 @@ function Page() {
                     </div>
                 </div>
             </div>
-
             {/* Products Blog */}
-            <div className="flex flex-wrap gap-10 justify-center">
-                {products.map((product, index) => (
-                    <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
+            <div className="flex flex-wrap gap-10 justify-center ">
+                {filteredProducts.map((product) => (
+                    <div key={product.id} className="sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
                         <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" className="w-full h-64 object-cover rounded-xl mb-4" />
+                            <Image src={product.imgSrc} alt="Product" width={500} height={500} className="w-full h-96 object-cover rounded-xl mb-4 " />
                         </div>
-                        <div className="flex flex-col gap-2 bg-white p-4 rounded-xl">
-                            <div className="flex items-center justify-between">
+                        <div className="flex flex-col bg-white rounded-xl shadow-lg">
+                            <div className="flex items-center gap-4 mb-4">
                                 <div className="flex items-center gap-2">
-                                    <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.likes} likes</h3>
+                                    <AiOutlineHeart className="text-[25px]" />
+                                    <Link href='#' className="text-gray-400">{product.likes} likes</Link>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <FaComment className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.comments} comments</h3>
+                                    <AiOutlineComment className="text-[25px]" />
+                                    <Link href='#' className="text-gray-400">{product.comments}</Link>
                                 </div>
                             </div>
                             <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
                             <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
-                                {product.savoir}
-                            </button>
-                        </div>
-                    </div>
-                ))}
-
-                {products.map((product, index) => (
-                    <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
-                        <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" className="w-full h-64 object-cover rounded-xl mb-4" />
-                        </div>
-                        <div className="flex flex-col gap-2 bg-white p-4 rounded-xl">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.likes} likes</h3>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <FaComment className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.comments} comments</h3>
-                                </div>
-                            </div>
-                            <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
-                                {product.savoir}
-                            </button>
-                        </div>
-                    </div>
-                ))}
-
-                {products.map((product, index) => (
-                    <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
-                        <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" className="w-full h-64 object-cover rounded-xl mb-4" />
-                        </div>
-                        <div className="flex flex-col gap-2 bg-white p-4 rounded-xl">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.likes} likes</h3>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <FaComment className="text-blue-500" />
-                                    <h3 className="text-gray-400">{product.comments} comments</h3>
-                                </div>
-                            </div>
-                            <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
-                                {product.savoir}
-                            </button>
-                        </div>
-                    </div>
-                ))}
-
-                {products.map((product, index) => (
-                    <div key={index} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 overflow-hidden">
-                        <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" className="w-full h-64 object-cover rounded-xl mb-4" />
-                        </div>
-                        <div className="flex flex-col gap-2 bg-white p-4 rounded-xl">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <FaThumbsUp className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.likes} likes</h3>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <FaComment className="text-blue-500" />
-                                    <h3 className="text-blue-700">{product.comments} comments</h3>
-                                </div>
-                            </div>
-                            <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-blue-600 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white px-6 py-3 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700'>
+                            <button
+                                className='text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md'
+                                onClick={() => handleNavigate(product.id)}
+                            >
                                 {product.savoir}
                             </button>
                         </div>
                     </div>
                 ))}
             </div>
-
-            {/*.Pagination*/}
+            {/* Pagination */}
             <div className="flex justify-center mt-6">
                 <ol className="flex items-center space-x-2">
                     <li>
-                        <a href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &lt; {/* Left arrow */}
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">1</a>
+                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">1</Link>
                     </li>
                     <li>
-                        <a href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">2</a>
+                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">2</Link>
                     </li>
                     <li>
-                        <a href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</a>
+                        <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</Link>
                     </li>
                     <li>
-                        <a href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &gt; {/* Right arrow */}
-                        </a>
+                        </Link>
                     </li>
                 </ol>
             </div>

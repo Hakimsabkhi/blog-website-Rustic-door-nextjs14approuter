@@ -9,6 +9,7 @@ import AppelezNouTwo from "@/components/AppelezNouTwo";
 import DisentNosClients from "@/components/DisentNosClients";
 import DernierBlog from "@/components/DernierBlog";
 import JoignezVous from "@/components/JoignezVous";
+import NosBlog from "@/components/NosBlog";
 
 export default function HomePage() {
   return (
@@ -17,12 +18,12 @@ export default function HomePage() {
       <ServiceBar/>
       <DernierCollection/>
       <AppelezNousMaintenant/>
-      <AiderlesIndividus/>
       <ParcourezLeGamme/>
       <OfrireMeilleurService/>
+      <AiderlesIndividus/>
       <AppelezNouTwo/>
       <DisentNosClients/>
-      <DernierBlog/>
+      <NosBlog/>
       <JoignezVous/>
 
     </div>     
