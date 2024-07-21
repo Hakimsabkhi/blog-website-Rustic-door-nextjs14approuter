@@ -9,13 +9,14 @@ function Page() {
     const [searchTerm, setSearchTerm] = useState('');
     const [category, setCategory] = useState('All Category');
 
-    const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
-
-    const handleCategoryChange = (event) => {
-        setCategory(event.target.value);
-    };
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchTerm(event.target.value);
+  };
+  
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setCategory(event.target.value);
+  };
+  
 
     const filteredproductpagethree = productpagethree.filter(product => {
         const matchesCategory = category === 'All Category' || product.category === category;
