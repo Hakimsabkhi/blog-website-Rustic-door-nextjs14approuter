@@ -106,7 +106,9 @@ const Header: React.FC = () => {
                 <Link className="text-gray-500 transition hover:text-primary" href="#">Blog</Link>
               </li>
               <li>
+
                 <Link className="text-gray-500 transition hover:text-primary" href="/product">Products</Link>
+
               </li>
               <li>
                 <Link className="text-gray-500 transition hover:text-primary" href="#">Contact</Link>

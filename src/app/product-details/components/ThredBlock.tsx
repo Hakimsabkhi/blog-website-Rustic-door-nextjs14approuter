@@ -8,12 +8,15 @@ function ThredBlock() {
       {/* ThredBlock */}
       <div className='flex flex-col items-center justify-center gap-8 py-8 w-full'>
         <div className="flex flex-col gap-4 text-center">
+
           <h2 className="font-bold text-xl sm:text-xl md:text-4xl lg:text-4xl xl:text-4xl -mt-2 text-orange-400">
+
             DECOUVRE NOTRE PRODUIT
           </h2>
         </div>
 
         {/* Image Block */}
+
 <div className='flex flex-col md:flex-row items-center justify-center gap-12 w-full'>
   {/* Image 1 - Hidden on Mobile */}
   <div className="hidden md:flex justify-center items-center w-full md:w-1/2">
@@ -63,7 +66,6 @@ function ThredBlock() {
     </div>
   </div>
 </div>
-
 
         <p className="text-gray-600 centred mt-4">
           Thred block content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

@@ -71,31 +71,35 @@ export const posts = [
     {
         id: 1,
         category: 'SIDI BOUSAID',
+
         imgSrc: Product1,
         title: 'SIDI BOUSAID',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
-        
     },
     {
         id: 2,
         category: 'RADIAS',
+
         imgSrc: Product2,
         title: 'RADIAS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
-        
+
     },
     {
         id: 3,
         category: 'TUNIS',
+
         imgSrc: Product3,
+
         title: 'TUNIS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
+
         
     },
     {
@@ -128,6 +132,7 @@ export const posts = [
   comments: 18,
   
 }
+
 ];
 
 {/*All Peoduct IN Product Page 2*/}
@@ -139,7 +144,9 @@ export const productpagetwo = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
+
     
+
 },
 {
   category:'ADOBE',
@@ -188,6 +195,7 @@ comments: 18,
   comments: 18,
   
 }
+
 ]
 
 
@@ -218,6 +226,7 @@ export const productpagethree = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
+
     
   },
   {
@@ -270,6 +279,6 @@ export const productpagefor = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
-    
+
   },
 ]

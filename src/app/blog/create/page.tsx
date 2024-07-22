@@ -1,16 +1,18 @@
+/* /app/blog/create/Page.tsx */
+"use client";
 
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const CreatePost = () => {
   const [formData, setFormData] = useState({ title: '', content: '' });
   const router = useRouter();
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const response = await fetch('/api/posts', {
       method: 'POST',

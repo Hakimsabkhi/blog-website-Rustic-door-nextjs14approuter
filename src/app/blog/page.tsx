@@ -1,35 +1,45 @@
+/* /app/blog/create/Page.tsx */
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-const Blog = () => {
-  const [posts, setPosts] = useState([]);
+const CreatePost = () => {
+  const [formData, setFormData] = useState({ title: '', content: '' });
+  const router = useRouter();
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch('/api/posts');
-        const data = await response.json();
-        setPosts(data);
-      } catch (error) {
-        console.error('Failed to fetch posts:', error);
-      }
-    };
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    fetchPosts();
-  }, []);
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const response = await fetch('/api/posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+    if (response.ok) {
+      router.push('/blog');
+    }
+  };
 
   return (
     <div>
-      <h1>All Blog Posts</h1>
-      <ul>
-        {posts.map(post => (
-          <li key={post._id}>
-            <a href={`/blog/${post._id}`}>{post.title}</a>
-          </li>
-        ))}
-      </ul>
+      <h1>Create New Post</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Title:
+          <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+        </label>
+        <label>
+          Content:
+          <textarea name="content" value={formData.content} onChange={handleChange} required />
+        </label>
+        <button type="submit">Create Post</button>
+      </form>
     </div>
   );
 };
 
-export default Blog;
+export default CreatePost;

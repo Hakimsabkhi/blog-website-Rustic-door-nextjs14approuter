@@ -8,7 +8,9 @@ function SecondBlock() {
       {/* Second Block */}
       <div className='flex flex-col items-center justify-center gap-8 py-8 w-full'>
         <div className="flex flex-col gap-4 text-center">
+
           <h2 className="font-bold text-xl sm:text-xl md:text-4xl lg:text-4xl xl:text-4xl -mt-2 text-orange-400">
+
             DECOUVRE NOTRE PRODUIT
           </h2>
           <p className="text-gray-600 centred">
@@ -20,6 +22,7 @@ function SecondBlock() {
         </div>
 
         <div className='flex flex-row md:flex-row items-center justify-center gap-6 w-full'>
+
           <div className="flex justify-center items-center  w-full md:w-1/3">
             <Image
               alt="ProductDetail2"

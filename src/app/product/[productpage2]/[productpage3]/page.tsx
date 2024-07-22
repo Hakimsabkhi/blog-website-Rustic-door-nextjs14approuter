@@ -27,8 +27,10 @@ function Page() {
     return (
         <section className='centred flex flex-col gap-8 py-8'>
             <div className='flex flex-col justify-center items-center '>
+
                 <h1 className='text-center text-4xl text-blue-400 font-bold mb-4'>Our Collection Of Products</h1>
                 <div className='flex items-center rounded-md gap-1 bg-gray-100 '>
+                
                     {/* Select Category */}
                     <select
                         name="Category"
@@ -51,6 +53,7 @@ function Page() {
                             placeholder="Search for..."
                             value={searchTerm}
                             onChange={handleSearchChange}
+
                             className="w-full py-3 pe-16 sm:text-sm bg-gray-100 pl-2"
                         />
                     </div>
@@ -73,10 +76,12 @@ function Page() {
                                 </svg>
                             </button>
                         </span>
+
                 </div>
             </div>
 
             {/* productpagethree Blog */}
+
             <div className=" grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-0 lg:grid-cols-0 xl:grid-cols-3   ">
         {filteredproductpagethree.map((product, index) => (
           <div

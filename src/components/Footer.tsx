@@ -6,7 +6,9 @@ import {Logo3} from 'public/img/image'
 
 const Footer: React.FC = () => {
   return (
+
     <footer className="bg-primary text-white p-2 mt-8 ">
+
 
   <div className="centred max-w-screen-xl px-4 py-2 sm:py-2 md:py-8 lg:py-16 sm:px-6 lg:px-8 flex flex-col justify-center">
     <div className="lg:flex lg:items-start lg:gap-8">
@@ -17,6 +19,7 @@ const Footer: React.FC = () => {
  
         <div className="col-span-2 sm:col-span-1 flex flex-col justify-center  ">
         <div className="text-white centred ">
+
        <Image src={Logo3} alt="logo" className=' ' />
          </div>
 
@@ -128,6 +131,7 @@ const Footer: React.FC = () => {
     </div>
   </form>
 </div>
+
 </ul>
 {/* Media Icon */}
 <div className="text-center mt-4 flex flex-col justify-start">
@@ -189,6 +193,14 @@ const Footer: React.FC = () => {
         
       </div>
     </div>
+
+    <div className="fixed inset-x-0 bottom-0">
+  <div className="bg-white px-4 py-3 text-primary">
+    <p className="text-center text-sm font-medium">
+      <a href="#" className="inline-block underline"> ©RUSTIKAHOUSE – All rights reserved </a>
+    </p>
+  </div>
+</div>
   </div>
   </div>
   

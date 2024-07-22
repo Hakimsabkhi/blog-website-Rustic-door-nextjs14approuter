@@ -1,10 +1,14 @@
+
 "use client";
+
 
 import React, { useState, ChangeEvent } from 'react';
 import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { products } from 'public/data'; // Ensure this path is correct
+
 
 interface Product {
     id: number;
@@ -14,7 +18,7 @@ interface Product {
     description: string;
     likes: number;
     comments: number;
-    
+
 }
 
 const Page: React.FC = () => {
@@ -40,12 +44,14 @@ const Page: React.FC = () => {
             <div className='flex flex-col justify-center items-center '>
                 <h1 className='text-center text-4xl text-orange-400 font-bold mb-4'>Our Collection Of Products</h1>
                 <div className='flex items-center rounded-md gap-1 bg-gray-100 '>
+                  
                     {/* Select Category */}
                     <select
                         name="Category"
                         id="Category"
                         value={category}
                         onChange={handleCategoryChange}
+
                         className="text-blue-600 sm:text-sm px-2 py-3 border-r-2 bg-gray-100 rounded-tl-md rounded-bl-md -mr-1"
                     >
                         <option value="All Category">All Category</option>
@@ -62,11 +68,13 @@ const Page: React.FC = () => {
                             placeholder="Search for..."
                             value={searchTerm}
                             onChange={handleSearchChange}
+
                             className="w-full py-3 pe-16 sm:text-sm bg-gray-100 pl-2"
                         />
                     </div>
                     <span className=" grid w-15 ">
                             <button type="button" className="bg-primary rounded-tr-md rounded-br-md text-white px-4 py-4 sm:py-4 md:py-3.5 lg:py-3.5 xl:py-3.5 -ml-1">
+
                                 <span className="sr-only">Search</span>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +94,7 @@ const Page: React.FC = () => {
                         </span>
                 </div>
             </div>
+
             {/*productpage Blog */}
       <div className=" grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-0 lg:grid-cols-0 xl:grid-cols-3   ">
         {filteredProducts.map((product, index) => (
@@ -146,6 +155,7 @@ const Page: React.FC = () => {
                         <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</Link>
                     </li>
                     <li>
+
                         <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &gt; {/* Right arrow */}
                         </Link>
