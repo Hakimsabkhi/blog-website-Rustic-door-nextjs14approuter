@@ -1,11 +1,10 @@
-
 "use client";
+
 import React, { useState, ChangeEvent } from 'react';
 import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { products } from 'public/data'; // Ensure this import path is correct
+import { products } from 'public/data'; // Ensure this path is correct
 
 interface Product {
     id: number;
@@ -15,13 +14,12 @@ interface Product {
     description: string;
     likes: number;
     comments: number;
-    savoir: string;
+    
 }
 
 const Page: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [category, setCategory] = useState('All Category');
-    const router = useRouter();
 
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
@@ -29,10 +27,6 @@ const Page: React.FC = () => {
 
     const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setCategory(event.target.value);
-    };
-
-    const handleNavigate = (productId: number) => {
-        router.push(`/product/${productId}`);
     };
 
     const filteredProducts = products.filter((product: Product) => {
@@ -55,7 +49,7 @@ const Page: React.FC = () => {
                         className="text-blue-600 sm:text-sm px-4 py-2 border-r-2"
                     >
                         <option value="All Category">All Category</option>
-                        <option value="SIDI BOUSAID">SIDI BOUSAID </option>
+                        <option value="SIDI BOUSAID">SIDI BOUSAID</option>
                         <option value="RADIAS">RADIAS</option>
                         <option value="TUNIS">TUNIS</option>
                     </select>
@@ -92,36 +86,48 @@ const Page: React.FC = () => {
                     </div>
                 </div>
             </div>
-            {/* Products Blog */}
-            <div className="flex flex-wrap gap-10 justify-center ">
-                {filteredProducts.map((product) => (
-                    <div key={product.id} className="sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden ">
-                        <div className="relative">
-                            <Image src={product.imgSrc} alt="Product" width={500} height={500} className="w-full h-96 object-cover rounded-xl mb-4 " />
-                        </div>
-                        <div className="flex flex-col bg-white rounded-xl shadow-lg">
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="flex items-center gap-2">
-                                    <AiOutlineHeart className="text-[25px]" />
-                                    <Link href='#' className="text-gray-400">{product.likes} likes</Link>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <AiOutlineComment className="text-[25px]" />
-                                    <Link href='#' className="text-gray-400">{product.comments}</Link>
-                                </div>
-                            </div>
-                            <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
-                            <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button
-                                className='text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md'
-                                onClick={() => handleNavigate(product.id)}
-                            >
-                                {product.savoir}
-                            </button>
-                        </div>
-                    </div>
-                ))}
+            {/*productpagetwo Blog */}
+      <div className="flex flex-wrap gap-10 justify-center ">
+        {filteredProducts.map((product, index) => (
+          <div
+            key={index}
+            className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden "
+          >
+            <div className="relative">
+              <Image
+                src={product.imgSrc}
+                alt="Product"
+                className="w-full h-96 object-cover rounded-xl mb-4 "
+              />
             </div>
+            <div className="flex flex-col  bg-white  rounded-xl shadow-lg">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-2">
+                  <AiOutlineHeart className="text-[25px]" />
+                  <Link href="#" className="text-gray-400">
+                    {product.likes} likes
+                  </Link>
+                </div>
+                <div className="flex items-center gap-2">
+                  <AiOutlineComment className="text-[25px]" />
+                  <Link href="#" className="text-gray-400">
+                    {product.comments} comments
+                  </Link>
+                </div>
+              </div>
+              <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">
+                {product.title}
+              </h1>
+              <p className="text-gray-400 text-sm mb-4">
+                {product.description}
+              </p>
+              <div className="text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md">
+                <a href={'/product-details'}  >SAVOIR PLUS</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
             {/* Pagination */}
             <div className="flex justify-center mt-6">
                 <ol className="flex items-center space-x-2">
@@ -140,7 +146,7 @@ const Page: React.FC = () => {
                         <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</Link>
                     </li>
                     <li>
-                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &gt; {/* Right arrow */}
                         </Link>
                     </li>

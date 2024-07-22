@@ -100,9 +100,9 @@ function Page() {
                             </div>
                             <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
                             <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md'>
-                                {product.savoir}
-                            </button>
+                            <div className="text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md">
+                               <a href={'/product-details'}  >SAVOIR PLUS</a>
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -127,9 +127,9 @@ function Page() {
                             </div>
                             <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
                             <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md'>
-                                {product.savoir}
-                            </button>
+                            <div className="text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md">
+                             <a href={'/product-details'}  >SAVOIR PLUS</a>
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -154,9 +154,9 @@ function Page() {
                             </div>
                             <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">{product.title}</h1>
                             <p className="text-gray-400 text-sm mb-4">{product.description}</p>
-                            <button className='text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md'>
-                                {product.savoir}
-                            </button>
+                            <div className="text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md">
+                             <a href={'/product-details'}  >SAVOIR PLUS</a>
+                            </div>
                         </div>
                     </div>
                 ))}

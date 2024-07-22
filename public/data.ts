@@ -71,32 +71,32 @@ export const posts = [
     {
         id: 1,
         category: 'SIDI BOUSAID',
-        imgSrc: 'Product1',
+        imgSrc: Product1,
         title: 'SIDI BOUSAID DOOR',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
-        savoir: 'SAVOIR PLUS'
+        
     },
     {
         id: 2,
         category: 'RADIAS',
-        imgSrc: 'Product2',
+        imgSrc: Product2,
         title: 'RADIAS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
-        savoir: 'SAVOIR PLUS'
+        
     },
     {
         id: 3,
         category: 'TUNIS',
-        imgSrc: 'Product3',
+        imgSrc: Product3,
         title: 'TUNIS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
-        savoir: 'SAVOIR PLUS'
+        
     }
 ];
 
@@ -109,7 +109,7 @@ export const productpagetwo = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
-    savoir: 'SAVOIR PLUS',
+    
 },
 {
   category:'ADOBE',
@@ -127,7 +127,7 @@ title: 'BURANOS VIBRANT',
 description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
 likes: 6,
 comments: 18,
-savoir: 'SAVOIR PLUS',
+
 },
 ]
 
@@ -150,7 +150,7 @@ export const productpagethree = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
-    savoir: 'SAVOIR PLUS',
+    
   },
   {
     category:'ELIZABETH',
@@ -159,7 +159,7 @@ export const productpagethree = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
-    savoir: 'SAVOIR PLUS',
+    
   },
 ]
 
@@ -172,7 +172,7 @@ export const productpagefor = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
-    savoir: 'SAVOIR PLUS',
+    
   },
   { 
     category:'INDIAN',
@@ -181,6 +181,6 @@ export const productpagefor = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
-    savoir: 'SAVOIR PLUS',
+    
   },
 ]

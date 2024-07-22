@@ -5,8 +5,8 @@ import { ProductDetail1, } from 'public/img/image';
 function FirstBlock() {
   return (
     
-    <section className='centred py-8 flex flex-col items-center justify-center'> {/* First Block */}
-      <div className='flex flex-col md:flex-row items-center justify-center'>
+    <section className='centred py-8 flex flex-col items-center justify-center '> {/* First Block */}
+      <div className='flex flex-col md:flex-row items-center justify-center gap-4'>
         <div className="flex justify-center items-center centred">
           <Image
             alt="ProductDetail1"
