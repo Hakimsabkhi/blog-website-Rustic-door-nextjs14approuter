@@ -15,57 +15,104 @@ const Contact = () => {
   };
 
   return (
-      <div className="container mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">Contact Us</h1>
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Name:
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            />
+ 
+
+<section className=" ">
+  <div className=' w-[90%] sm:w-[90%]  mx-auto '>
+  <h1 className=' py-6 pl-0 sm:pl-0 md:pl-8 lg:pl-8 xl:pl-8 text-center sm:text-center md:text-left lg:text-left xl:text-left font-medium text-2xl bg-primary rounded-tr-xl rounded-tl-xl text-white '>
+    Get In Touch With Us</h1>
+  </div>
+  <div className="mx-auto w-[90%] sm:w-[90%]   px-4 py-16 sm:px-6 xl:px-8 border-r-2 border-l-2 border-b-2">
+    <div className="grid grid-cols-1 gap-x-16 gap-y-8 xl:grid-cols-5">
+      <div className="xl:col-span-2 xl:py-12">
+      <div className="border-b-2 pb-8">
+        <h1 className="max-w-xl text-lg">
+         Phone Number </h1>
+         <span className='font-light text-gray-400' >+216 12 345 678</span> 
+         </div>
+        <div className="mt-8 border-b-2 pb-8">
+          <a href="#" className="max-w-xl text-lg"> Email Address </a><br />
+          <span className='font-light text-gray-400' >nameproject@example.com</span> 
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Email:
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            />
+          <div className="mt-8">
+          <a className="max-w-xl text-lg">Location</a><br />
+          <span className='font-light text-gray-400' >Tebouba ,Monastir , Tunisie</span> 
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Message:
-            </label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            />
-          </div>
-          <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">
-            Submit
-          </button>
-        </form>
-        <div className="mt-8 text-center">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">Contact Details</h2>
-          <p className="text-gray-700">Email: contact@example.com</p>
-          <p className="text-gray-700">Social Media Links...</p>
-        </div>
       </div>
+
+      <div className="rounded-xl xl:col-span-3 xl:p-12">
+        <div className='mb-12'>
+          <h1 className='text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl pb-4'>Send us a message</h1>
+          <p className='font-light text-gray-400 '>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla nunc in molestie feugiat. </p>
+        </div>
+        <form action="#" className="space-y-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label className="sr-only" htmlFor="name">Name</label>
+            <input
+              className="w-full rounded-full border-2 border-primary py-3 px-3 text-sm"
+              placeholder="Name"
+              type="text"
+              id="name"
+            />
+          </div>
+            <div>
+              <label className="sr-only" htmlFor="email">Email</label>
+              <input
+                className="w-full rounded-full border-2 border-primary p-3 text-sm"
+                placeholder="Email address"
+                type="email"
+                id="email"
+              />
+            </div>
+            
+            <div>
+              <label className="sr-only" htmlFor="phone">Phone</label>
+              <input
+                className="w-full rounded-full border-2 border-primary p-3 text-sm"
+                placeholder="Phone Number"
+                type="tel"
+                id="phone"
+              />
+            </div>
+         
+          <div>
+          <div>
+              <label className="sr-only" htmlFor="Subject">Subject</label>
+              <input
+                className="w-full rounded-full border-2 border-primary p-3 text-sm"
+                placeholder="Subject"
+                type="text"
+                id="subject"
+              />
+            </div>
+          </div>
+          </div>
+
+          <div>
+            <label className="sr-only" htmlFor="message">Message</label>
+
+            <textarea
+              className="w-full rounded-xl border-2 border-primary p-3 text-sm"
+              placeholder="Message"
+              
+              id="message"
+            ></textarea>
+          </div>
+
+          <div className="mt-4">
+            <button
+              type="submit"
+              className="rounded-full bg-orange-400 px-6  py-3 font-medium text-white sm:w-auto"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
   );
 };
 

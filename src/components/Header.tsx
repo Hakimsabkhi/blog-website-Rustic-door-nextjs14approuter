@@ -59,7 +59,7 @@ const Header: React.FC = () => {
                 <Link className="text-gray-500 transition hover:text-primary" href="/product">Products</Link>
               </li>
               <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="#">Contact</Link>
+                <Link className="text-gray-500 transition hover:text-primary" href="/contact">Contact</Link>
               </li>
             </ul>
           </nav>
@@ -111,7 +111,7 @@ const Header: React.FC = () => {
 
               </li>
               <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="#">Contact</Link>
+                <Link className="text-gray-500 transition hover:text-primary" href="/contact">Contact</Link>
               </li>
               <li>
                 <Link className="rounded-full bg-primary px-8 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="#">
