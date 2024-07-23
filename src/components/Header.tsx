@@ -68,7 +68,7 @@ const Header: React.FC = () => {
         <div className="hidden md:flex md:items-center md:gap-4">
           <div className="sm:flex sm:gap-4">
             <Link
-              className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary"
+              className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary"
               href="#"
             >
               Login
@@ -77,7 +77,7 @@ const Header: React.FC = () => {
 
           <div className="sm:flex sm:gap-4">
             <Link
-              className="rounded-full bg-gray-100 px-5 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
+              className="rounded-full bg-gray-100 px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
               href="#"
             >
               Register
@@ -114,12 +114,12 @@ const Header: React.FC = () => {
                 <Link className="text-gray-500 transition hover:text-primary" href="#">Contact</Link>
               </li>
               <li>
-                <Link className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="#">
+                <Link className="rounded-full bg-primary px-8 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="#">
                   Login
                 </Link>
               </li>
               <li>
-                <Link className="rounded-full bg-gray-100 px-5 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200" href="#">
+                <Link className="rounded-full bg-gray-100 px-8 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200" href="#">
                   Register
                 </Link>
               </li>

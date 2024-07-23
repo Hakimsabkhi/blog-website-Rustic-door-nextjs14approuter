@@ -14,7 +14,7 @@ import {
 function DernierCollection() {
   return (
     <section className="flex flex-col gap-8 sm:gap-12 lg:gap-16 py-8 items-center ">
-      <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center gap-8 w-[90%]">
         <header className="text-center">
         <h2 className="text-xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl font-bold text-orange-400">DERNIER COLLECTION</h2>
 
@@ -26,7 +26,7 @@ function DernierCollection() {
         </header>
 
 <ul className="grid gap-4 grid-cols-2 lg:grid-cols-4 w-full centred">
-  <li className="h-[250px]">
+  <li className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px] ">
     <a href="#" className="group block overflow-hidden h-full">
       <Image
         src={CollectionImg1}
@@ -35,7 +35,7 @@ function DernierCollection() {
       />
     </a>
   </li>
-  <li className="h-[250px]">
+  <li className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px]">
     <a href="#" className="group block overflow-hidden h-full">
       <Image
         src={CollectionImg2}
@@ -44,7 +44,7 @@ function DernierCollection() {
       />
     </a>
   </li>
-  <li className="h-[250px]">
+  <li className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px]">
     <a href="#" className="group block overflow-hidden h-full">
       <Image
         src={CollectionImg3}
@@ -53,7 +53,7 @@ function DernierCollection() {
       />
     </a>
   </li>
-  <li className="h-[250px]">
+  <li className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px]">
     <a href="#" className="group block overflow-hidden h-full">
       <Image
         src={CollectionImg4}
@@ -66,7 +66,7 @@ function DernierCollection() {
 
 
 <ul className="grid gap-4 grid-cols-2 lg:grid-cols-4 w-full centred">
-  <li className="h-[250px]">
+  <li className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px]">
     <a href="#" className="group block overflow-hidden h-full">
       <Image
         src={CollectionImg5}
@@ -75,7 +75,7 @@ function DernierCollection() {
       />
     </a>
   </li>
-  <li className="h-[250px]">
+  <li className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px]">
     <a href="#" className="group block overflow-hidden h-full">
       <Image
         src={CollectionImg6}
@@ -84,7 +84,7 @@ function DernierCollection() {
       />
     </a>
   </li>
-  <li className="h-[250px]">
+  <li className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px]">
     <a href="#" className="group block overflow-hidden h-full">
       <Image
         src={CollectionImg7}
@@ -93,7 +93,7 @@ function DernierCollection() {
       />
     </a>
   </li>
-  <li className="h-[250px]">
+  <li className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px]">
     <a href="#" className="group block overflow-hidden h-full">
       <Image
         src={CollectionImg8}
@@ -105,14 +105,14 @@ function DernierCollection() {
 </ul>
 
 
-        <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 gap-4 w-full">
+        <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 gap-4 w-full sm:w-full md:w-[70%] lg:w-[70%] xl:w-[70%] ">
           <p className="flex-1 centred">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
             dicta incidunt est ipsam, officia dolor fugit natus?
           </p>
           <a
             href="#"
-            className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-300 focus:outline-none"
+            className="rounded-full bg-primary px-14 sm:px-14 md:px-16 lg:px-16 xl:px-16 py-3 text-sm font-medium text-white transition hover:bg-blue-300 focus:outline-none"
           >
             EXPLOREZ MAINTENANT
           </a>

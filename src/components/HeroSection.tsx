@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className='centred py-8 flex items-center gap-8 flex-col justify-center md:flex-row'>
+    <section className='centred py-8 flex items-center gap-8 sm:gap-8 md:gap-16 lg:gap-16 xl:gap-16 flex-col justify-center md:flex-row'>
     
         {/* Image Section */}
         
@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
         
 
         {/* Text Content Section */}
-        <div className="flex flex-col gap-4  md:text-left sm:text-left">
+        <div className="flex flex-col gap-4  md:text-left sm:text-left w-full sm:w-full md:w-[40%] lg:w-[40%]  xl:w-[40%] ">
           <h1 className="font-mono  lg:text-lg md:text-lg sm:text-sm text-primary">BIENVENUE SUR RUSTIKA HOUSE</h1>
           <h2 className="lg:text-4xl md:text-4xl sm:text-2xl font-bold  text-orange-400">
             CONSTRUISEZ VOTRE RÊVE ÉLÉGAN TRADIIONNELLE PORTE
@@ -29,16 +29,16 @@ const HeroSection: React.FC = () => {
             Molestiae eius quidem quam repellat.
           </p>
           
-          <div className="flex gap-4 justify-center md:justify-end">
+          <div className="flex gap-4 justify-center sm:justify-center md:justify-center lg:justify-center xl:justify-center">
           <Link
               href="#"
-              className="rounded-full bg-white px-6 py-3 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary"
+              className="rounded-full bg-white px-6 sm:px-6 md:px-16 lg:px-16 py-3 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary"
             >
               CONTACTER NOUS
             </Link>  
             <Link
               href="#"
-              className="inline-block flex-initial rounded-full bg-primary  px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-300 focus:outline-none"
+              className="inline-block flex-initial rounded-full bg-primary  px-6 sm:px-6 md:px-16 lg:px-16 py-3 text-sm font-medium text-white transition hover:bg-blue-300 focus:outline-none"
             >
               APPELLER
             </Link>
