@@ -9,7 +9,9 @@ function BlockFive() {
       <div className='flex flex-col md:flex-row centred gap-12 items-center w-full'>
         {/* Text Content Section */}
         <div className="flex flex-col gap-4 text-center md:text-left w-full md:w-1/2">
-          <h2 className="text-3xl font-bold sm:text-4xl text-orange-400">
+
+          <h2 className="font-bold text-xl sm:text-xl md:text-4xl lg:text-4xl xl:text-4xl -mt-2 text-orange-400">
+
             SIDI BOUSAID DOOR
           </h2>
           <p className="text-gray-600">

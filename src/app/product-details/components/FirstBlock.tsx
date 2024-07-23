@@ -18,8 +18,10 @@ function FirstBlock() {
           />
         </div>
         <div className="flex flex-col gap-4 text-center md:text-left">
-          <h1 className="font-mono text-lg text-sky-400">BIENVENUE SUR RUSTIKA HOUSE</h1>
-          <h2 className="text-4xl font-bold sm:text-4xl text-orange-400">
+
+          <h1 className="font-mono text-lg text-primary mt-2">BIENVENUE SUR RUSTIKA HOUSE</h1>
+          <h2 className="font-bold text-2xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-4xl -mt-2 text-orange-400">
+
             SIDI BOU SAID DOOR
           </h2>
           <p className="text-gray-600">

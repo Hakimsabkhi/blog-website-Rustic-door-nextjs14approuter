@@ -30,92 +30,86 @@ function page() {
 
   return (
     <section className="centred flex flex-col gap-8 py-8">
-      <div className="flex flex-col justify-center items-center ">
-        <h1 className="text-center text-4xl text-blue-400 font-bold mb-4">
-          Our Collection Ofproductpagetwo
-        </h1>
-
-        <div className="flex items-center rounded-md gap-1 shadow-xl">
-          {/* Select Category */}
-          <select
-            name="Category"
-            id="Category"
-            value={category}
-            onChange={handleCategoryChange}
-            className="text-blue-600 sm:text-sm px-4 py-2 border-r-2"
-          >
-            <option value="All Category">All Category</option>
-            <option value="SIDI BOUSAID DOOR">SIDI BOUSAID DOOR</option>
-            <option value="RADIAS">RADIAS</option>
-            <option value="TUNIS">TUNIS</option>
-          </select>
-
-          <div className="relative w-full max-w-xs">
-            <label htmlFor="Search" className="sr-only">
-              Search
-            </label>
-
-            {/* Search Bar */}
-            <input
-              type="text"
-              id="Search"
-              placeholder="Search for..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="w-full py-2.5 pe-10 sm:text-sm"
-            />
-
-            <span className="absolute inset-y-0 end-0 grid w-15 place-content-center">
-              <button
-                type="button"
-                className="bg-sky-500 rounded-md text-white px-2 py-3"
-              >
-                <span className="sr-only">Search</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="h-4 w-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                  />
-                </svg>
-              </button>
-            </span>
-          </div>
-        </div>
-      </div>
+     <div className='flex flex-col justify-center items-center '>
+                <h1 className='text-center text-4xl text-blue-400 font-bold mb-4'>Our Collection Of Products</h1>
+                <div className='flex items-center rounded-md gap-1 bg-gray-100 '>
+                    {/* Select Category */}
+                    <select
+                        name="Category"
+                        id="Category"
+                        value={category}
+                        onChange={handleCategoryChange}
+                        className="text-blue-600 sm:text-sm px-2 py-3 border-r-2 bg-gray-100 rounded-tl-md rounded-bl-md -mr-1"
+                    >
+                        <option value="All Category">All Category</option>
+                        <option value="SIDI BOUSAID">SIDI BOUSAID</option>
+                        <option value="RADIAS">RADIAS</option>
+                        <option value="TUNIS">TUNIS</option>
+                    </select>
+                    <div className="relative w-full max-w-xs">
+                        <label htmlFor="Search" className="sr-only">Search</label>
+                        {/* Search Bar */}
+                        <input
+                            type="text"
+                            id="Search"
+                            placeholder="Search for..."
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                            className="w-full py-3 pe-16 sm:text-sm bg-gray-100 pl-2"
+                        />
+                    </div>
+                    <span className=" grid w-15 ">
+                            <button type="button" className="bg-primary rounded-tr-md rounded-br-md text-white px-4 py-4 sm:py-4 md:py-3.5 lg:py-3.5 xl:py-3.5 -ml-1">
+                                <span className="sr-only">Search</span>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth="1.5"
+                                    stroke="currentColor"
+                                    className="h-4 w-4"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                                    />
+                                </svg>
+                            </button>
+                        </span>
+                </div>
+            </div>
 
       {/*productpagetwo Blog */}
-      <div className="flex flex-wrap gap-10 justify-center ">
+      <div className=" grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-0 lg:grid-cols-0 xl:grid-cols-3   ">
         {filtereproductpagetwo.map((product, index) => (
           <div
             key={index}
-            className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden "
+            className=" sm:w-1/2 md:w-[85%] lg:w-[85%] xl:w-[85%] mb-8 overflow-hidden flex flex-col "
+
           >
             <div className="relative">
               <Image
                 src={product.imgSrc}
                 alt="Product"
-                className="w-full h-96 object-cover rounded-xl mb-4 "
+
+                className="w-full h-52 sm:h-52 md:h-96 lg:h-96 xl:h-96 object-cover rounded-xl mb-4 "
               />
             </div>
-            <div className="flex flex-col  bg-white  rounded-xl shadow-lg">
+            <div className="flex flex-col  bg-white ">
               <div className="flex items-center gap-4 mb-4">
                 <div className="flex items-center gap-2">
-                  <AiOutlineHeart className="text-[25px]" />
-                  <Link href="#" className="text-gray-400">
+                  <AiOutlineHeart className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
+                  <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
+
                     {product.likes} likes
                   </Link>
                 </div>
                 <div className="flex items-center gap-2">
-                  <AiOutlineComment className="text-[25px]" />
-                  <Link href="#" className="text-gray-400">
+
+                  <AiOutlineComment className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
+                  <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
+
                     {product.comments} comments
                   </Link>
                 </div>
@@ -123,42 +117,56 @@ function page() {
               <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">
                 {product.title}
               </h1>
-              <p className="text-gray-400 text-sm mb-4">
+
+              <p className=" text-xs sm:text-sm text-gray-400 mb-4 truncate">
                 {product.description}
               </p>
+<<<<<<< HEAD
               <div className="text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md">
                 <a href={'/product-details'}  >SAVOIR PLUS</a>
               </div>
+=======
+              <div className="mx-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[50%] text-center rounded-full bg-white py-2 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary shadow-md">
+                <a href={'/product-details'}  >SAVOIR PLUS</a>
+              </div>
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
             </div>
           </div>
         ))}
       </div>
 
       {/*productpagetwo Blog */}
-      <div className="flex flex-wrap gap-10 justify-center ">
+
+      <div className=" grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-0 lg:grid-cols-0 xl:grid-cols-3   ">
         {filtereproductpagetwo.map((product, index) => (
           <div
             key={index}
-            className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden "
+            className=" sm:w-1/2 md:w-[85%] lg:w-[85%] xl:w-[85%] mb-8 overflow-hidden flex flex-col "
+
           >
             <div className="relative">
               <Image
                 src={product.imgSrc}
                 alt="Product"
-                className="w-full h-96 object-cover rounded-xl mb-4 "
+
+                className="w-full h-52 sm:h-52 md:h-96 lg:h-96 xl:h-96 object-cover rounded-xl mb-4 "
               />
             </div>
-            <div className="flex flex-col  bg-white  rounded-xl shadow-lg">
+            <div className="flex flex-col  bg-white ">
               <div className="flex items-center gap-4 mb-4">
                 <div className="flex items-center gap-2">
-                  <AiOutlineHeart className="text-[25px]" />
-                  <Link href="#" className="text-gray-400">
+                  <AiOutlineHeart className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
+                  <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
+
                     {product.likes} likes
                   </Link>
                 </div>
                 <div className="flex items-center gap-2">
-                  <AiOutlineComment className="text-[25px]" />
-                  <Link href="#" className="text-gray-400">
+
+                  <AiOutlineComment className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
+                  <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
+
                     {product.comments} comments
                   </Link>
                 </div>
@@ -166,42 +174,56 @@ function page() {
               <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">
                 {product.title}
               </h1>
-              <p className="text-gray-400 text-sm mb-4">
+
+              <p className=" text-xs sm:text-sm text-gray-400 mb-4 truncate">
                 {product.description}
               </p>
+<<<<<<< HEAD
               <div className="text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md">
                 <a href={'/product-details'}  >SAVOIR PLUS</a>
               </div>
+=======
+              <div className="mx-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[50%] text-center rounded-full bg-white py-2 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary shadow-md">
+                <a href={'/product-details'}  >SAVOIR PLUS</a>
+              </div>
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
             </div>
           </div>
         ))}
       </div>
 
       {/*productpagetwo Blog */}
-      <div className="flex flex-wrap gap-10 justify-center ">
+
+      <div className=" grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-0 lg:grid-cols-0 xl:grid-cols-3   ">
         {filtereproductpagetwo.map((product, index) => (
           <div
             key={index}
-            className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden "
+            className=" sm:w-1/2 md:w-[85%] lg:w-[85%] xl:w-[85%] mb-8 overflow-hidden flex flex-col "
+
           >
             <div className="relative">
               <Image
                 src={product.imgSrc}
                 alt="Product"
-                className="w-full h-96 object-cover rounded-xl mb-4 "
+
+                className="w-full h-52 sm:h-52 md:h-96 lg:h-96 xl:h-96 object-cover rounded-xl mb-4 "
               />
             </div>
-            <div className="flex flex-col  bg-white  rounded-xl shadow-lg">
+            <div className="flex flex-col  bg-white ">
               <div className="flex items-center gap-4 mb-4">
                 <div className="flex items-center gap-2">
-                  <AiOutlineHeart className="text-[25px]" />
-                  <Link href="#" className="text-gray-400">
+                  <AiOutlineHeart className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
+                  <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
+
                     {product.likes} likes
                   </Link>
                 </div>
                 <div className="flex items-center gap-2">
-                  <AiOutlineComment className="text-[25px]" />
-                  <Link href="#" className="text-gray-400">
+
+                  <AiOutlineComment className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
+                  <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
+
                     {product.comments} comments
                   </Link>
                 </div>
@@ -209,17 +231,26 @@ function page() {
               <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">
                 {product.title}
               </h1>
-              <p className="text-gray-400 text-sm mb-4">
+
+              <p className=" text-xs sm:text-sm text-gray-400 mb-4 truncate">
                 {product.description}
               </p>
+<<<<<<< HEAD
               <div className="text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md">
                 <a href={'/product-details'}  >SAVOIR PLUS</a>
               </div>
+=======
+              <div className="mx-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[50%] text-center rounded-full bg-white py-2 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary shadow-md">
+                <a href={'/product-details'}  >SAVOIR PLUS</a>
+              </div>
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
             </div>
           </div>
         ))}
       </div>
 
+      
       {/* Pagination */}
       <div className="flex justify-center mt-6">
         <ol className="flex items-center space-x-2">

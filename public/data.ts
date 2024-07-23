@@ -71,33 +71,93 @@ export const posts = [
     {
         id: 1,
         category: 'SIDI BOUSAID',
+<<<<<<< HEAD
         imgSrc: Product1,
         title: 'SIDI BOUSAID DOOR',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
         
+=======
+
+        imgSrc: Product1,
+        title: 'SIDI BOUSAID',
+        description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+        likes: 6,
+        comments: 18,
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
     },
     {
         id: 2,
         category: 'RADIAS',
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
         imgSrc: Product2,
         title: 'RADIAS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
     },
     {
         id: 3,
         category: 'TUNIS',
+<<<<<<< HEAD
         imgSrc: Product3,
+=======
+
+        imgSrc: Product3,
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
         title: 'TUNIS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
         comments: 18,
+<<<<<<< HEAD
         
     }
+=======
+
+        
+    },
+    {
+      id: 3,
+      category: 'TUNIS',
+      imgSrc: Product3,
+      title: 'TUNIS',
+      description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+      likes: 6,
+      comments: 18,
+      
+  },
+  {
+    id: 3,
+    category: 'TUNIS',
+    imgSrc: Product3,
+    title: 'TUNIS',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+    
+},
+{
+  id: 3,
+  category: 'TUNIS',
+  imgSrc: Product3,
+  title: 'TUNIS',
+  description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+  likes: 6,
+  comments: 18,
+  
+}
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
 ];
 
 {/*All Peoduct IN Product Page 2*/}
@@ -109,7 +169,13 @@ export const productpagetwo = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
+<<<<<<< HEAD
     
+=======
+
+    
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
 },
 {
   category:'ADOBE',
@@ -129,6 +195,36 @@ likes: 6,
 comments: 18,
 
 },
+{
+  id: 3,
+  category: 'TUNIS',
+  imgSrc: Product3,
+  title: 'TUNIS',
+  description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+  likes: 6,
+  comments: 18,
+},
+{
+  id: 3,
+  category: 'TUNIS',
+  imgSrc: Product3,
+  title: 'TUNIS',
+  description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+  likes: 6,
+  comments: 18,
+  
+},
+{
+  id: 3,
+  category: 'TUNIS',
+  imgSrc: Product3,
+  title: 'TUNIS',
+  description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+  likes: 6,
+  comments: 18,
+  
+}
+
 ]
 
 
@@ -159,8 +255,42 @@ export const productpagethree = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
     
   },
+  {
+    id: 3,
+    category: 'TUNIS',
+    imgSrc: Product3,
+    title: 'TUNIS',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+    
+},
+{
+  id: 3,
+  category: 'TUNIS',
+  imgSrc: Product3,
+  title: 'TUNIS',
+  description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+  likes: 6,
+  comments: 18,
+  
+},
+{
+  id: 3,
+  category: 'TUNIS',
+  imgSrc: Product3,
+  title: 'TUNIS',
+  description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+  likes: 6,
+  comments: 18,
+  
+}
 ]
 
 {/*All Peoduct IN Product Page 4*/}
@@ -181,6 +311,10 @@ export const productpagefor = [
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
     comments: 18,
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
   },
 ]
