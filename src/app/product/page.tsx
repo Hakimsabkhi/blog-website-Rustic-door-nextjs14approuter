@@ -1,34 +1,21 @@
 "use client";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
 import React, { useState, ChangeEvent } from 'react';
 import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
 import Link from 'next/link';
-<<<<<<< HEAD
-import { products } from 'public/data'; // Ensure this path is correct
-=======
+import { StaticImageData } from 'next/image'; // Import StaticImageData
 
-import { products } from 'public/data'; // Ensure this path is correct
-
->>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
+import { products } from 'public/data'; // Assurez-vous que ce chemin est correct
 
 interface Product {
     id: number;
     category: string;
-    imgSrc: string;
+    imgSrc: StaticImageData; // Changez string en StaticImageData
     title: string;
     description: string;
     likes: number;
     comments: number;
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
 }
 
 const Page: React.FC = () => {
@@ -82,103 +69,71 @@ const Page: React.FC = () => {
                             className="w-full py-3 pe-16 sm:text-sm bg-gray-100 pl-2"
                         />
                     </div>
-                    <span className=" grid w-15 ">
-                            <button type="button" className="bg-primary rounded-tr-md rounded-br-md text-white px-4 py-4 sm:py-4 md:py-3.5 lg:py-3.5 xl:py-3.5 -ml-1">
+                    <span className="grid w-15">
+                        <button type="button" className="bg-primary rounded-tr-md rounded-br-md text-white px-4 py-4 sm:py-4 md:py-3.5 lg:py-3.5 xl:py-3.5 -ml-1">
+                            <span className="sr-only">Search</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth="1.5"
+                                stroke="currentColor"
+                                className="h-4 w-4"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                                />
+                            </svg>
+                        </button>
+                    </span>
+                </div>
+            </div>
 
-                                <span className="sr-only">Search</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    stroke="currentColor"
-                                    className="h-4 w-4"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                                    />
-                                </svg>
-                            </button>
-                        </span>
-                </div>
+            {/* Product Grid */}
+            <div className="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+                {filteredProducts.map((product, index) => (
+                    <div
+                        key={index}
+                        className="sm:w-1/2 md:w-[85%] lg:w-[85%] xl:w-[85%] mb-8 overflow-hidden flex flex-col"
+                    >
+                        <div className="relative">
+                            <Image
+                                src={product.imgSrc}
+                                alt="Product"
+                                className="w-full h-52 sm:h-52 md:h-96 lg:h-96 xl:h-96 object-cover rounded-xl mb-4"
+                            />
+                        </div>
+                        <div className="flex flex-col bg-white">
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="flex items-center gap-2">
+                                    <AiOutlineHeart className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
+                                    <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
+                                        {product.likes} likes
+                                    </Link>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <AiOutlineComment className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
+                                    <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
+                                        {product.comments} comments
+                                    </Link>
+                                </div>
+                            </div>
+                            <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">
+                                {product.title}
+                            </h1>
+                            <p className="text-xs sm:text-sm text-gray-400 mb-4 truncate">
+                                {product.description}
+                            </p>
+                            <div className="mx-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[50%] text-center rounded-full bg-white py-2 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary shadow-md">
+                                <a href={'/product-details'}>SAVOIR PLUS</a>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
-<<<<<<< HEAD
-            {/*productpagetwo Blog */}
-      <div className="flex flex-wrap gap-10 justify-center ">
-        {filteredProducts.map((product, index) => (
-          <div
-            key={index}
-            className=" sm:w-1/2 lg:w-1/3 xl:w-1/5 mb-8 overflow-hidden "
-=======
 
-            {/*productpage Blog */}
-      <div className=" grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-0 lg:grid-cols-0 xl:grid-cols-3   ">
-        {filteredProducts.map((product, index) => (
-          <div
-            key={index}
-            className=" sm:w-1/2 md:w-[85%] lg:w-[85%] xl:w-[85%] mb-8 overflow-hidden flex flex-col "
->>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
-          >
-            <div className="relative">
-              <Image
-                src={product.imgSrc}
-                alt="Product"
-<<<<<<< HEAD
-                className="w-full h-96 object-cover rounded-xl mb-4 "
-              />
-            </div>
-            <div className="flex flex-col  bg-white  rounded-xl shadow-lg">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center gap-2">
-                  <AiOutlineHeart className="text-[25px]" />
-                  <Link href="#" className="text-gray-400">
-=======
-                className="w-full h-52 sm:h-52 md:h-96 lg:h-96 xl:h-96 object-cover rounded-xl mb-4 "
-              />
-            </div>
-            <div className="flex flex-col  bg-white ">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center gap-2">
-                  <AiOutlineHeart className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
-                  <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
->>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
-                    {product.likes} likes
-                  </Link>
-                </div>
-                <div className="flex items-center gap-2">
-<<<<<<< HEAD
-                  <AiOutlineComment className="text-[25px]" />
-                  <Link href="#" className="text-gray-400">
-=======
-                  <AiOutlineComment className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px] xl:text-[25px]" />
-                  <Link href="#" className="text-gray-400 text-[12px] sm:text-[12px] md:text-[15px] lg:text-[15px] xl:text-[15px] truncate">
->>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
-                    {product.comments} comments
-                  </Link>
-                </div>
-              </div>
-              <h1 className="text-xl font-bold text-blue-500 drop-shadow-xl mb-2">
-                {product.title}
-              </h1>
-<<<<<<< HEAD
-              <p className="text-gray-400 text-sm mb-4">
-                {product.description}
-              </p>
-              <div className="text-center rounded-full bg-white p-2 mx-16 text-sm font-medium text-sky-700 transition hover:bg-blue-100 focus:outline-none border border-sky-700 shadow-md">
-=======
-              <p className=" text-xs sm:text-sm text-gray-400 mb-4 truncate">
-                {product.description}
-              </p>
-              <div className="mx-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[50%] text-center rounded-full bg-white py-2 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary shadow-md">
->>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
-                <a href={'/product-details'}  >SAVOIR PLUS</a>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
             {/* Pagination */}
             <div className="flex justify-center mt-6">
                 <ol className="flex items-center space-x-2">
@@ -197,10 +152,6 @@ const Page: React.FC = () => {
                         <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</Link>
                     </li>
                     <li>
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c7d80ee01697c29e9b2ccee4306641da9d4869d
                         <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &gt; {/* Right arrow */}
                         </Link>
@@ -209,6 +160,6 @@ const Page: React.FC = () => {
             </div>
         </section>
     );
-}
+};
 
 export default Page;

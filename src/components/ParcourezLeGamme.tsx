@@ -80,7 +80,7 @@ function ParcourezLeGamme() {
         </a>
 
         {/* Image 5 (Hidden on mobile) */}
-        <a href="#" className="group relative block bg-black rounded-xl overflow-hidden hidden lg:block">
+        <a href="#" className="group relative bg-black rounded-xl overflow-hidden hidden lg:block">
           <Image
             alt=""
             src={Gamme5}
@@ -96,7 +96,7 @@ function ParcourezLeGamme() {
           </div>
         </a>
 
-        <a href="#" className="group relative block bg-black rounded-xl overflow-hidden hidden lg:block">
+        <a href="#" className="group relative  bg-black rounded-xl overflow-hidden hidden lg:block">
           <Image
             alt=""
             src={Gamme5}
