@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from 'public/img/image';
+import { imageGAMME } from 'public/data';
+
+
 
 function ParcourezLeGamme() {
   return (
@@ -10,107 +12,28 @@ function ParcourezLeGamme() {
       </div>
 
       {/* Container for grid layout */}
-      <div className='grid gap-4 grid-cols-2 md:grid-cols-3'>
-        {/* Image 1 */}
-        <a href="#" className="group relative block bg-black rounded-xl overflow-hidden">
-          <Image
-            alt="GAMME1"
-            src={Gamme1}
-            className="w-full h-52 object-cover opacity-75 transition-opacity group-hover:opacity-50"
-          />
-          <div className="absolute inset-0 flex items-center ">
-            <div className="transform opacity-0 transition-all group-hover:opacity-100">
-              <p className="text-md text-white">
-                <span className='text-[60px] font-bold opacity-50'>216</span><br />
-                Hiboun,Ma
-              </p>
+      <div className='grid gap-4 grid-cols-2 md:grid-cols-3 h-full sm:h-full md:h-full lg:h-full xl:h-full'>
+        {imageGAMME.map((image, index) => (
+          <a
+            key={index}
+            href="#"
+            className={`group relative block bg-black rounded-xl overflow-hidden ${image.className} `}
+          >
+            <Image
+              alt={image.alt}
+              src={image.src}
+              className="w-full h-full sm:h-96 md:h-96 lg:h-96 xl:h-96 object-cover opacity-75 transition-opacity group-hover:opacity-50"
+            />
+            <div className="absolute inset-0 flex items-center">
+              <div className="transform opacity-0 transition-all group-hover:opacity-100">
+                <p className="text-md text-white">
+                  <span className='text-[60px] font-bold opacity-50'>216</span><br />
+                  {image.text}
+                </p>
+              </div>
             </div>
-          </div>
-        </a>
-
-        {/* Image 2 */}
-        <a href="#" className="group relative block bg-black rounded-xl overflow-hidden">
-          <Image
-            alt=""
-            src={Gamme2}
-            className="w-full h-52 object-cover opacity-75 transition-opacity group-hover:opacity-50"
-          />
-          <div className="absolute inset-0 flex items-center ">
-            <div className="transform opacity-0 transition-all group-hover:opacity-100">
-              <p className="text-md text-white">
-                <span className='text-[60px] font-bold opacity-50'>216</span><br />
-                Hiboun,Ma
-              </p>
-            </div>
-          </div>
-        </a>
-
-        {/* Image 3 (Hidden on mobile) */}
-        <a href="#" className="group relative block bg-black rounded-xl overflow-hidden ">
-          <Image
-            alt=""
-            src={Gamme3}
-            className="w-full h-52 object-cover opacity-75 transition-opacity group-hover:opacity-50"
-          />
-          <div className="absolute inset-0 flex items-center ">
-            <div className="transform opacity-0 transition-all group-hover:opacity-100">
-              <p className="text-md text-white">
-                <span className='text-[60px] font-bold opacity-50'>216</span><br />
-                Hiboun,Ma
-              </p>
-            </div>
-          </div>
-        </a>
-
-        {/* Image 4 (Hidden on mobile) */}
-        <a href="#" className="group relative block bg-black rounded-xl overflow-hidden ">
-          <Image
-            alt=""
-            src={Gamme4}
-            className="w-full h-52 object-cover opacity-75 transition-opacity group-hover:opacity-50"
-          />
-          <div className="absolute inset-0 flex items-center ">
-            <div className="transform opacity-0 transition-all group-hover:opacity-100">
-              <p className="text-md text-white">
-                <span className='text-[60px] font-bold opacity-50'>216</span><br />
-                Hiboun,Ma
-              </p>
-            </div>
-          </div>
-        </a>
-
-        {/* Image 5 (Hidden on mobile) */}
-        <a href="#" className="group relative bg-black rounded-xl overflow-hidden hidden lg:block">
-          <Image
-            alt=""
-            src={Gamme5}
-            className="w-full h-52 object-cover opacity-75 transition-opacity group-hover:opacity-50"
-          />
-          <div className="absolute inset-0 flex items-center ">
-            <div className="transform opacity-0 transition-all group-hover:opacity-100">
-              <p className="text-md text-white">
-                <span className='text-[60px] font-bold opacity-50'>216</span><br />
-                Hiboun,Ma
-              </p>
-            </div>
-          </div>
-        </a>
-
-        <a href="#" className="group relative  bg-black rounded-xl overflow-hidden hidden lg:block">
-          <Image
-            alt=""
-            src={Gamme5}
-            className="w-full h-52 object-cover opacity-75 transition-opacity group-hover:opacity-50"
-          />
-          <div className="absolute inset-0 flex items-center ">
-            <div className="transform opacity-0 transition-all group-hover:opacity-100">
-              <p className="text-md text-white">
-                <span className='text-[60px] font-bold opacity-50'>216</span><br />
-                Hiboun,Ma
-              </p>
-            </div>
-          </div>
-        </a>
+          </a>
+        ))}
       </div>
     </section>
   );

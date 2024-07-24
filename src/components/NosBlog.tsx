@@ -27,7 +27,7 @@ const NosBlog: React.FC = () => {
       <div className="flex flex-col gap-2 bg-white rounded-xl p-4 h-full">
         <Link href='#' className="text-xs sm:text-sm text-orange-300">{blog.Catégorie}</Link>
         <div className="flex items-center">
-          <Link href='#' className="text-base sm:text-lg md:text-xl font-semibold text-black drop-shadow-xl">{blog.title}</Link>
+          <Link href='#' className="text-base sm:text-lg md:text-xl font-semibold text-black drop-shadow-xl truncate">{blog.title}</Link>
           <FaArrowRight className="text-black ml-3 -rotate-45" />
         </div>
         <p className="text-xs sm:text-sm text-gray-400 mb-4 truncate">{blog.description}</p>
@@ -68,7 +68,7 @@ const NosBlog: React.FC = () => {
       <div className="flex flex-col gap-2 bg-white rounded-xl p-4 h-full">
         <Link href='#' className="text-xs sm:text-sm text-orange-300">{blog.Catégorie}</Link>
         <div className="flex items-center">
-          <Link href='#' className="text-base sm:text-lg md:text-xl font-semibold text-black drop-shadow-xl">{blog.title}</Link>
+          <Link href='#' className="text-base sm:text-lg md:text-xl font-semibold text-black drop-shadow-xl truncate">{blog.title}</Link>
           <FaArrowRight className="text-black ml-3 -rotate-45" />
         </div>
         <p className="text-xs sm:text-sm text-gray-400 mb-4 truncate">{blog.description}</p>

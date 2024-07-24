@@ -1,6 +1,10 @@
 import { Product1, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Product10, Product11, } from 'public/img/image';
 import {Blog1, Blog2,Blog3,Blog4,Blog5} from 'public/img/image';
-import { CollectionImg7, CollectionImg6, CollectionImg5, UserImg } from 'public/img/image';
+import {CollectionImg1,CollectionImg2,CollectionImg3,CollectionImg4 ,CollectionImg7, CollectionImg6, CollectionImg5,CollectionImg8, UserImg } from 'public/img/image';
+import { AiderImg,AiderImg1,AiderImg2 } from 'public/img/image';
+import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from 'public/img/image';
+import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
+import IconWrapper from '../src/components/IconWrapper';
 
 
 {/*DECOUVRE NOS BLOG SECTION HOME PAGE*/}
@@ -282,3 +286,100 @@ export const productpagefor = [
 
   },
 ]
+{/*This Bloc For DernierCollection Components */}
+ export const imagesCOLL = [
+  CollectionImg1,
+  CollectionImg2,
+  CollectionImg3,
+  CollectionImg4,
+  CollectionImg5,
+  CollectionImg6,
+  CollectionImg7,
+  CollectionImg8,
+];
+
+{/*This Bloc For AiderLesIndividus Components */}
+export const imagesINFO = [
+  {
+    src: AiderImg,
+    alt: "Map",
+    className: "rounded-lg object-cover h-[440px] sm:h-[440px] md:h-[620px] lg:h-[400px] xl:h-[610px] w-[150px] sm:w-[250px] md:w-[340px] lg:w-[340px]",
+  },
+  {
+    src: AiderImg1,
+    alt: "Image 1",
+    className: "rounded-lg object-cover w-[150px] sm:w-[200px] lg:w-[200px]",
+  },
+  {
+    src: AiderImg2,
+    alt: "Image 2",
+    className: "rounded-lg object-cover w-[150px] sm:w-[200px] lg:w-[200px]",
+  },
+];
+
+export type IconType = 'PhoneCall' | 'Phone' | 'Printer' | 'Mail' | 'Info' | 'MapPin';
+
+export const iconMap: Record<IconType, React.ComponentType> = {
+  PhoneCall: PhoneCall,
+  Phone: Phone,
+  Printer: Printer,
+  Mail: Mail,
+  Info: Info,
+  MapPin: MapPin,
+};
+
+export interface Contact {
+  href: string;
+  icon: IconType;
+  text: string;
+}
+
+export interface ContactSection {
+  icon: IconType;
+  title: string;
+  contacts: Contact[];
+}
+
+export const contactSections: ContactSection[] = [
+  {
+    icon: 'PhoneCall',
+    title: 'Appelez-nous Maintenant',
+    contacts: [
+      {
+        href: 'tel:+21612345678',
+        icon: 'Phone',
+        text: 'Numéro de téléphone : +(216) 12 345 678',
+      },
+      {
+        href: 'fax:+21612345678',
+        icon: 'Printer',
+        text: 'Fax : +(216) 12 345 678',
+      },
+    ],
+  },
+  {
+    icon: 'Info',
+    title: 'Information',
+    contacts: [
+      {
+        href: 'mailto:info@example.com',
+        icon: 'Mail',
+        text: 'Email : info@example.com',
+      },
+      {
+        href: '#',
+        icon: 'MapPin',
+        text: 'Address : 5080 Teboulba, Monastir, Tunisie',
+      },
+    ],
+  },
+];
+{/* Prcourez La GAMME Components*/}
+export const imageGAMME = [
+  { src: Gamme1, alt: "GAMME1", text: "Hiboun,Ma", className: "" },
+  { src: Gamme2, alt: "GAMME2", text: "Hiboun,Ma", className: "" },
+  { src: Gamme3, alt: "GAMME3", text: "Hiboun,Ma", className: "" },
+  { src: Gamme4, alt: "GAMME4", text: "Hiboun,Ma", className: "" },
+  { src: Gamme5, alt: "GAMME5", text: "Hiboun,Ma", className: "hidden lg:block" },
+  { src: Gamme5, alt: "GAMME6", text: "Hiboun,Ma", className: "hidden lg:block" },
+];
