@@ -14,6 +14,7 @@ import CollectionImg5 from 'public/img/IMG/tunis_01.jpg';
 import CollectionImg6 from 'public/img/IMG/porte-6.jpg';
 import CollectionImg7 from 'public/img/IMG/p3.jpg';
 import CollectionImg8 from 'public/img/IMG/p5.jpg';
+import CollectionImg9 from 'public/img/IMG/p12.jpg';
 import AppelezImg from 'public/img/IMG/porte-5.jpg';
 import AppelezImg2 from 'public/img/IMG/porte-5-inverse.png';
 import AiderImg from 'public/img/IMG/map.jpg';
@@ -40,6 +41,10 @@ import Product8 from 'public/img/IMG/Columbus Doors.jpg';
 import Product9 from 'public/img/IMG/Elizabeth Arden Red Doors.jpg';
 import Product10 from 'public/img/IMG/Shakespeares Birthplace Door.jpg';
 import Product11 from 'public/img/IMG/Traditional Indian Doors.jpg';
+import Product12 from 'public/img/IMG/Porte-4.jpg';
+import Product13 from 'public/img/IMG/Port11.jpg';
+import Product14 from 'public/img/IMG/p7.jpg';
+import Product15 from 'public/img/IMG/porte-5.jpg';
 import ProductDetail1 from 'public/img/IMG/sidi-bou-said-3.jpg';
 
 
@@ -61,7 +66,8 @@ export {
     CollectionImg5, 
     CollectionImg6, 
     CollectionImg7, 
-    CollectionImg8, 
+    CollectionImg8,
+    CollectionImg9, 
     AppelezImg,
     AppelezImg2, 
     AiderImg, 
@@ -88,5 +94,9 @@ export {
     Product9,
     Product10,
     Product11,
+    Product12,
+    Product13,
+    Product14,
+    Product15,
     ProductDetail1
 };

@@ -7,7 +7,6 @@ import ParcourezLeGamme from "@/components/ParcourezLeGamme";
 import OfrireMeilleurService from "@/components/OfrireMeilleurService";
 import AppelezNouTwo from "@/components/AppelezNouTwo";
 import DisentNosClients from "@/components/DisentNosClients";
-import DernierBlog from "@/components/DernierBlog";
 import JoignezVous from "@/components/JoignezVous";
 import NosBlog from "@/components/NosBlog";
 

@@ -1,16 +1,17 @@
-import { Product1, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Product10, Product11, } from 'public/img/image';
+import { Product1, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Product10, Product11, Product12, Product13, Product14, Product15, } from 'public/img/image';
 import {Blog1, Blog2,Blog3,Blog4,Blog5} from 'public/img/image';
-import {CollectionImg1,CollectionImg2,CollectionImg3,CollectionImg4 ,CollectionImg7, CollectionImg6, CollectionImg5,CollectionImg8, UserImg } from 'public/img/image';
+import {CollectionImg1,CollectionImg2,CollectionImg3,CollectionImg4 ,CollectionImg7, CollectionImg6, CollectionImg5,CollectionImg8,CollectionImg9, UserImg } from 'public/img/image';
 import { AiderImg,AiderImg1,AiderImg2 } from 'public/img/image';
 import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from 'public/img/image';
 import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
 
 
 
+
 {/*DECOUVRE NOS BLOG SECTION HOME PAGE*/}
 export const blogs = [
   {
-    imgSrc: CollectionImg7,
+    imgSrc: CollectionImg9,
     Catégorie: 'Catégorie',
     title: 'Porte Traditionnelle 101',
     description:
@@ -22,7 +23,7 @@ export const blogs = [
     date: '2023-07-10',
   },
   {
-    imgSrc: CollectionImg6,
+    imgSrc: CollectionImg8,
     Catégorie: 'Catégorie 2',
     title: 'Porte Traditionnelle 102',
     description:
@@ -33,6 +34,32 @@ export const blogs = [
     userName: 'User3',
     date: '2023-07-11',
   },
+  {
+    imgSrc: CollectionImg7,
+    Catégorie: 'Catégorie 3',
+    title: 'Porte Traditionnelle 102',
+    description:
+      'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
+    likes: 12,
+    comments: 22,
+    userImgSrc: UserImg,
+    userName: 'User3',
+    date: '2023-07-11',
+  },
+  
+  {
+    imgSrc: CollectionImg6,
+    Catégorie: 'Catégorie 3',
+    title: 'Porte Traditionnelle 102',
+    description:
+      'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
+    likes: 12,
+    comments: 22,
+    userImgSrc: UserImg,
+    userName: 'User3',
+    date: '2023-07-11',
+  },
+
   {
     imgSrc: CollectionImg5,
     Catégorie: 'Catégorie 3',
@@ -45,8 +72,58 @@ export const blogs = [
     userName: 'User3',
     date: '2023-07-11',
   },
+
+  {
+    imgSrc: CollectionImg4,
+    Catégorie: 'Catégorie 3',
+    title: 'Porte Traditionnelle 102',
+    description:
+      'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
+    likes: 12,
+    comments: 22,
+    userImgSrc: UserImg,
+    userName: 'User3',
+    date: '2023-07-11',
+  },
   
-  
+  {
+    imgSrc: CollectionImg3,
+    Catégorie: 'Catégorie 3',
+    title: 'Porte Traditionnelle 102',
+    description:
+      'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
+    likes: 12,
+    comments: 22,
+    userImgSrc: UserImg,
+    userName: 'User3',
+    date: '2023-07-11',
+  },
+
+  {
+    imgSrc: CollectionImg2,
+    Catégorie: 'Catégorie 3',
+    title: 'Porte Traditionnelle 102',
+    description:
+      'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
+    likes: 12,
+    comments: 22,
+    userImgSrc: UserImg,
+    userName: 'User3',
+    date: '2023-07-11',
+  },
+
+  {
+    imgSrc: CollectionImg1,
+    Catégorie: 'Catégorie 3',
+    title: 'Porte Traditionnelle 102',
+    description:
+      'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
+    likes: 12,
+    comments: 22,
+    userImgSrc: UserImg,
+    userName: 'User3',
+    date: '2023-07-11',
+  },
 ];
 
 
@@ -109,7 +186,7 @@ export const posts = [
     {
       id: 3,
       category: 'TUNIS',
-      imgSrc: Product3,
+      imgSrc: Product4,
       title: 'TUNIS',
       description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
       likes: 6,
@@ -119,7 +196,7 @@ export const posts = [
   {
     id: 3,
     category: 'TUNIS',
-    imgSrc: Product3,
+    imgSrc: Product5,
     title: 'TUNIS',
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
@@ -129,7 +206,7 @@ export const posts = [
 {
   id: 3,
   category: 'TUNIS',
-  imgSrc: Product3,
+  imgSrc: Product6,
   title: 'TUNIS',
   description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
   likes: 6,
@@ -143,7 +220,7 @@ export const posts = [
 export const productpagetwo = [
   { 
     category:'DOWING STREET',
-    imgSrc: Product4,
+    imgSrc: Product7,
     title: 'DOWING STREET',
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
@@ -154,7 +231,7 @@ export const productpagetwo = [
 },
 {
   category:'ADOBE',
-  imgSrc: Product5,
+  imgSrc: Product8,
   title: 'ADOBE',
   description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
   likes: 6,
@@ -173,7 +250,7 @@ comments: 18,
 {
   id: 3,
   category: 'TUNIS',
-  imgSrc: Product3,
+  imgSrc: Product9,
   title: 'TUNIS',
   description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
   likes: 6,
@@ -182,7 +259,7 @@ comments: 18,
 {
   id: 3,
   category: 'TUNIS',
-  imgSrc: Product3,
+  imgSrc: Product10,
   title: 'TUNIS',
   description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
   likes: 6,
@@ -192,7 +269,7 @@ comments: 18,
 {
   id: 3,
   category: 'TUNIS',
-  imgSrc: Product3,
+  imgSrc: Product11,
   title: 'TUNIS',
   description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
   likes: 6,
@@ -207,7 +284,7 @@ comments: 18,
 export const productpagethree = [
   { 
     category:'CARTAGENAS COLORFUL',
-    imgSrc: Product7,
+    imgSrc: Product12,
     title: 'CARTAGENAS COLORFUL',
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
@@ -216,7 +293,7 @@ export const productpagethree = [
   },
   {
     category:'COLOMBOS',
-    imgSrc: Product8,
+    imgSrc: Product13,
     title: 'COLUMBOS',
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
@@ -225,7 +302,7 @@ export const productpagethree = [
   },
   {
     category:'ELIZABETH',
-    imgSrc: Product9,
+    imgSrc: Product14,
     title: 'ELIZABETH',
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
@@ -236,7 +313,7 @@ export const productpagethree = [
   {
     id: 3,
     category: 'TUNIS',
-    imgSrc: Product3,
+    imgSrc: Product15,
     title: 'TUNIS',
     description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
     likes: 6,
@@ -303,17 +380,17 @@ export const imagesINFO = [
   {
     src: AiderImg,
     alt: "Map",
-    className: "rounded-lg object-cover h-[440px] sm:h-[440px] md:h-[620px] lg:h-[400px] xl:h-[610px] w-[150px] sm:w-[250px] md:w-[340px] lg:w-[340px]",
+    
   },
   {
     src: AiderImg1,
     alt: "Image 1",
-    className: "rounded-lg object-cover w-[150px] sm:w-[200px] lg:w-[200px]",
+    
   },
   {
     src: AiderImg2,
     alt: "Image 2",
-    className: "rounded-lg object-cover w-[150px] sm:w-[200px] lg:w-[200px]",
+    
   },
 ];
 
@@ -383,3 +460,18 @@ export const imageGAMME = [
   { src: Gamme5, alt: "GAMME5", text: "Hiboun,Ma", className: "hidden lg:block" },
   { src: Gamme5, alt: "GAMME6", text: "Hiboun,Ma", className: "hidden lg:block" },
 ];
+ {/* Footer*/}
+export const quickLinks = [
+  { href: "#", text: "Home" },
+  { href: "#", text: "AboutUS" },
+  { href: "#", text: "Blog" },
+  { href: "#", text: "Products" },
+  { href: "#", text: "Contact" },
+];
+
+export const helpfulLinks = [
+  { href: "#", text: "Contact" },
+  { href: "#", text: "FAQs" },
+  { href: "#", text: "Live Chat" },
+];
+

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { imagesINFO, contactSections } from 'public/data';
 import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
 
-const iconMap = {
+export const iconMap = {
   PhoneCall: PhoneCall,
   Phone: Phone,
   Printer: Printer,
@@ -57,18 +57,29 @@ function AiderlesIndividus() {
           })}
         </div>
 
-        {/* Parent container to align the two sections side by side */}
-        <div className="flex sm:flex-row gap-4 items-center">
+     {/* Parent container to align the two sections side by side */}
+     <div className="flex sm:flex-row gap-4 items-center">
           {/* First Image Section */}
-          <div className="flex flex-col gap-8 scale-105 sm:scale-105 md:scale-100 lg:scale-100 xl:sca ">
-            <Image {...imagesINFO[0]} />
+          <div className="flex flex-col gap-8">
+            <Image
+              src={imagesINFO[0].src}
+              alt={imagesINFO[0].alt}
+              className=" rounded-lg  object-cover h-[440px] sm:h-[470px] md:h-[410px] lg:h-[510px] xl:h-[610px] w-[150px] sm:w-[250px] md:w-[330px] lg:w-[320px]"
+            />
           </div>
 
           {/* Second and Third Images Section */}
-          <div className="flex flex-col gap-6 ">
-            {imagesINFO.slice(1).map((img, index) => (
-              <Image key={index} {...img} />
-            ))}
+          <div className="flex flex-col gap-6">
+            <Image
+              src={imagesINFO[1].src}
+              alt={imagesINFO[1].alt}
+              className='rounded-lg object-cover w-[150px] sm:w-[200px] lg:w-[200px] '
+            />
+            <Image
+              src={imagesINFO[2].src}
+              alt={imagesINFO[2].alt}
+              className='rounded-lg object-cover w-[150px] sm:w-[200px] lg:w-[200px] '
+            />
           </div>
         </div>
       </div>
