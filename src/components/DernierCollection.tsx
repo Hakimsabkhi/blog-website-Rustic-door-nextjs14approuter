@@ -35,10 +35,13 @@ function DernierCollection() {
           </ul>
         ))}
 
-        <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 gap-4 w-full sm:w-full md:w-[70%] lg:w-[70%] xl:w-[70%] ">
-          <p className="flex-1 centred">
+        <div className="flex flex-col md:flex-row justify-between items-center text-center text-gray-500 gap-12 w-full sm:w-full md:w-[70%] lg:w-[70%] xl:w-[70%] ">
+          <p className="flex-1 mx-20">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
+            dicta incidunt est ipsam, officia dolor fugit natus? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
+            dicta incidunt est ipsam, officia dolor fugit natus? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
             dicta incidunt est ipsam, officia dolor fugit natus?
+            
           </p>
           <a
             href="#"

@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                   <li key={index}>
                     <a href={item.href} className="text-white transition hover:opacity-75">
                       <h3 className="mt-2 text-[15px] text-sm">
-                        <a href={item.href} className="hover:underline text-white text-sm flex items-center gap-2">
+                        <a href={item.href} className="hover:underline text-white text-sm flex items-center gap-2 ">
                           {item.icon}
                           {item.text}
                         </a>

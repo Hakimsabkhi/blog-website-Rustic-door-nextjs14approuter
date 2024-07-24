@@ -17,7 +17,7 @@ const Contact = () => {
   return (
  
 
-<section className=" ">
+<section className="py-8">
   <div className=' w-[90%] sm:w-[90%]  mx-auto '>
   <h1 className=' py-6 pl-0 sm:pl-0 md:pl-8 lg:pl-8 xl:pl-8 text-center sm:text-center md:text-left lg:text-left xl:text-left font-medium text-2xl bg-primary rounded-tr-xl rounded-tl-xl text-white '>
     Get In Touch With Us</h1>

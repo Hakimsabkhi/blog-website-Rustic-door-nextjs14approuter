@@ -77,7 +77,7 @@ const Header: React.FC = () => {
 
           <div className="sm:flex sm:gap-4">
             <Link
-              className="rounded-full bg-gray-100 px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
+              className="rounded-full  px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
               href="#"
             >
               Register
@@ -95,35 +95,37 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden">
           <nav aria-label="Global">
-            <ul className="flex flex-col items-center gap-6 text-sm">
+            <ul className="flex flex-col items-center gap-4 text-sm">
               <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/">Home</Link>
+                <Link className="text-gray-800 text-lg transition hover:text-primary font-bold" href="/">Home</Link>
               </li>
               <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="#">About Us</Link>
+                <Link className="text-gray-800 text-lg transition hover:text-primary font-bold" href="#">About Us</Link>
               </li>
               <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="#">Blog</Link>
+                <Link className="text-gray-800 text-lg transition hover:text-primary font-bold" href="#">Blog</Link>
               </li>
               <li>
 
-                <Link className="text-gray-500 transition hover:text-primary" href="/product">Products</Link>
+                <Link className="text-gray-800 text-lg transition hover:text-primary font-bold" href="/product">Products</Link>
 
               </li>
               <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/contact">Contact</Link>
+                <Link className="text-gray-800 text-lg transition hover:text-primary border-b-2 px-24 pb-4 font-bold" href="/contact">Contact</Link>
               </li>
-              <li>
-                <Link className="rounded-full bg-primary px-8 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="#">
+              </ul>
+              <div className='flex flex-row gap-4 py-10  justify-center '>
+              <div>
+                <Link className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="#">
                   Login
                 </Link>
-              </li>
-              <li>
-                <Link className="rounded-full bg-gray-100 px-8 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200" href="#">
+              </div>
+              <div>
+                <Link className="rounded-full bg-white border border-[#054C73] px-10 py-2.5 text-sm font-medium text-[#054C73] transition hover:bg-gray-200" href="#">
                   Register
                 </Link>
-              </li>
-            </ul>
+              </div>
+              </div>
           </nav>
         </div>
       )}

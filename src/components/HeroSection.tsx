@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
           <div className="flex gap-4 justify-center sm:justify-center md:justify-center lg:justify-center xl:justify-center">
           <Link
               href="#"
-              className="rounded-full bg-white px-6 sm:px-6 md:px-16 lg:px-16 py-3 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary"
+              className="rounded-full bg-white px-6 sm:px-6 md:px-16 lg:px-16 py-3 text-sm font-medium text-[#054C73] transition hover:bg-blue-100 focus:outline-none border border-[#054C73]"
             >
               CONTACTER NOUS
             </Link>  

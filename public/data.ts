@@ -4,7 +4,12 @@ import {CollectionImg1,CollectionImg2,CollectionImg3,CollectionImg4 ,CollectionI
 import { AiderImg,AiderImg1,AiderImg2 } from 'public/img/image';
 import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from 'public/img/image';
 import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Rustika House',
+  description: 'Rustika House Project'
+};
 
 
 
@@ -457,8 +462,8 @@ export const imageGAMME = [
   { src: Gamme2, alt: "GAMME2", text: "Hiboun,Ma", className: "" },
   { src: Gamme3, alt: "GAMME3", text: "Hiboun,Ma", className: "" },
   { src: Gamme4, alt: "GAMME4", text: "Hiboun,Ma", className: "" },
-  { src: Gamme5, alt: "GAMME5", text: "Hiboun,Ma", className: "hidden lg:block" },
-  { src: Gamme5, alt: "GAMME6", text: "Hiboun,Ma", className: "hidden lg:block" },
+  { src: Gamme5, alt: "GAMME5", text: "Hiboun,Ma", className: "hidden sm:block" },
+  { src: Gamme5, alt: "GAMME6", text: "Hiboun,Ma", className: "hidden sm:block" },
 ];
  {/* Footer*/}
 export const quickLinks = [

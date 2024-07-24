@@ -126,7 +126,7 @@ const Page: React.FC = () => {
                             <p className="text-xs sm:text-sm text-gray-400 mb-4 truncate">
                                 {product.description}
                             </p>
-                            <div className="mx-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[50%] text-center rounded-full bg-white py-2 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-primary shadow-md">
+                            <div className="mx-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[50%] text-center rounded-full bg-white py-2 text-sm font-medium text-[#054C73] transition hover:bg-blue-100 focus:outline-none border border-[#054C73] shadow-md">
                                 <a href={'/product-details'}>SAVOIR PLUS</a>
                             </div>
                         </div>
