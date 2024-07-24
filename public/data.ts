@@ -4,7 +4,7 @@ import {CollectionImg1,CollectionImg2,CollectionImg3,CollectionImg4 ,CollectionI
 import { AiderImg,AiderImg1,AiderImg2 } from 'public/img/image';
 import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from 'public/img/image';
 import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
-import IconWrapper from '../src/components/IconWrapper';
+
 
 
 {/*DECOUVRE NOS BLOG SECTION HOME PAGE*/}

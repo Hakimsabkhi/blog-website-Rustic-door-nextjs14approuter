@@ -211,7 +211,7 @@ function Page() {
             <div className="flex justify-center mt-6">
                 <ol className="flex items-center space-x-2">
                     <li>
-                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="/product" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &lt; {/* Left arrow */}
                         </Link>
                     </li>
@@ -225,7 +225,7 @@ function Page() {
                         <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</Link>
                     </li>
                     <li>
-                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &gt; {/* Right arrow */}
                         </Link>
                     </li>

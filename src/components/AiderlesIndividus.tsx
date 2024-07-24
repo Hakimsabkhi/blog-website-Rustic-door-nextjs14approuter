@@ -1,7 +1,18 @@
-// AiderlesIndividus.tsx
 import React from 'react';
 import Image from 'next/image';
-import { imagesINFO, contactSections, iconMap, IconType } from 'public/data';
+import { imagesINFO, contactSections } from 'public/data';
+import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
+
+const iconMap = {
+  PhoneCall: PhoneCall,
+  Phone: Phone,
+  Printer: Printer,
+  Mail: Mail,
+  Info: Info,
+  MapPin: MapPin,
+};
+
+
 
 function AiderlesIndividus() {
   return (
@@ -49,26 +60,15 @@ function AiderlesIndividus() {
         {/* Parent container to align the two sections side by side */}
         <div className="flex sm:flex-row gap-4 items-center">
           {/* First Image Section */}
-          <div className="flex flex-col gap-8 scale-100 sm:scale-100 md:scale-100 lg:scale-100 xl:scale-100">
-            <Image
-              src={imagesINFO[0].src}
-              alt={imagesINFO[0].alt}
-              className={imagesINFO[0].className}
-            />
+          <div className="flex flex-col gap-8 scale-105 sm:scale-105 md:scale-100 lg:scale-100 xl:sca ">
+            <Image {...imagesINFO[0]} />
           </div>
 
           {/* Second and Third Images Section */}
-          <div className="flex flex-col gap-6">
-            <Image
-              src={imagesINFO[1].src}
-              alt={imagesINFO[1].alt}
-              className={imagesINFO[1].className}
-            />
-            <Image
-              src={imagesINFO[2].src}
-              alt={imagesINFO[2].alt}
-              className={imagesINFO[2].className}
-            />
+          <div className="flex flex-col gap-6 ">
+            {imagesINFO.slice(1).map((img, index) => (
+              <Image key={index} {...img} />
+            ))}
           </div>
         </div>
       </div>

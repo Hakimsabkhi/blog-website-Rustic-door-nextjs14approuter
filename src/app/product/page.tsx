@@ -152,7 +152,7 @@ const Page: React.FC = () => {
                         <Link href="/product/productpage2/productpage3" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-blue-200">3</Link>
                     </li>
                     <li>
-                        <Link href="#" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
+                        <Link href="/product/productpage2" className="px-4 py-2 text-blue-700 border rounded-md hover:bg-green-200 font-extrabold">
                             &gt; {/* Right arrow */}
                         </Link>
                     </li>
