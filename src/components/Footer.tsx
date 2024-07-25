@@ -8,27 +8,27 @@ const contactItems = [
   {
     href: "#",
     icon: <MapPin className="w-6 h-6 text-white" />,
-    text: "Address : 5080 Teboulba, Monastir, Tunisie",
+    text: "Teboulba, Monastir, Tunisie",
   },
   {
     href: "tel:+21612345678",
     icon: <Phone className="w-6 h-6 text-white" />,
-    text: "Numéro de téléphone : +(216) 12 345 678",
+    text: " +(216) 12 345 678 ",
   },
   {
     href: "mailto:rustikahouse@gmail.com",
     icon: <Mail className="w-6 h-6 text-white" />,
-    text: "Email : rustikahouse@gmail.com",
+    text: " rustikahouse@gmail.com",
   },
 ];
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-primary text-white p-2 mt-8">
-      <div className="centred max-w-screen-xl px-4 py-2 sm:py-2 md:py-8 lg:py-16 sm:px-6 lg:px-8 flex flex-col justify-center">
+      <div className="mx-0 sm:mx-0 md:mx-0 lg:mx-0 xl:mx-56 max-w-screen-xl px-4 py-2 sm:py-2 md:py-8 lg:py-16 xl:py-16 sm:px-6 lg:px-8 flex flex-col justify-center">
         <div className="lg:flex lg:items-start lg:gap-8">
           <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-4 lg:gap-y-12">
-            <div className="col-span-2 sm:col-span-1 flex flex-col justify-center">
+            <div className="col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 flex flex-col justify-center w-72 sm:w-72 md:w-80 lg:w-96 xl:w-96 truncate line-clamp-1 centred">
               <div className="text-white centred">
                 <Image src={Logo3} alt="logo" />
               </div>
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                   <li key={index}>
                     <a href={item.href} className="text-white transition hover:opacity-75">
                       <h3 className="mt-2 text-[15px] text-sm">
-                        <a href={item.href} className="hover:underline text-white text-sm flex items-center gap-2 ">
+                        <a href={item.href} className="hover:underline text-white text-sm flex items-center gap-2  ">
                           {item.icon}
                           {item.text}
                         </a>
@@ -75,8 +75,8 @@ const Footer: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-2 sm:col-span-1">
-              <p className="font-medium text-white">Abonnez-vous à notre newsletter!</p>
+            <div className="col-span-2 sm:col-span-1 flex flex-col justify-center w-80 sm:w-80 md:w-60 lg:w-60 xl:w-80">
+              <p className="font-medium text-white text-center truncate">Abonnez-vous à notre newsletter!</p>
               <ul className="mt-6 space-y-4 text-sm">
                 <div className="row-span-2 lg:row-span-3 lg:flex lg:items-end">
                   <form className="w-full">

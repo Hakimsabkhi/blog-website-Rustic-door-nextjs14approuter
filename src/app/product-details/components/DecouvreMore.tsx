@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 function DecouvreMore() {
   return (
-    <section className='centred py-4 flex flex-col items-center justify-center gap-8 xl:w-full md:w-full sm:w-full '>
+    <section className='py-4 flex flex-col items-center justify-center gap-8 xl:w-full md:w-full sm:w-full '>
         <h1 className='font-bold text-xl sm:text-xl md:text-4xl lg:text-4xl xl:text-4xl -mt-2 text-orange-400'>DECOUVRE MORE ... </h1>
         {/* Products Blog */}
         <div className=" grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-0 lg:grid-cols-0 xl:grid-cols-3  centred">

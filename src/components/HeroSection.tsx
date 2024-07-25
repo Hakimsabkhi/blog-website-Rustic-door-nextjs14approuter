@@ -12,12 +12,12 @@ const HeroSection: React.FC = () => {
         <Image
   alt="HeroImg"
   src={HeroImg}
-  className="rounded-xl w-full h-auto sm:h-full sm:w-auto md:max-w-[1200px] lg:max-w-[1200px] xl:max-w-[3000px] object-cover"
+  className="rounded-xl w-full h-auto sm:h-full sm:w-auto md:w-full md:h-full lg:max-w-[1200px] xl:max-w-[2000px] 2xl:maw-w-[1200px] object-cover"
           />
         
 
         {/* Text Content Section */}
-        <div className="flex flex-col gap-4  md:text-left sm:text-left w-full sm:w-full md:w-[40%] lg:w-[40%]  xl:w-[40%] ">
+        <div className="flex flex-col gap-4  md:text-left sm:text-left w-full sm:w-full md:w-[50%] lg:w-[40%]  xl:w-[60%] 2xl:w-full ">
           <h1 className="font-mono  lg:text-lg md:text-lg sm:text-sm text-primary">BIENVENUE SUR RUSTIKA HOUSE</h1>
           <h2 className="lg:text-4xl md:text-4xl sm:text-2xl font-bold  text-orange-400">
             CONSTRUISEZ VOTRE RÊVE ÉLÉGAN TRADIIONNELLE PORTE
@@ -32,13 +32,13 @@ const HeroSection: React.FC = () => {
           <div className="flex gap-4 justify-center sm:justify-center md:justify-center lg:justify-center xl:justify-center">
           <Link
               href="#"
-              className="rounded-full bg-white px-6 sm:px-6 md:px-16 lg:px-16 py-3 text-sm font-medium text-[#054C73] transition hover:bg-blue-100 focus:outline-none border border-[#054C73]"
+              className="rounded-full text-center bg-white px-6 sm:px-6 md:px-16 lg:px-8 xl:px-8 2xl:px-16 py-3 sm:py-3 md:py-3 lg:py-2 xl:py-3 text-sm font-medium text-[#054C73] transition hover:bg-blue-100 focus:outline-none border border-[#054C73]"
             >
               CONTACTER NOUS
             </Link>  
             <Link
               href="#"
-              className="inline-block flex-initial rounded-full bg-primary  px-6 sm:px-6 md:px-16 lg:px-16 py-3 text-sm font-medium text-white transition hover:bg-blue-300 focus:outline-none"
+              className="inline-block flex-initial rounded-full bg-primary px-6 sm:px-6  md:px-8 lg:px-8 xl:px-8 2xl:px-16 py-3 sm:py-3 md:py-5 lg:py-4 xl:py-3 text-sm font-medium text-white transition hover:bg-blue-300 focus:outline-none"
             >
               APPELLER
             </Link>

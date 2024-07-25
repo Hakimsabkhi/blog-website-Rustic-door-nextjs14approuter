@@ -5,13 +5,60 @@ import { AiderImg,AiderImg1,AiderImg2 } from 'public/img/image';
 import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from 'public/img/image';
 import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
 import type { Metadata } from 'next';
+import { faTruck, faCheckCircle, faHeadset } from '@fortawesome/free-solid-svg-icons';
 
+
+{/*MetaData Layout */}
 export const metadata: Metadata = {
   title: 'Rustika House',
   description: 'Rustika House Project'
 };
 
+{/*ServiceBar Components */}
+export const services = [
+  {
+    icon: faTruck,
+    title: 'Free Delivery',
+    description: 'Lorem ipsum dolor sit amet.',
+  },
+  {
+    icon: faCheckCircle,
+    title: '100% Authentic',
+    description: 'Lorem ipsum dolor sit amet.',
+  },
+  {
+    icon: faHeadset,
+    title: 'Support 24/7',
+    description: 'Lorem ipsum dolor sit amet.',
+  },
+];
+{/* DisentNosClients*/}
+export const testimonials = [
+  {
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus error officiis atque voluptates magnam!",
+    image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+    name: "Paul Starr",
+  },
+  // Add more testimonials here if needed
+];
 
+export const headers = [
+  { className: 'text-primary font-mono text-xl sm:text-xl md:text-md lg:text-md', text: 'TEMOIGNAGES' },
+  { className: 'text-orange-400 font-bold text-md sm:text-md md:text-3xl lg:text-4xl', text: 'REGARDEZ CE QUE DISENT NOS CLIENTS !' },
+];
+
+export const navLinks = [
+  {
+    href: "#",
+    srText: "Next A Gauche",
+    d: "M10 19l-7-7m0 0l7-7m-7 7h18"
+  },
+  {
+    href: "#",
+    srText: "Next A Droite",
+    d: "M14 5l7 7m0 0l-7 7m7-7H3"
+  }
+];
 
 {/*DECOUVRE NOS BLOG SECTION HOME PAGE*/}
 export const blogs = [
@@ -430,7 +477,7 @@ export const contactSections: ContactSection[] = [
       {
         href: 'tel:+21612345678',
         icon: 'Phone',
-        text: 'Numéro de téléphone : +(216) 12 345 678',
+        text: 'téléphone: +(216) 12 345 678',
       },
       {
         href: 'fax:+21612345678',
@@ -451,7 +498,7 @@ export const contactSections: ContactSection[] = [
       {
         href: '#',
         icon: 'MapPin',
-        text: 'Address : 5080 Teboulba, Monastir, Tunisie',
+        text: '5080 Teboulba, Monastir, Tunisie',
       },
     ],
   },
