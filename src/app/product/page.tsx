@@ -114,7 +114,7 @@ const Page: React.FC = () => {
                                     {product.description}
                                 </p>
                                 <div className="mx-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[50%] text-center rounded-full bg-white py-2 text-sm font-medium text-[#054C73] transition hover:bg-blue-100 focus:outline-none border border-[#054C73] shadow-md">
-                                    <Link href={`/product-details`}>SAVOIR PLUS</Link>
+                                    <Link href={`/product/${product.id}`}>SAVOIR PLUS</Link>
                                 </div>
                             </div>
                         </div>

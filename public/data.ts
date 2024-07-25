@@ -6,6 +6,7 @@ import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from 'public/img/image';
 import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
 import type { Metadata } from 'next';
 import { faTruck, faCheckCircle, faHeadset } from '@fortawesome/free-solid-svg-icons';
+import { StaticImageData } from 'next/image';
 
 
 {/*MetaData Layout */}
@@ -200,6 +201,16 @@ export const posts = [
   ];
 
   {/*All Peoduct IN Product Page*/}
+  export interface Product {
+    id: number;
+    category: string;
+    imgSrc: StaticImageData | string;
+    title: string;
+    description: string;
+    likes: number;
+    comments: number;
+  }
+
   export const products = [
     {
         id: 1,
@@ -236,7 +247,7 @@ export const posts = [
         
     },
     {
-      id: 3,
+      id: 4,
       category: 'TUNIS',
       imgSrc: Product4,
       title: 'TUNIS',
@@ -246,7 +257,7 @@ export const posts = [
       
   },
   {
-    id: 3,
+    id: 5,
     category: 'TUNIS',
     imgSrc: Product5,
     title: 'TUNIS',
@@ -256,7 +267,7 @@ export const posts = [
     
 },
 {
-  id: 3,
+  id: 6,
   category: 'TUNIS',
   imgSrc: Product6,
   title: 'TUNIS',
@@ -271,6 +282,7 @@ export const posts = [
 {/*All Peoduct IN Product Page 2*/}
 export const productpagetwo = [
   { 
+    id: 7,
     category:'DOWING STREET',
     imgSrc: Product7,
     title: 'DOWING STREET',
@@ -282,6 +294,7 @@ export const productpagetwo = [
 
 },
 {
+  id: 7,
   category:'ADOBE',
   imgSrc: Product8,
   title: 'ADOBE',
@@ -291,6 +304,7 @@ export const productpagetwo = [
   savoir: 'SAVOIR PLUS',
 },
 {
+  id: 8,
 category:'BURNOS VIBRANT',  
 imgSrc: Product6,
 title: 'BURANOS VIBRANT',
@@ -300,7 +314,7 @@ comments: 18,
 
 },
 {
-  id: 3,
+  id: 9,
   category: 'TUNIS',
   imgSrc: Product9,
   title: 'TUNIS',
@@ -309,7 +323,7 @@ comments: 18,
   comments: 18,
 },
 {
-  id: 3,
+  id: 10,
   category: 'TUNIS',
   imgSrc: Product10,
   title: 'TUNIS',
@@ -319,7 +333,7 @@ comments: 18,
   
 },
 {
-  id: 3,
+  id: 11,
   category: 'TUNIS',
   imgSrc: Product11,
   title: 'TUNIS',
@@ -335,6 +349,7 @@ comments: 18,
 {/*All Peoduct IN Product Page 3*/}
 export const productpagethree = [
   { 
+    id: 12,
     category:'CARTAGENAS COLORFUL',
     imgSrc: Product12,
     title: 'CARTAGENAS COLORFUL',
@@ -344,6 +359,7 @@ export const productpagethree = [
     savoir: 'SAVOIR PLUS',
   },
   {
+    id: 13,
     category:'COLOMBOS',
     imgSrc: Product13,
     title: 'COLUMBOS',
@@ -353,6 +369,7 @@ export const productpagethree = [
     
   },
   {
+    id: 14,
     category:'ELIZABETH',
     imgSrc: Product14,
     title: 'ELIZABETH',
@@ -363,7 +380,7 @@ export const productpagethree = [
     
   },
   {
-    id: 3,
+    id: 15,
     category: 'TUNIS',
     imgSrc: Product15,
     title: 'TUNIS',
@@ -373,7 +390,7 @@ export const productpagethree = [
     
 },
 {
-  id: 3,
+  id: 16,
   category: 'TUNIS',
   imgSrc: Product3,
   title: 'TUNIS',
@@ -383,7 +400,7 @@ export const productpagethree = [
   
 },
 {
-  id: 3,
+  id: 17,
   category: 'TUNIS',
   imgSrc: Product3,
   title: 'TUNIS',
