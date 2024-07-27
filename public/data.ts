@@ -199,6 +199,39 @@ export const posts = [
     },
    
   ];
+ {/* Decouvre More In Product Deatils Page*/}
+export const DecouvreMore =[
+  {
+    id: 1,
+    category: 'SIDI BOUSAID',
+    imgSrc: Product1,
+    title: 'SIDI BOUSAID',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+},
+{
+    id: 2,
+    category: 'RADIAS',
+    imgSrc: Product2,
+    title: 'RADIAS',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+
+},
+{
+    id: 3,
+    category: 'TUNIS',
+    imgSrc: Product3,
+    title: 'TUNIS',
+    description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
+    likes: 6,
+    comments: 18,
+
+    
+},
+];
 
   {/*All Peoduct IN Product Page*/}
   export interface Product {
@@ -215,7 +248,6 @@ export const posts = [
     {
         id: 1,
         category: 'SIDI BOUSAID',
-
         imgSrc: Product1,
         title: 'SIDI BOUSAID',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
@@ -225,7 +257,6 @@ export const posts = [
     {
         id: 2,
         category: 'RADIAS',
-
         imgSrc: Product2,
         title: 'RADIAS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
@@ -236,9 +267,7 @@ export const posts = [
     {
         id: 3,
         category: 'TUNIS',
-
         imgSrc: Product3,
-
         title: 'TUNIS',
         description: 'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis habitant',
         likes: 6,
