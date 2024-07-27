@@ -2,15 +2,15 @@ import React from 'react'
 
 function JoignezVous() {
   return (
-    <section className='centred flex justify-center items-center flex-col gap-16'>
+    <section className='centred flex justify-center items-center flex-col gap-8'>
         <div className='text-center items-center flex flex-col gap-4'>
             <h1 className='text-gray-900 text-4xl font-bold'>JOIGNEZ-VOUS</h1>
-            <h2 className='text-md text-gray-500 font-mono'>Sign up to receive inspiration, product updates, and special offers from our team. </h2>
+            <h2 className='text-md text-gray-500 font-medium'>Sign up to receive inspiration, product updates, and special offers from our team. </h2>
         </div>
-        <div className='flex justify-center'>
+        <div className='flex justify-center '>
   <label
     htmlFor="UserEmail"
-    className="ml-2 px-4 -mx-3 relative overflow-hidden rounded-tl-xl rounded-bl-xl border-t-2 border-l-2 border-b-2 border-primary  shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 flex items-center"
+    className="ml-2 px-8 -mx-3 relative overflow-hidden rounded-tl-lg rounded-bl-lg border-t-2 border-l-2 border-b-2 border-primary  shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 flex items-center"
   >
     <input
       type="email"
@@ -23,7 +23,7 @@ function JoignezVous() {
       Email
     </span>
   </label>
-  <a href="#" className="bg-primary rounded-tr-xl rounded-br-xl text-white px-4 py-2 ml-2">
+  <a href="#" className="bg-primary rounded-tr-lg rounded-br-lg text-white px-8 py-4 ml-2">
       Envoye
     </a>
 </div>
