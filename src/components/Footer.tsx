@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { Logo3 } from 'public/img/image';
 import { quickLinks,helpfulLinks } from 'public/data';
+import Link from 'next/link';
 
 const contactItems = [
   {
@@ -35,14 +36,14 @@ const Footer: React.FC = () => {
               <ul className="mt-6 space-y-4 text-sm centred">
                 {contactItems.map((item, index) => (
                   <li key={index}>
-                    <a href={item.href} className="text-white transition hover:opacity-75">
+                    <Link href={item.href} className="text-white transition hover:opacity-75">
                       <h3 className="mt-2 text-[15px] text-sm">
-                        <a href={item.href} className="hover:underline text-white text-sm flex items-center gap-2  ">
+                        <Link href={item.href} className="hover:underline text-white text-sm flex items-center gap-2  ">
                           {item.icon}
                           {item.text}
-                        </a>
+                        </Link>
                       </h3>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -54,9 +55,9 @@ const Footer: React.FC = () => {
                   <ul className="mt-6 space-y-4 text-sm">
                     {quickLinks.map((link, index) => (
                       <li key={index}>
-                        <a href={link.href} className="text-white transition hover:opacity-75">
+                        <Link href={link.href} className="text-white transition hover:opacity-75">
                           {link.text}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -66,9 +67,9 @@ const Footer: React.FC = () => {
                   <ul className="mt-6 space-y-4 text-sm">
                     {helpfulLinks.map((link, index) => (
                       <li key={index}>
-                        <a href={link.href} className="text-white transition hover:opacity-75">
+                        <Link href={link.href} className="text-white transition hover:opacity-75">
                           {link.text}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -88,11 +89,11 @@ const Footer: React.FC = () => {
                         placeholder="john@rhcp.com"
                         className="w-full border-none focus:border-transparent focus:ring-transparent sm:text-sm"
                       />
-                      <a
+                      <Link
                         className="-mr-2 inline-block rounded-full border border-orange-400 p-3 text-orange hover:bg-orange-100 bg-orange-400 hover:text-orange-400 text-white focus:outline-none focus:ring active:bg-orange-400"
                         href="#"
                       >
-                        <span className="sr-only">Next A Droite</span>
+                        <span className="sr-only">Next Link Droite</span>
                         <svg
                           className="h-5 w-5 rtl:rotate-180"
                           xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +108,7 @@ const Footer: React.FC = () => {
                             d="M14 5l7 7m0 0l-7 7m7-7H3"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </form>
                 </div>
@@ -116,7 +117,7 @@ const Footer: React.FC = () => {
                 <p className="text-white transition hover:opacity-75">Suivez-nous sur</p>
                 <div className="flex gap-6 mt-2 justify-center">
                   <div>
-                    <a
+                    <Link
                       href="#"
                       rel="noreferrer"
                       target="_blank"
@@ -130,10 +131,10 @@ const Footer: React.FC = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                   <div>
-                    <a
+                    <Link
                       href="#"
                       rel="noreferrer"
                       target="_blank"
@@ -147,10 +148,10 @@ const Footer: React.FC = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                   <div>
-                    <a
+                    <Link
                       href="#"
                       rel="noreferrer"
                       target="_blank"
@@ -164,24 +165,24 @@ const Footer: React.FC = () => {
                           clipRule="evenodd"
                         />
                         </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="fixed inset-x-0 bottom-0">
+      <div className="fixed inset-x-0 bottom-0">
   <div className="bg-white px-4 py-3 text-primary">
     <p className="text-center text-sm font-medium">
-      <a href="#" className="inline-block underline"> ©RUSTIKAHOUSE – All rights reserved </a>
+      <Link href="#" className="inline-block underline"> ©RUSTIKAHOUSE – All rights reserved </Link>
     </p>
   </div>
 </div>
         </div>
       </div>
-      <div className="bg-white  -mb-2 py-2 text-primary  ">
+      <div className="bg-white -mb-2 py-2 text-primary  ">
       <p className="text-center text-sm font-medium">
-        <a href="#" className="">©RUSTIKAHOUSE – All rights reserved</a>
+        <Link href="#">©RUSTIKAHOUSE – All rights reserved</Link>
       </p>
     </div>
     </footer>
