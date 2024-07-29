@@ -69,7 +69,7 @@ const Header: React.FC = () => {
           <div className="sm:flex sm:gap-4">
             <Link
               className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary"
-              href="#"
+              href="/signin"
             >
               Login
             </Link>
@@ -78,7 +78,7 @@ const Header: React.FC = () => {
           <div className="sm:flex sm:gap-4">
             <Link
               className="rounded-full  px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
-              href="#"
+              href="/signin"
             >
               Register
             </Link>
@@ -116,12 +116,12 @@ const Header: React.FC = () => {
               </ul>
               <div className='flex flex-row gap-4 py-10  justify-center '>
               <div>
-                <Link className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="#">
+                <Link className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="/signin">
                   Login
                 </Link>
               </div>
               <div>
-                <Link className="rounded-full bg-white border border-[#054C73] px-10 py-2.5 text-sm font-medium text-[#054C73] transition hover:bg-gray-200" href="#">
+                <Link className="rounded-full bg-white border border-[#054C73] px-10 py-2.5 text-sm font-medium text-[#054C73] transition hover:bg-gray-200" href="/signup">
                   Register
                 </Link>
               </div>

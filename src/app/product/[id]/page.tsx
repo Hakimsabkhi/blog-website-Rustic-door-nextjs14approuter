@@ -32,6 +32,12 @@ const ProductPage: React.FC = () => {
       <ContactBlock products={[product]} />
       <BlockFive products={[product]} />
       <DecouvreMore/>
+
+
+
+
+
+      
     </div>
   );
 };

@@ -22,7 +22,7 @@
     "metadata": "^0.1.0",
     "mongodb": "^5.9.2",
     "mongoose": "^6.13.0",
-    "next": "latest",
+    "next": "^14.2.5",
     "next-auth": "^4.24.7",
     "npm-force-resolutions": "^0.0.10",
     "react": "latest",

@@ -7,6 +7,7 @@ import { signIn } from 'next-auth/react';
 const SignUp = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,30 +16,37 @@ const SignUp = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null); // Clear any previous errors
+    setError(null);
+    setLoading(true); // Start loading
 
-    const response = await fetch('/api/auth/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      // Automatically sign in the user after successful sign-up
-      const signInResult = await signIn('credentials', {
-        redirect: false,
-        email: formData.email,
-        password: formData.password,
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
-      if (signInResult?.ok) {
-        router.push('/'); // Redirect to home page after successful sign-in
+      if (response.ok) {
+        // Automatically sign in the user after successful sign-up
+        const signInResult = await signIn('credentials', {
+          redirect: false,
+          email: formData.email,
+          password: formData.password,
+        });
+
+        if (signInResult?.ok) {
+          router.push('/'); // Redirect to home page after successful sign-in
+        } else {
+          setError('Failed to sign in after sign-up. Please try logging in.');
+        }
       } else {
-        setError('Failed to sign in after sign-up. Please try logging in.');
+        const data = await response.json();
+        setError(data.error || 'Failed to sign up. Please try again.');
       }
-    } else {
-      const data = await response.json();
-      setError(data.error || 'Failed to sign up. Please try again.');
+    } catch (err) {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -94,9 +102,10 @@ const SignUp = () => {
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={loading}
             >
-              Sign Up
+              {loading ? 'Signing Up...' : 'Sign Up'}
             </button>
           </div>
         </form>

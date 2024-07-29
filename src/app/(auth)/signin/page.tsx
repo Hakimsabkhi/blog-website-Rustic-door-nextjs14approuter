@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 const SignIn = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const {data:session,status}=useSession();
+  console.log(session?.user?.role)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -15,21 +18,38 @@ const SignIn = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null); // Clear any previous errors
-
+    setError(null);
+    setLoading(true); // Start loading
+  
     const result = await signIn('credentials', {
       redirect: false,
       email: credentials.email,
       password: credentials.password,
     });
-
-    if (result?.ok) {
-      router.push('/');
+  
+    setLoading(false); // Stop loading
+  
+    if (result?.ok && result?.status === 200) {
+      // Fetch user details from the server
+     
+  
+      // Redirect based on user role
+      switch (session?.user?.role) {
+        case 'Admin':
+          router.push('/admin/dashboard'); // Redirect to admin dashboard
+          break;
+        case 'Visitor':
+          router.push('/'); // Redirect to profile page or another page for writers
+          break;
+        default:
+          router.push('/'); // Redirect to home or a default page
+          break;
+      }
     } else {
       setError('Failed to sign in. Please check your credentials and try again.');
     }
   };
-
+  
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
@@ -69,9 +89,10 @@ const SignIn = () => {
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={loading}
             >
-              Sign In
+              {loading ? 'Signing In...' : 'Sign In'}
             </button>
             <button
               type="button"

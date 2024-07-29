@@ -24,6 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     res.status(200).json({ user });
   } else {
-    res.status(405).end();
+    res.status(405).end(); // Method Not Allowed
   }
 }
