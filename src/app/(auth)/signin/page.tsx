@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -11,6 +11,16 @@ const SignIn = () => {
   const router = useRouter();
   const {data:session,status}=useSession();
   console.log(session?.user?.role)
+
+  useEffect(() => {
+    if (session) {
+      if (session?.user?.role === 'Admin') {
+          router.push('/admin/dashboard');
+        } else {
+          router.push('/');
+        }
+    }
+  }, [session]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -28,11 +38,10 @@ const SignIn = () => {
     });
   
     setLoading(false); // Stop loading
-  
+
     if (result?.ok && result?.status === 200) {
       // Fetch user details from the server
      
-  
       // Redirect based on user role
       switch (session?.user?.role) {
         case 'Admin':

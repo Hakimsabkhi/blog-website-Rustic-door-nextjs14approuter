@@ -40,7 +40,7 @@ const Profile = () => {
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">User Profile</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center text-orange-400">Your Profile</h1>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
           <label className="block text-gray-700">Name</label>
