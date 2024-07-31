@@ -67,7 +67,7 @@ const SignIn = () => {
   };
   
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
+    <div className="flex items-center justify-center min-h-screen ">
       <div className="bg-[#F1F4F9] p-8 rounded-lg shadow-md  w-[60%]">
         <h1 className="text-2xl font-bold mb-6"></h1>
         {error && (
