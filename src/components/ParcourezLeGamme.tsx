@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { imageGAMME } from 'public/data';
+import Link from 'next/link';
 
 
 
@@ -14,7 +15,7 @@ function ParcourezLeGamme() {
       {/* Container for grid layout */}
       <div className='grid gap-4 grid-cols-2 md:grid-cols-3 h-full sm:h-full md:h-full lg:h-full xl:h-full'>
         {imageGAMME.map((image, index) => (
-          <a
+          <Link
             key={index}
             href="#"
             className={`group relative block bg-black rounded-xl overflow-hidden ${image.className} `}
@@ -32,7 +33,7 @@ function ParcourezLeGamme() {
                 </p>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </section>

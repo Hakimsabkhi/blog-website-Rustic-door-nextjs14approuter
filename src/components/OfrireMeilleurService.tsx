@@ -1,5 +1,6 @@
 import React from 'react'
 import { ShoppingCartIcon, CheckCircleIcon, TruckIcon } from '@heroicons/react/solid'; // Import icons from Heroicons
+import Link from 'next/link';
 
 function OfrireMeilleurService() {
   return (
@@ -8,7 +9,7 @@ function OfrireMeilleurService() {
         <h2 className='text-orange-400 text-center text-4xl font-bold'>OFFRIRE LE MEILLEUR SERVICE</h2>
       </div>
       <div className="flex flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:flex-row lg:px-8 lg:py-16">
-        <a
+        <Link
           className="block rounded-xl border p-8 shadow-xl transition hover:border-primary/10 hover:shadow-primary/10 flex-1 text-center"
           href="#"
         >
@@ -23,8 +24,8 @@ function OfrireMeilleurService() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci
             distinctio alias voluptatum blanditiis laudantium.
           </p>
-        </a>
-        <a
+        </Link>
+        <Link
           className="block rounded-xl border p-8 shadow-xl transition hover:border-primary/10 hover:shadow-primary/10 flex-1 text-center"
           href="#"
         >
@@ -39,8 +40,8 @@ function OfrireMeilleurService() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci
             distinctio alias voluptatum blanditiis laudantium.
           </p>
-        </a>
-        <a
+        </Link>
+        <Link
           className="block rounded-xl border p-8 shadow-xl transition hover:border-primary/10 hover:shadow-primary/10 flex-1 text-center"
           href="#"
         >
@@ -54,7 +55,7 @@ function OfrireMeilleurService() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci
             distinctio alias voluptatum blanditiis laudantium.
           </p>
-        </a>
+        </Link>
       </div>
     </section>
   );

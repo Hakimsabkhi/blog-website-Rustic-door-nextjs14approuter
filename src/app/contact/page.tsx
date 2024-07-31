@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from 'lucide-react';
 import { useState } from 'react';
 
 const Contact = () => {
@@ -31,11 +32,11 @@ const Contact = () => {
          <span className='font-light text-gray-400' >+216 12 345 678</span> 
          </div>
         <div className="mt-8 border-b-2 pb-8">
-          <a href="#" className="max-w-xl text-lg"> Email Address </a><br />
+          <Link href="#" className="max-w-xl text-lg"> Email Address </Link><br />
           <span className='font-light text-gray-400' >nameproject@example.com</span> 
           </div>
           <div className="mt-8">
-          <a className="max-w-xl text-lg">Location</a><br />
+          <Link className="max-w-xl text-lg">Location</Link><br />
           <span className='font-light text-gray-400' >Tebouba ,Monastir , Tunisie</span> 
           </div>
       </div>

@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Product } from 'public/data'; // Import the Product type
+import { Link } from 'lucide-react';
 
 interface ContactBlockProps {
   products: Product[]; // Array of products passed as props
@@ -33,18 +34,18 @@ const ContactBlock: React.FC<ContactBlockProps> = ({ products }) => {
               {product.description} {/* Use product description */}
             </p>
             <div className="flex gap-4 justify-center">
-              <a
+              <Link
                 href="#"
                 className="rounded-full bg-primary px-12 sm:px-10 py-3 text-sm font-medium text-white transition hover:bg-blue-400 focus:outline-none"
               >
                 APPELLER NOUS!
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="rounded-full bg-white px-10 py-3 text-sm font-medium text-primary transition hover:bg-blue-100 focus:outline-none border border-blue-400"
               >
                 ESTIMATION GRATUITE !
-              </a>
+              </Link>
             </div>
           </div>
         </div>

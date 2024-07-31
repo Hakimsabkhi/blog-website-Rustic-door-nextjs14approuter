@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import {AppelezImg} from 'public/img/image'
+import Link from 'next/link';
 
 function AppelezNouTwo() {
   return (
@@ -20,13 +21,13 @@ function AppelezNouTwo() {
             eius quos ea neque sunt, accusantium soluta minus veniam tempora deserunt? Molestiae eius
             quidem quam repellat.
           </p>
-          <a
+          <Link
   href="#"
   className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-400 flex items-center justify-center"
   style={{ maxWidth: '300px' }}
 >
   EXPLOREZ MAINTENANT
-</a>
+</Link>
 
         </div>
       </div>

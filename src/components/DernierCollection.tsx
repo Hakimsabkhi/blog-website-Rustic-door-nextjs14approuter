@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image.js';
 import { imagesCOLL } from 'public/data'; // Update this path
+import Link from 'next/link';
 
 
 
@@ -23,13 +24,13 @@ function DernierCollection() {
           <ul key={i} className="grid gap-4 grid-cols-2 lg:grid-cols-4 w-full centred">
             {imagesCOLL.slice(i * 4, (i + 1) * 4).map((imgSrc, index) => (
               <li key={index} className="h-[200px] sm:h-[200px] md:h-[400px] lg:h-[400px] xl:h-[400px]">
-                <a href="#" className="group block overflow-hidden h-full">
+                <Link href="#" className="group block overflow-hidden h-full">
                   <Image
                     src={imgSrc}
                     alt={`Port-${index + 1}`}
                     className="rounded-xl w-full h-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -43,6 +44,7 @@ function DernierCollection() {
             
           </p>
           <a
+            
             href="#"
             className="rounded-full bg-primary px-14 sm:px-14 md:px-16 lg:px-16 xl:px-16 py-3 text-sm font-medium text-white transition hover:bg-blue-300 focus:outline-none"
           >

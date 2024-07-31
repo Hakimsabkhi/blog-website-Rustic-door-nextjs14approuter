@@ -1,3 +1,4 @@
+import { Link } from 'lucide-react';
 import React from 'react';
 
 const FeaturedPosts: React.FC = () => {
@@ -16,7 +17,7 @@ const FeaturedPosts: React.FC = () => {
               <div className="p-6">
                 <h3 className="font-semibold text-lg leading-tight truncate">Title of the Post</h3>
                 <p className="mt-2 text-gray-600">Short description of the post...</p>
-                <a href="#" className="mt-4 block text-indigo-600 hover:text-indigo-900">Read More</a>
+                <Link href="#" className="mt-4 block text-indigo-600 hover:text-indigo-900">Read More</Link>
               </div>
             </div>
           </div>

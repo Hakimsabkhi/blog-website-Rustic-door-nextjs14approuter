@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { imagesINFO, contactSections } from 'public/data';
-import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
+import { Phone, PhoneCall, Printer, Mail, Info, MapPin,} from 'lucide-react';
+import Link from 'next/link';
 
 export const iconMap = {
   PhoneCall: PhoneCall,
@@ -44,9 +45,9 @@ function AiderlesIndividus() {
                       const ContactIcon = iconMap[contact.icon];
                       return (
                         <h3 key={idx} className={`mt-4 text-[15px] font-medium ${idx !== 0 ? 'mt-2' : ''}`}>
-                          <a href={contact.href} className="hover:underline text-gray-400 font-medium flex justify-center sm:justify-start items-center gap-2">
+                          <Link href={contact.href} className="hover:underline text-gray-400 font-medium flex justify-center sm:justify-start items-center gap-2">
                             <ContactIcon className="w-4 h-4 text-gray-400" /> {contact.text}
-                          </a>
+                          </Link>
                         </h3>
                       );
                     })}

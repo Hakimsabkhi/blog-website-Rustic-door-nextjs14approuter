@@ -1,5 +1,6 @@
 import React from 'react';
 import { testimonials,headers,navLinks } from 'public/data';
+import Link from 'next/link';
 
 
 const DisentNosClients: React.FC = () => {
@@ -12,7 +13,7 @@ const DisentNosClients: React.FC = () => {
         <p>Fusce venenatis tellus a felis scelerisque, non pulvinar est pellentesque.</p>
         <div className="flex gap-8 justify-center sm:justify-center md:justify-start lg:justify-start ">
           {navLinks.map((link, index) => (
-            <a
+            <Link
               key={index}
               className="inline-block rounded-full border border-primary p-3 text-primary hover:bg-primary hover:text-white focus:outline-none focus:ring active:bg-primary"
               href={link.href}
@@ -32,7 +33,7 @@ const DisentNosClients: React.FC = () => {
                   d={link.d}
                 />
               </svg>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

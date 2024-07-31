@@ -36,14 +36,14 @@ const Footer: React.FC = () => {
               <ul className="mt-6 space-y-4 text-sm centred">
                 {contactItems.map((item, index) => (
                   <li key={index}>
-                    <Link href={item.href} className="text-white transition hover:opacity-75">
-                      <h3 className="mt-2 text-[15px] text-sm">
-                        <Link href={item.href} className="hover:underline text-white text-sm flex items-center gap-2  ">
+                    <span  className="text-white transition hover:opacity-75">
+                      <span className="mt-2 text-[15px] text-sm">
+                        <span  className="hover:underline text-white text-sm flex items-center gap-2  ">
                           {item.icon}
                           {item.text}
-                        </Link>
-                      </h3>
-                    </Link>
+                        </span>
+                      </span>
+                    </span>
                   </li>
                 ))}
               </ul>

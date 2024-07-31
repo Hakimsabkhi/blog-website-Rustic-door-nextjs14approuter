@@ -24,8 +24,8 @@ const NosBlog: React.FC = () => {
           className="w-full h-32 sm:h-40 md:h-72 object-cover mb-4"
         />
       </Link>
-      <div className="flex flex-col gap-1 bg-white rounded-xl p-4 h-42 -mt-4 ">
-        <Link href='#' className="text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]  text-orange-300">{blog.Catégorie}</Link>
+     <div className="flex flex-col gap-1 bg-white rounded-xl p-4 h-42 -mt-4 ">
+      <Link href='#' className="text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]  text-orange-300">{blog.Catégorie}</Link>
         <div className="flex items ">
           <Link href='#' className="text-sm sm:text-sm md:text-xl font-semibold  text-gray-800 drop-shadow-xl truncate">{blog.title}</Link>
           <FaArrowRight className="text-black ml-3 -rotate-45" />
@@ -34,19 +34,19 @@ const NosBlog: React.FC = () => {
         <div className="flex items-center gap-2 text-xs sm:text-sm -mx-2 sm:-mx-2 md:-mx-0 lg:-mx-0 xl:-mx-0 2xl:-mx-0">
           <div className="flex items-center gap-1">
             <AiOutlineHeart className="text-[15px] sm:text-[15px] md:text-[20px] lg:text-[20px] xl:text-[20px] 2xl:text-[20px]"/>
-            <Link href='#' className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">{blog.likes}</Link><p  className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">likes</p>
+            <Link href='#' className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">{blog.likes}</Link>
+            <p  className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">likes</p>
           </div>
           <div className="flex items-center gap-1">
             <AiOutlineComment className="text-[15px] sm:text-[15px] md:text-[20px] lg:text-[20px] xl:text-[20px] 2xl:text-[20px]" />
-            <Link href='#' className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">{blog.comments}</Link><p  className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">comments</p>
+            <Link href='#' className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">{blog.comments}</Link>
+            <p  className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">comments</p>
           </div>
         </div>
         <Link href='#' className="hidden md:flex items-center gap-2 py-2 overflow-hidden">
           <Image src={blog.userImgSrc} alt="User Image" width={30} height={30} className="rounded-full" />
-          <div>
             <h3 className="text-sm sm:text-base text-gray-700 font-bold">{blog.userName}</h3>
-            <Link href='#' className="text-xs sm:text-sm text-gray-400">{blog.date}</Link>
-          </div>
+            <span className="text-xs sm:text-sm text-gray-400">{blog.date}</span>
         </Link>
       </div>
     </div>

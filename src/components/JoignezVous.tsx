@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function JoignezVous() {
@@ -23,9 +24,9 @@ function JoignezVous() {
       Email
     </span>
   </label>
-  <a href="#" className="bg-primary rounded-tr-lg rounded-br-lg text-white px-8 py-4 ml-2">
+  <Link href="#" className="bg-primary rounded-tr-lg rounded-br-lg text-white px-8 py-4 ml-2">
       Envoye
-    </a>
+    </Link>
 </div>
 
     </section>
