@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import { Logo, locationIcone, phoneIcone, emailIcone } from 'public/img/image';
 import Link from 'next/link';
@@ -20,10 +20,10 @@ const Header: React.FC = () => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       if (
-        target.closest('.menu') === null &&
+        
         target.closest('.dropdown') === null
       ) {
-        setIsMenuOpen(false);
+       
         setIsDropdownOpen(false);
         setIsMobileDropdownOpen(false);
       }
@@ -34,6 +34,16 @@ const Header: React.FC = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  const handleNavigation = (url: string) => {
+    try {
+      router.push(url);
+      setIsMenuOpen(false); // Optionally close menu after navigation
+    } catch (err) {
+      console.error('Navigation error:', err);
+    }
+  };
+
 
   // Toggle the main menu for desktop view
   const toggleMenu = () => {
@@ -62,6 +72,7 @@ const Header: React.FC = () => {
     router.push('/signin');
     closeDropdown(); // Close dropdown when signing out
   };
+
 
   return (
     <header className="bg-white">
@@ -134,7 +145,7 @@ const Header: React.FC = () => {
           ) : (
             <div className="relative dropdown">
               <button
-                onClick={toggleDropdown} // Toggle dropdown menu
+                onClick={toggleDropdown}
                 className="flex items-center rounded-full px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
               >
                 <FontAwesomeIcon icon={faUser} className="text-xl" />
@@ -155,7 +166,7 @@ const Header: React.FC = () => {
                     </li>
                     <li>
                       <button
-                        onClick={handleSignOut} // Sign out and close dropdown
+                        onClick={handleSignOut}
                         className="block w-full px-4 py-2 text-gray-800 hover:bg-gray-100 text-left"
                       >
                         Sign Out
@@ -168,13 +179,13 @@ const Header: React.FC = () => {
           )}
         </div>
         <div className="flex md:hidden items-center justify-center">
-          <button onClick={toggleMenu} className="p-2 text-blue-600 transition hover:text-primary text-3xl">
-            <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+          <button onClick={toggleMenu} className="p-2 text-blue-600 transition hover:text-primary text-3xl dropdown">
+            <FontAwesomeIcon icon={faBars} />
           </button>
           {session && (
             <div className="relative dropdown">
               <button
-                onClick={toggleMobileDropdown} // Toggle mobile dropdown menu
+                onClick={toggleMobileDropdown}
                 className="rounded-full bg-white border border-primary px-2.5 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200 ml-4"
               >
                 <FontAwesomeIcon icon={faUser} className="text-xl" />
@@ -190,12 +201,12 @@ const Header: React.FC = () => {
                     </li>
                     <li>
                       <Link href="/profile">
-                        <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setIsMobileDropdownOpen(false)}>Profile</span>
+                        <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100"  onClick={() => setIsMobileDropdownOpen(false)}>Profile</span>
                       </Link>
                     </li>
                     <li>
                       <button
-                        onClick={handleSignOut} // Sign out and close dropdown
+                        onClick={handleSignOut}
                         className="block w-full px-4 py-2 text-gray-800 hover:bg-gray-100 text-left"
                       >
                         Sign Out
@@ -208,56 +219,70 @@ const Header: React.FC = () => {
           )}
         </div>
       </div>
-
       {isMenuOpen && (
-        <div className=" inset-0 bg-white z-40 md:hidden">
-          <nav className="h-full">
-            <div className="flex justify-end p-4">
-              <button onClick={toggleMenu} className="text-3xl">
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
-            </div>
-            <ul className="flex flex-col items-center justify-center gap-6 text-lg font-medium">
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/" onClick={toggleMenu}>Home</Link>
-              </li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="#" onClick={toggleMenu}>About Us</Link>
-              </li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="#" onClick={toggleMenu}>Blog</Link>
-              </li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/product" onClick={toggleMenu}>Products</Link>
-              </li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/contact" onClick={toggleMenu}>Contact</Link>
-              </li>
+          <div className="md:hidden">
+            <nav aria-label="Global">
+              <ul className="flex flex-col items-center gap-4 text-sm">
+                <li>
+                  <span 
+                    className="text-gray-800 text-lg transition hover:text-primary font-bold cursor-pointer"
+                    onClick={() => handleNavigation('/')}
+                  >
+                    Home
+                  </span>
+                </li>
+                <li>
+                  <span 
+                    className="text-gray-800 text-lg transition hover:text-primary font-bold cursor-pointer"
+                    onClick={() => handleNavigation('/about')}
+                  >
+                    About Us
+                  </span>
+                </li>
+                <li>
+                  <span 
+                    className="text-gray-800 text-lg transition hover:text-primary font-bold cursor-pointer"
+                    onClick={() => handleNavigation('/blog')}
+                  >
+                    Blog
+                  </span>
+                </li>
+                <li>
+                  <span 
+                    className="text-gray-800 text-lg transition hover:text-primary font-bold cursor-pointer"
+                    onClick={() => handleNavigation('/product')}
+                  >
+                    Products
+                  </span>
+                </li>
+                <li>
+                  <span 
+                    className="text-gray-800 text-lg transition hover:text-primary border-b-2 px-24 pb-4 font-bold cursor-pointer"
+                    onClick={() => handleNavigation('/contact')}
+                  >
+                    Contact
+                  </span>
+                </li>
+              </ul>
+            <div className="flex flex-row gap-4 py-10 justify-center">
               {!session ? (
                 <>
-                  <li>
-                    <Link
-                      className="block text-center rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary"
-                      href="/signin"
-                    >
+                  <div>
+                    <Link className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="/signin">
                       Login
                     </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block text-center rounded-full px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
-                      href="/signup"
-                    >
+                  </div>
+                  <div>
+                    <Link className="rounded-full px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200" href="/signup">
                       Register
                     </Link>
-                  </li>
+                  </div>
                 </>
               ) : (
-                <li>
-                 
-                </li>
+                <div>
+                </div>
               )}
-            </ul>
+            </div>
           </nav>
         </div>
       )}

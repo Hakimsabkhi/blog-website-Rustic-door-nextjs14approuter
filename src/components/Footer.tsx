@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-2 sm:col-span-1 flex flex-col justify-center w-80 sm:w-80 md:w-60 lg:w-60 xl:w-80">
+            <div className="col-span-2 sm:col-span-1 flex flex-col justify-center w-80 sm:w-80 md:w-60 lg:w-60 xl:w-80 centred">
               <p className="font-medium text-white text-center truncate">Abonnez-vous à notre newsletter!</p>
               <ul className="mt-6 space-y-4 text-sm">
                 <div className="row-span-2 lg:row-span-3 lg:flex lg:items-end">
