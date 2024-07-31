@@ -116,7 +116,7 @@ const SignIn = () => {
            <div className='flex flex-col items-center justify-center gap-4'>
            <button
               type="submit"
-              className={`bg-primary hover:bg-gray-300 hover:text-primary text-white font-bold py-2 w-full rounded focus:outline-none focus:shadow-outline ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`bg-primary hover:bg-gray-300 hover:text-primary text-white py-2 w-full rounded focus:outline-none focus:shadow-outline ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
               disabled={loading}
             >
               {loading ? 'Signing In...' : 'Sign In'}
