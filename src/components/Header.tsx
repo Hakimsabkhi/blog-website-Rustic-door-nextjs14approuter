@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { Logo, locationIcone, phoneIcone, emailIcone } from 'public/img/image';
 import Link from 'next/link';
 import SignIn from '@/app/(auth)/signin/page'; // Ensure the path is correct
+import SignUp from '@/app/(auth)/signup/page';
 
 const Header: React.FC = () => {
   const { data: session } = useSession();
@@ -16,6 +17,7 @@ const Header: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [isModalRegOpen, setIsModalRegOpen] = useState(false); // Modal state
   const router = useRouter();
   const modalRef = useRef<HTMLDivElement>(null); // Ref for modal container
 
@@ -26,6 +28,7 @@ const Header: React.FC = () => {
         setIsDropdownOpen(false);
         setIsMobileDropdownOpen(false);
         setIsModalOpen(false); // Close modal when clicking outside
+        setIsModalRegOpen(false); // Close modal when clicking outside
       }
     };
 
@@ -78,6 +81,12 @@ const Header: React.FC = () => {
     setIsModalOpen(prev => !prev);
   };
 
+  
+  // Open or close modal Reg
+  const toggleModalReg = () => {
+    setIsModalRegOpen(prev => !prev);
+  };
+
   return (
     <header className="bg-white">
       {/* InfoBar */}
@@ -98,13 +107,23 @@ const Header: React.FC = () => {
         </div>
       </div>
       {/* NavBar */}
-      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex h-16 my-5 items-center justify-between">
+      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex h-16 my-2 items-center justify-between">
+      
         <div className="md:flex md:items-center md:gap-12">
+          
           <Link className="block text-primary" href="/">
             <span className="sr-only">Home</span>
-            <Image src={Logo} alt="Logo" className="w-3/4" />
+            <Image src={Logo} alt="Logo" width={140} height={140} />
           </Link>
         </div>
+        {!session ? (
+        <button
+                  onClick={toggleModal} // Open modal
+                  className="rounded-full bg-primary px-8 py-2 ml-6 text-sm font-medium text-white shadow transition hover:bg-primary md:hidden lg:hidden xl:hidden 2xl:hidden"
+                >
+                  Login
+                </button>
+        ):(<div></div>)}
         <div className="hidden md:flex md:items-center md:justify-center md:flex-grow">
           <nav aria-label="Global">
             <ul className="flex items-center gap-6 text-sm">
@@ -138,12 +157,12 @@ const Header: React.FC = () => {
                 </button>
               </div>
               <div className="sm:flex sm:gap-4">
-                <Link
+                <button
+                   onClick={toggleModalReg} // Open modal
                   className="rounded-full px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
-                  href="/signup"
                 >
                   Register
-                </Link>
+                </button>
               </div>
             </>
           ) : (
@@ -282,9 +301,12 @@ const Header: React.FC = () => {
                 </button>
                   </div>
                   <div>
-                    <Link className="rounded-full px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200" href="/signup">
-                      Register
-                    </Link>
+                  <button
+                   onClick={toggleModalReg} // Open modal
+                  className="rounded-full px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200"
+                >
+                  Register
+                </button>
                   </div>
                 </>
               ) : (
@@ -314,6 +336,22 @@ const Header: React.FC = () => {
   </div>
 )}
 
+{isModalRegOpen && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div
+      ref={modalRef}
+      className="rounded-lg shadow-lg w-full "
+    >
+      <button
+        onClick={toggleModalReg}
+        className="absolute top-2 right-6 text-white hover:text-orange-500 text-4xl"
+      >
+        &times;
+      </button>
+      <SignUp/>
+    </div>
+  </div>
+)}
     </header>
   );
 };

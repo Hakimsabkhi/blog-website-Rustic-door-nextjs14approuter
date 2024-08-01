@@ -71,7 +71,7 @@ const SignIn = () => {
     
     <div className="flex items-center justify-center min-h-screen ">
       <div className="bg-[#F1F4F9] p-4 sm:p-4 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg shadow-md  w-[90%] sm:w-[90%] md:w-[60%] lg:w-[60%] xl:w-[60%] 2xl:w-[60%] ">
-        <h1 className="text-2xl font-bold mb-6"></h1>
+        
         {error && (
           <div className="bg-red-500 text-white p-3 rounded mb-4">
             {error}
