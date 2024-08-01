@@ -9,6 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
+
 config.autoAddCss = false;
 
 const SignIn = () => {
@@ -67,8 +68,9 @@ const SignIn = () => {
   };
   
   return (
+    
     <div className="flex items-center justify-center min-h-screen ">
-      <div className="bg-[#F1F4F9] p-8 rounded-lg shadow-md  w-[60%]">
+      <div className="bg-[#F1F4F9] p-4 sm:p-4 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg shadow-md  w-[90%] sm:w-[90%] md:w-[60%] lg:w-[60%] xl:w-[60%] 2xl:w-[60%] ">
         <h1 className="text-2xl font-bold mb-6"></h1>
         {error && (
           <div className="bg-red-500 text-white p-3 rounded mb-4">
@@ -105,12 +107,12 @@ const SignIn = () => {
             />
           </div>
           {/*Rmember Me */}
-          <div className="flex items-start mb-5 justify-between">
+          <div className="flex items-start mb-5 flex-col gap-3 sm:gap-3 lg:justify-between lg:flex-row md:flex-row xl:flex-row ">
            <div className="flex items-center h-5">
            <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-300 dark:border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-300 dark:focus:ring-offset-gray-300" required />
            <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
             </div>
-           <Link href="#" className='text-primary line border-b-2 hover:border-primary border-[#F1F4F9]'>Forgot Password ? </Link>
+           <Link href="#" className=' text-primary line border-b-2 hover:border-primary border-[#F1F4F9]'>Forgot Password ? </Link>
            </div>
            {/*Sigin Bloc */}
            <div className='flex flex-col items-center justify-center gap-4'>
@@ -124,19 +126,19 @@ const SignIn = () => {
             <p className='text-gray-300'> Or continue with</p>
            </div>
           {/*Media Connect Bloc */}
-          <div className="flex items-center gap-4 py-4">
+          <div className="flex items-center gap-4 py-4 flex-col sm:gap-3 lg:justify-between lg:flex-row md:flex-row xl:flex-row">
       <button
         type="button"
         onClick={() => signIn('facebook', { callbackUrl: '/' })}
-        className="bg-white text-gray-900 text-sm border border-gray-300 py-2 px-4 rounded focus:outline-none focus:shadow-outline w-[50%] flex items-center justify-center"
+        className="bg-white text-gray-900 text-sm border border-gray-300 py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-full md:w-[50%] lg:w-[50%] xl:w-[50%] 2xl:w-w-[50%] flex items-center justify-center"
       >
         <FontAwesomeIcon icon={faFacebook} className="text-blue-600 text-lg mr-2" />
-        Sign in with Facebook
+        Sign In with Facebook
       </button>
       <button
         type="button"
         onClick={() => signIn('google', { callbackUrl: '/' })}
-        className="bg-white text-gray-900 text-sm border border-gray-300 py-2 px-4 rounded focus:outline-none focus:shadow-outline w-[50%] flex items-center justify-center"
+        className="bg-white text-gray-900 text-sm border border-gray-300 py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-full md:w-[50%] lg:w-[50%] xl:w-[50%] 2xl:w-w-[50%] flex items-center justify-center"
       >
         <FcGoogle className="text-lg mr-2" />
         Sign In with Google

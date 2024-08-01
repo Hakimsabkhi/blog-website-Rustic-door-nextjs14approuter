@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,26 +8,27 @@ import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import { Logo, locationIcone, phoneIcone, emailIcone } from 'public/img/image';
 import Link from 'next/link';
+import SignIn from '@/app/(auth)/signin/page'; // Ensure the path is correct
 
 const Header: React.FC = () => {
   const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const router = useRouter();
+  const modalRef = useRef<HTMLDivElement>(null); // Ref for modal container
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (
-        
-        target.closest('.dropdown') === null
-      ) {
-       
+      if (modalRef.current && !modalRef.current.contains(target)) {
         setIsDropdownOpen(false);
         setIsMobileDropdownOpen(false);
+        setIsModalOpen(false); // Close modal when clicking outside
       }
     };
+
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -43,7 +44,6 @@ const Header: React.FC = () => {
       console.error('Navigation error:', err);
     }
   };
-
 
   // Toggle the main menu for desktop view
   const toggleMenu = () => {
@@ -73,6 +73,10 @@ const Header: React.FC = () => {
     closeDropdown(); // Close dropdown when signing out
   };
 
+  // Open or close modal
+  const toggleModal = () => {
+    setIsModalOpen(prev => !prev);
+  };
 
   return (
     <header className="bg-white">
@@ -126,12 +130,12 @@ const Header: React.FC = () => {
           {!session ? (
             <>
               <div className="sm:flex sm:gap-4">
-                <Link
+                <button
+                  onClick={toggleModal} // Open modal
                   className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary"
-                  href="/signin"
                 >
                   Login
-                </Link>
+                </button>
               </div>
               <div className="sm:flex sm:gap-4">
                 <Link
@@ -219,7 +223,9 @@ const Header: React.FC = () => {
           )}
         </div>
       </div>
-      {isMenuOpen && (
+
+{/* Mobile Menu */}
+{isMenuOpen && (
           <div className="md:hidden">
             <nav aria-label="Global">
               <ul className="flex flex-col items-center gap-4 text-sm">
@@ -264,13 +270,16 @@ const Header: React.FC = () => {
                   </span>
                 </li>
               </ul>
-            <div className="flex flex-row gap-4 py-10 justify-center">
+            <div className="flex flex-row gap-4 py-10 justify-center items-center">
               {!session ? (
                 <>
                   <div>
-                    <Link className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary" href="/signin">
-                      Login
-                    </Link>
+                  <button
+                  onClick={toggleModal} // Open modal
+                  className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary"
+                >
+                  Login
+                </button>
                   </div>
                   <div>
                     <Link className="rounded-full px-10 py-2.5 text-sm font-medium text-primary transition hover:bg-gray-200" href="/signup">
@@ -282,10 +291,29 @@ const Header: React.FC = () => {
                 <div>
                 </div>
               )}
-            </div>
+              </div>
           </nav>
         </div>
       )}
+      
+      {/* Modal */}
+      {isModalOpen && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div
+      ref={modalRef}
+      className="rounded-lg shadow-lg w-full "
+    >
+      <button
+        onClick={toggleModal}
+        className="absolute top-4 right-6 text-white hover:text-orange-500 text-4xl"
+      >
+        &times;
+      </button>
+      <SignIn />
+    </div>
+  </div>
+)}
+
     </header>
   );
 };
