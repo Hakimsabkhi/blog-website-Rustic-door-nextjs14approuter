@@ -6,6 +6,8 @@ import phoneIcone from 'public/img/PNG/phone-icone.png';
 import emailIcone from 'public/img/PNG/email-icone.png'
 import UserImg from 'public/img/PNG/usreimg.png';
 import HeroImg from 'public/img/IMG/p16.jpg'; 
+import AboutImg from 'public/img/IMG/porte-7.jpg'
+import AboutImg2 from 'public/img/IMG/p11-2.png'
 import CollectionImg1 from 'public/img/IMG/Port-7.jpg'; 
 import CollectionImg2 from 'public/img/IMG/p9.jpg'; 
 import CollectionImg3 from 'public/img/IMG/P15.jpg';
@@ -59,6 +61,8 @@ export {
     emailIcone,
     UserImg,
     HeroImg, 
+    AboutImg,
+    AboutImg2,
     CollectionImg1, 
     CollectionImg2, 
     CollectionImg3, 

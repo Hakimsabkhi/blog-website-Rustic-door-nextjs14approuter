@@ -5,6 +5,7 @@ import { SessionProvider } from 'next-auth/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Poppins } from "next/font/google";
+import SousFooter from '@/components/SousFooter';
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -18,6 +19,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <Header />
           <main>{children}</main>
           <Footer />
+          <SousFooter/>
         </body>
       </html>
     </SessionProvider>

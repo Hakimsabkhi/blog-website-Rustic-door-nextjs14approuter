@@ -26,7 +26,7 @@ const contactItems = [
 const Footer: React.FC = () => {
   return (
     <footer className="bg-primary text-white p-2 mt-8">
-      <div className="mx-0 sm:mx-0 md:mx-0 lg:mx-0 xl:mx-56 max-w-screen-xl px-4 py-2 sm:py-2 md:py-8 lg:py-16 xl:py-16 sm:px-6 lg:px-8 flex flex-col justify-center">
+      <div className="mx-0 sm:mx-0 md:mx-0 lg:mx-0 xl:mx-56 max-w-screen-xl px-4 py-2 sm:py-2 md:py-8 lg:py-16 xl:py-16 sm:px-6 lg:px-8 flex flex-col justify-center ">
         <div className="lg:flex lg:items-start lg:gap-8">
           <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-4 lg:gap-y-12">
             <div className="col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 flex flex-col justify-center w-72 sm:w-72 md:w-80 lg:w-96 xl:w-96 truncate line-clamp-1 centred">
@@ -171,20 +171,9 @@ const Footer: React.FC = () => {
               </div>
             </div>
           </div>
-      <div className="fixed inset-x-0 bottom-0">
-  <div className="bg-white px-4 py-3 text-primary">
-    <p className="text-center text-sm font-medium">
-      <Link href="#" className="inline-block underline"> ©RUSTIKAHOUSE – All rights reserved </Link>
-    </p>
-  </div>
-</div>
         </div>
       </div>
-      <div className="bg-white -mb-2 py-2 text-primary  ">
-      <p className="text-center text-sm font-medium">
-        <Link href="#">©RUSTIKAHOUSE – All rights reserved</Link>
-      </p>
-    </div>
+     
     </footer>
   );
 };

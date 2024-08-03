@@ -107,7 +107,7 @@ const Header: React.FC = () => {
         </div>
       </div>
       {/* NavBar */}
-      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex h-16 my-2 items-center justify-between">
+      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-1 lg:px-8 flex h-16 my-2 items-center justify-between">
       
         <div className="md:flex md:items-center md:gap-12">
           
@@ -131,7 +131,7 @@ const Header: React.FC = () => {
                 <Link className="text-gray-500 transition hover:text-primary" href="/">Home</Link>
               </li>
               <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="#">About Us</Link>
+                <Link className="text-gray-500 transition hover:text-primary" href="/about">About Us</Link>
               </li>
               <li>
                 <Link className="text-gray-500 transition hover:text-primary" href="#">Blog</Link>
@@ -145,10 +145,10 @@ const Header: React.FC = () => {
             </ul>
           </nav>
         </div>
-        <div className="hidden md:flex md:items-center md:gap-4">
+        <div className="hidden md:flex md:items-center gap-4 sm:gap-0 md:gap-0 lg:gap-2 xl:gap-4">
           {!session ? (
             <>
-              <div className="sm:flex sm:gap-4">
+              <div className="sm:flex gap-4 sm:gap-4 md:gap-1 lg:gap-1">
                 <button
                   onClick={toggleModal} // Open modal
                   className="rounded-full bg-primary px-10 py-2.5 text-sm font-medium text-white shadow transition hover:bg-primary"
