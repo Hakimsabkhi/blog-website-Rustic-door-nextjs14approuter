@@ -592,3 +592,30 @@ export const helpfulLinks = [
   { href: "#", text: "Live Chat" },
 ];
 
+{/*Block Comments in Blog Page */}
+export const comments = [
+  {
+    id: 1,
+    name: 'Jenny Wilson',
+    time: '1 week ago',
+    text: "These running shoes are the best I've ever owned. They're lightweight, supportive, and my feet feel great even after long runs. The cushioning is perfect for absorbing impact.",
+    likes: 10,
+    replies: 2
+  },
+  {
+    id: 2,
+    name: 'Kevin Patel',
+    time: '5 days ago',
+    text: 'Totally! I ran a half marathon in them last weekend and had zero discomfort. Have you tried them on trails?',
+    likes: 5,
+    replies: 0
+  },
+  {
+    id: 3,
+    name: 'James Anderson',
+    time: '2 days ago',
+    text: "I've been considering getting these. How do they hold up for indoor workouts?",
+    likes: 5,
+    replies: 1
+  }
+];

@@ -8,6 +8,9 @@ import UserImg from 'public/img/PNG/usreimg.png';
 import HeroImg from 'public/img/IMG/p16.jpg'; 
 import AboutImg from 'public/img/IMG/porte-7.jpg'
 import AboutImg2 from 'public/img/IMG/p11-2.png'
+import BlogPage from 'public/img/IMG/block1.jpg'
+import BlogPage2 from 'public/img/IMG/block2.png'
+import BlogPage3 from 'public/img/IMG/block3.png'
 import CollectionImg1 from 'public/img/IMG/Port-7.jpg'; 
 import CollectionImg2 from 'public/img/IMG/p9.jpg'; 
 import CollectionImg3 from 'public/img/IMG/P15.jpg';
@@ -63,6 +66,9 @@ export {
     HeroImg, 
     AboutImg,
     AboutImg2,
+    BlogPage,
+    BlogPage2,
+    BlogPage3,
     CollectionImg1, 
     CollectionImg2, 
     CollectionImg3, 

@@ -1,45 +1,20 @@
-/* /app/blog/create/Page.tsx */
-"use client";
+import React from 'react'
+import Block1 from './components/Block1'
+import Block2 from './components/Block2'
+import Block3 from './components/Block3'
+import CommentsBlock from './components/CommentsBlock'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
-const CreatePost = () => {
-  const [formData, setFormData] = useState({ title: '', content: '' });
-  const router = useRouter();
-
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    const response = await fetch('/api/posts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-    if (response.ok) {
-      router.push('/blog');
-    }
-  };
-
+function page() {
   return (
     <div>
-      <h1>Create New Post</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input type="text" name="title" value={formData.title} onChange={handleChange} required />
-        </label>
-        <label>
-          Content:
-          <textarea name="content" value={formData.content} onChange={handleChange} required />
-        </label>
-        <button type="submit">Create Post</button>
-      </form>
+      <Block1/>
+      <Block2/>
+      <Block3/>
+      <CommentsBlock/>
+    
     </div>
-  );
-};
+  )
+}
 
-export default CreatePost;
+export default page
