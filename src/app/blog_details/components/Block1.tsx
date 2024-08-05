@@ -1,33 +1,35 @@
-import React from 'react'
-import Image from 'next/image'
-import { BlogPage } from 'public/img/image'
-import Link from 'next/link'
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Blog } from 'public/data';
 
 
-function Block1() {
+interface Block1Props {
+  blog: Blog;
+}
+
+const Block1: React.FC<Block1Props> = ({ blog }) => {
   return (
-    <section className='w-[95%] sm:w-[95%] md:w-[80%] lg:w-[80%] xl:w-[80%] 2xl:w-[75%] mx-auto py-8 flex  gap-4 sm:gap-4 md:gap-2 lg:gap-2 xl:gap-2 flex-col justify-center md:flex-row'>
-      {/*Bloc A gauche */}
-      <div className='flex flex-col gap-4  '>
-      <div className='flex flex-col gap-2'>
-      <h1 className='font-bold text-2xl sm:text-2xl md:text-4xl text-orange-400 mb-2'>Welcome To Blog Post</h1>
-      <span className='text-gray-400 text-sm'>Posted on january 1, 2023 by Start Bootstrap</span>
-      <div className='flex gap-4'>
-      <span className='bg-gray-500 text-white rounded-md px-2 text-sm'>Web Design</span>
-      <span className='bg-gray-500 text-white rounded-md px-2 text-sm'>Freebies</span>
+    <section className='w-[95%] sm:w-[95%] md:w-[80%] lg:w-[80%] xl:w-[80%] 2xl:w-[75%] mx-auto py-8 flex gap-4 sm:gap-4 md:gap-2 lg:gap-2 xl:gap-2 flex-col justify-center md:flex-row'>
+      {/* Bloc A gauche */}
+      <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-2'>
+          <h1 className='font-bold text-2xl sm:text-2xl md:text-4xl text-orange-400 mb-2'>{blog.title}</h1>
+          <span className='text-gray-400 text-sm'>Posted on January 1, 2023 by Start Bootstrap</span>
+          <div className='flex gap-4'>
+            <span className='bg-gray-500 text-white rounded-md px-2 text-sm'>{blog.Catégorie}</span>{/* category */}
+            <span className='bg-gray-500 text-white rounded-md px-2 text-sm'>{blog.Catégorie}</span>{/* category */}
+          </div>
+        </div>
+        <div>
+          <Image src={blog.imgSrc} alt={blog.title} className='rounded-md' width={500} height={100} />
+        </div>
+        <div>
+          <p className='w-full sm:w-full md:w-[90%]'>{blog.description}</p>
+        </div>
       </div>
-      </div>
-      <div>
-      <Image src={BlogPage} alt='' className='rounded-md' width={1000}></Image>
-      </div>
-      <div>
-        <p className='w-full sm:w-full md:w-[90%]'>Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.
 
-The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.
 
-If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-      </div>
-      </div>
       {/*bloc A droite*/}
 <div className='w-full max-w-sm mx-auto flex flex-col gap-6 '>
   <div className='border border-gray-300 rounded-md overflow-hidden hidden md:block shadow-lg'>

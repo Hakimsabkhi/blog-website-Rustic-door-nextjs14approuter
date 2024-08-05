@@ -81,8 +81,17 @@ export const navLinks = [
 ];
 
 {/*DECOUVRE NOS BLOG SECTION HOME PAGE*/}
+export interface Blog {
+  id: number;
+  title: string;
+  Catégorie: string;
+  imgSrc:StaticImageData | string;
+  description: string;
+}
+
 export const blogs = [
-  {
+  { 
+    id:1,
     imgSrc: CollectionImg9,
     Catégorie: 'Catégorie',
     title: 'Porte Traditionnelle 101',
@@ -94,7 +103,8 @@ export const blogs = [
     userName: 'User2',
     date: '2023-07-10',
   },
-  {
+  { 
+    id:2,
     imgSrc: CollectionImg8,
     Catégorie: 'Catégorie 2',
     title: 'Porte Traditionnelle 102',
@@ -107,6 +117,7 @@ export const blogs = [
     date: '2023-07-11',
   },
   {
+    id:3,
     imgSrc: CollectionImg7,
     Catégorie: 'Catégorie 3',
     title: 'Porte Traditionnelle 102',
@@ -120,6 +131,7 @@ export const blogs = [
   },
   
   {
+    id:4,
     imgSrc: CollectionImg6,
     Catégorie: 'Catégorie 3',
     title: 'Porte Traditionnelle 102',
@@ -132,7 +144,8 @@ export const blogs = [
     date: '2023-07-11',
   },
 
-  {
+  { 
+    id:5,
     imgSrc: CollectionImg5,
     Catégorie: 'Catégorie 3',
     title: 'Porte Traditionnelle 102',
@@ -145,7 +158,8 @@ export const blogs = [
     date: '2023-07-11',
   },
 
-  {
+  { 
+    id:6,
     imgSrc: CollectionImg4,
     Catégorie: 'Catégorie 3',
     title: 'Porte Traditionnelle 102',
@@ -158,7 +172,8 @@ export const blogs = [
     date: '2023-07-11',
   },
   
-  {
+  { 
+    id:7,
     imgSrc: CollectionImg3,
     Catégorie: 'Catégorie 3',
     title: 'Porte Traditionnelle 102',
@@ -171,7 +186,8 @@ export const blogs = [
     date: '2023-07-11',
   },
 
-  {
+  { 
+    id:8,
     imgSrc: CollectionImg2,
     Catégorie: 'Catégorie 3',
     title: 'Porte Traditionnelle 102',
@@ -184,7 +200,7 @@ export const blogs = [
     date: '2023-07-11',
   },
 
-  {
+  { id:9,
     imgSrc: CollectionImg1,
     Catégorie: 'Catégorie 3',
     title: 'Porte Traditionnelle 102',
