@@ -1,20 +1,22 @@
+'use client'
+import { CldImage } from 'next-cloudinary';
 import React from 'react';
-import Image from 'next/image';
-import {HeroImg} from 'public/img/image'; 
+
 import Link from 'next/link';
 
 const HeroSection: React.FC = () => {
   return (
     <section className='centred py-8 flex items-center gap-8 sm:gap-8 md:gap-16 lg:gap-16 xl:gap-16 flex-col justify-center md:flex-row'>
-    
         {/* Image Section */}
         
-        <Image
+        <CldImage
+  width="960"
+  height="600"
+  src="https://res.cloudinary.com/dzo2bvw5a/image/upload/v1722931963/Rustika-House/ntvfij8tpd8377qlq47f.jpg"
+  sizes="100vw"
   alt="HeroImg"
-  src={HeroImg}
-  className="rounded-xl w-full h-auto sm:h-full sm:w-auto md:w-full md:h-full lg:max-w-[1200px] xl:max-w-[2000px] 2xl:maw-w-[1200px] object-cover"
-          />
-        
+   className="rounded-xl w-full h-auto sm:h-full sm:w-auto md:w-full md:h-full lg:max-w-[1200px] xl:max-w-[2000px] 2xl:maw-w-[1200px] object-cover"
+/>
 
         {/* Text Content Section */}
         <div className="flex flex-col gap-4  md:text-left sm:text-left w-full sm:w-full md:w-[50%] lg:w-[40%]  xl:w-[60%] 2xl:w-full ">

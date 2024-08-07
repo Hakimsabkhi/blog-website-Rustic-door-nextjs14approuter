@@ -7,6 +7,8 @@ import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
 import type { Metadata } from 'next';
 import { faTruck, faCheckCircle, faHeadset } from '@fortawesome/free-solid-svg-icons';
 import { StaticImageData } from 'next/image';
+import { CldImage } from 'next-cloudinary';
+import { getCldImageUrl } from 'next-cloudinary';
 
 
 {/*MetaData Layout */}
@@ -93,8 +95,8 @@ export const blogs = [
   { 
     id:1,
     imgSrc: CollectionImg9,
-    Catégorie: 'Catégorie',
-    title: 'Porte Traditionnelle 101',
+    Catégorie: 'Catégorie 1',
+    title: 'Marroco Porte',
     description:
       'Lorem ipsum dolor sit amet consectetur. Neque purus egestas in tincidunt ullamcorper ullamcorper sociis ',
     likes: 6,
@@ -107,7 +109,7 @@ export const blogs = [
     id:2,
     imgSrc: CollectionImg8,
     Catégorie: 'Catégorie 2',
-    title: 'Porte Traditionnelle 102',
+    title: 'Kairaouan Porte',
     description:
       'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
     likes: 12,
@@ -133,7 +135,7 @@ export const blogs = [
   {
     id:4,
     imgSrc: CollectionImg6,
-    Catégorie: 'Catégorie 3',
+    Catégorie: 'Catégorie 4',
     title: 'Porte Traditionnelle 102',
     description:
       'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
@@ -147,7 +149,7 @@ export const blogs = [
   { 
     id:5,
     imgSrc: CollectionImg5,
-    Catégorie: 'Catégorie 3',
+    Catégorie: 'Catégorie 5',
     title: 'Porte Traditionnelle 102',
     description:
       'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
@@ -161,7 +163,7 @@ export const blogs = [
   { 
     id:6,
     imgSrc: CollectionImg4,
-    Catégorie: 'Catégorie 3',
+    Catégorie: 'Catégorie 6',
     title: 'Porte Traditionnelle 102',
     description:
       'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
@@ -175,7 +177,7 @@ export const blogs = [
   { 
     id:7,
     imgSrc: CollectionImg3,
-    Catégorie: 'Catégorie 3',
+    Catégorie: 'Catégorie 7',
     title: 'Porte Traditionnelle 102',
     description:
       'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
@@ -189,7 +191,7 @@ export const blogs = [
   { 
     id:8,
     imgSrc: CollectionImg2,
-    Catégorie: 'Catégorie 3',
+    Catégorie: 'Catégorie 8',
     title: 'Porte Traditionnelle 102',
     description:
       'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
@@ -202,7 +204,7 @@ export const blogs = [
 
   { id:9,
     imgSrc: CollectionImg1,
-    Catégorie: 'Catégorie 3',
+    Catégorie: 'Catégorie 9',
     title: 'Porte Traditionnelle 102',
     description:
       'Explorez les nouvelles tendances en cuisine moderne et découvrez des recettes innovantes qui émerveilleront vos invités.',
@@ -497,6 +499,18 @@ export const productpagefor = [
   },
 ]
 {/*This Bloc For DernierCollection Components */}
+const urls = [
+  getCldImageUrl({ src: 'CollectionImg1' }),
+  getCldImageUrl({ src: 'CollectionImg2' }),
+  getCldImageUrl({ src: 'CollectionImg3' }),
+  getCldImageUrl({ src: 'CollectionImg4' }),
+  getCldImageUrl({ src: 'CollectionImg5' }),
+  getCldImageUrl({ src: 'CollectionImg6' }),
+  getCldImageUrl({ src: 'CollectionImg7' }),
+  getCldImageUrl({ src: 'CollectionImg8' }),
+];
+export const imageUrls = urls;
+
  export const imagesCOLL = [
   CollectionImg1,
   CollectionImg2,
