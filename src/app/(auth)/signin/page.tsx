@@ -23,7 +23,7 @@ const SignIn = () => {
   useEffect(() => {
     if (session) {
       if (session?.user?.role === 'Admin') {
-          router.push('/admin/dashboard');
+          router.push('/admin');
         } else {
           router.push('/');
         }
@@ -53,7 +53,7 @@ const SignIn = () => {
       // Redirect based on user role
       switch (session?.user?.role) {
         case 'Admin':
-          router.push('/admin/dashboard'); // Redirect to admin dashboard
+          router.push('/admin'); // Redirect to admin dashboard
           break;
         case 'Visitor':
           router.push('/'); // Redirect to profile page or another page for writers

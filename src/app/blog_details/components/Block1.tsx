@@ -18,12 +18,12 @@ const Block1: React.FC<Block1Props> = ({ blog }) => {
             Posted on {new Date(blog.date).toDateString()} by {blog.userName}
           </span>
           <div className='flex gap-4'>
-            <span className='bg-gray-500 text-white rounded-md px-2 text-sm'>{blog.Categorie}</span>
+            <span className='bg-gray-500 text-white rounded-md px-2 text-sm'>{blog.category}</span>
           </div>
         </div>
         <div>
           <Image 
-            src={blog.imgSrc} 
+            src={blog.image} 
             alt={blog.title} 
             className='rounded-md w-[70%]' 
             width={500} 

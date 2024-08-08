@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+{/*import mongoose from 'mongoose';
 import Blog from '../src/models/Blog';
 
 // Replace with your actual image paths
@@ -131,3 +131,4 @@ const seedBlogs = async () => {
 };
 
 seedBlogs();
+*/}

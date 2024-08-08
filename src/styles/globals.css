@@ -41,3 +41,8 @@ margin-left: auto;
   margin-right: auto;
 margin-left: auto;
 }
+/* styles/globals.css or similar */
+main {
+  background-color: #ffff; /* Example background color */
+  min-height: 100vh; /* Ensure it takes up at least the full viewport height */
+}

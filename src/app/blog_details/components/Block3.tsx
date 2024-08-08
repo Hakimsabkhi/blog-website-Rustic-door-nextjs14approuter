@@ -18,7 +18,7 @@ const Block3: React.FC<Block3Props> = ({ blog }) => {
           <p className='w-full sm:w-full md:w-[70%]'>{blog.description}</p>
         </div>
         <div className='w-full sm:w-full md:w-[70%]'>
-          <Image src={blog.imgSrc} alt={blog.title} className='rounded-md' width={500} height={100} /> {/* Added height for the Image */}
+          <Image src={blog.image} alt={blog.title} className='rounded-md' width={500} height={100} /> {/* Added height for the Image */}
         </div>
       </div>
     </section>

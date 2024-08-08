@@ -2,39 +2,30 @@ import mongoose, { Document, Schema, Model } from 'mongoose';
 
 // Define the Blog interface
 export interface IBlog extends Document {
-  id: number ;
-  imgSrc: string;
-  Categorie: string;
+  image: string;
+  category: string;
   title: string;
   description: string;
   likes: number;
   comments: number;
-  userImgSrc: string;
+  userImg: string;
   userName: string;
-  date: string;
+  date: Date;
 }
 
 // Define the Blog schema
 const BlogSchema: Schema = new Schema({
-  id:{ type: Number, required: true },
-  imgSrc: { type: String, required: true },
-  Categorie: { type: String, required: true },
+  image: { type: String, required: true },
+  category: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   likes: { type: Number, required: true },
   comments: { type: Number, required: true },
-  userImgSrc: { type: String, required: true },
+  userImg: { type: String, required: true },
   userName: { type: String, required: true },
-  date: { type: String, required: true },
+  date: { type: Date, default: Date.now },
 });
 
 // Create and export the Blog model
 const Blog: Model<IBlog> = mongoose.models.Blog || mongoose.model<IBlog>('Blog', BlogSchema);
 export default Blog;
-
-
-
-
-
-
-  

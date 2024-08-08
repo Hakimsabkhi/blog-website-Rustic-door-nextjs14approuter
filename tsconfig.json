@@ -41,7 +41,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/global.d.ts"
-  ],
+, "src/pages/api/blog/route.js"  ],
   "exclude": [
     "node_modules"
   ]

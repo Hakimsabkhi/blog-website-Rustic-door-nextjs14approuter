@@ -19,7 +19,7 @@ const Block2: React.FC<Block2Props> = ({ blog }) => {
         </div>
         <div className='w-full sm:w-full md:w-[70%]'>
           <Image 
-            src={blog.imgSrc} 
+            src={blog.image} 
             alt={blog.title} 
             className='rounded-md' 
             width={500} 

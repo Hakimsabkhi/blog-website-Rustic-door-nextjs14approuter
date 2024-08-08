@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -33,14 +34,14 @@ const Page: React.FC = async () => {
           >
             <Link href={`/blog_details/${blog._id}`} className="relative block">
               <Image 
-                src={blog.imgSrc} 
+                src={blog.image} 
                 width={500} height={100}
                 alt="Blog Image" 
                 className="w-full h-32 sm:h-40 md:h-72 object-cover mb-4"
               />
             </Link>
             <div className="flex flex-col gap-1 bg-white rounded-xl p-4 h-42 -mt-4">
-              <Link href={`/blog_details/${blog._id}`} className="text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px] text-orange-300">{blog.Categorie}</Link>
+              <Link href={`/blog_details/${blog._id}`} className="text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px] text-orange-300">{blog.category}</Link>
               <div className="flex items">
                 <Link href={`/blog_details/${blog._id}`} className="text-sm sm:text-sm md:text-xl font-semibold text-gray-800 drop-shadow-xl truncate">{blog.title}</Link>
                 <FaArrowRight className="text-black ml-3 -rotate-45" />
@@ -59,9 +60,9 @@ const Page: React.FC = async () => {
                 </div>
               </div>
               <Link href={`/blog_details/${blog._id}`} className="hidden md:flex items-center gap-2 py-2 overflow-hidden">
-                <Image src={blog.userImgSrc} alt="User Image" width={30} height={30} className="rounded-full" />
+                <Image src={blog.userImg} alt="User Image" width={30} height={30} className="rounded-full" />
                 <h3 className="text-sm sm:text-base text-gray-700 font-bold">{blog.userName}</h3>
-                <span className="text-xs sm:text-sm text-gray-400">{blog.date}</span>
+                {/*<span className="text-xs sm:text-sm text-gray-400">{blog.date}</span>*/}
               </Link>
             </div>
           </div>

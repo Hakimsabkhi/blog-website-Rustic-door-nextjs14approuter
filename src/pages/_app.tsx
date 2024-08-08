@@ -30,7 +30,7 @@ function SessionHandler({ children }: { children: React.ReactNode }) {
     if (status === 'authenticated') {
       const redirectToRolePage = async () => {
         if (session?.user?.role === 'Admin') {
-          router.push('/admin/dashboard');
+          router.push('/admin');
         } else if (session?.user?.role === 'Visitor') {
           router.push('/profile');
         }
