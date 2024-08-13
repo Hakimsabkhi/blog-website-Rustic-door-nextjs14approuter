@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
+import Image from 'next/image';
 import axios from 'axios';
 import { CldImage } from 'next-cloudinary';
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-
 
 function Page() {
   const [image, setImage] = useState<File | null>(null);
@@ -14,70 +14,103 @@ function Page() {
     description: "",
     Category: "Blue",
     userName: "Aziz Maaref",
-    UserImg: "https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg"
+    UserImg: "https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg",
+    AddMoreBlog: [] as { title: string; description: string; image?: string }[], // Updated field
   });
+  
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+  const [newImages, setNewImages] = useState<File[]>([]);
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
     setData(prevData => ({ ...prevData, [name]: value }));
   };
 
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTitle(event.target.value);
+  };
+
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNewDescription(event.target.value);
+  };
+
+  const handleImagesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setNewImages(Array.from(event.target.files));
+    }
+  };
+
+  const addMoreBlog = () => {
+    setData(prevData => ({
+      ...prevData,
+      AddMoreBlog: [
+        ...prevData.AddMoreBlog,
+        {
+          title: newTitle,
+          description: newDescription,
+          image: newImages.length > 0 ? URL.createObjectURL(newImages[0]) : undefined
+        }
+      ]
+    }));
+    setNewTitle("");
+    setNewDescription("");
+    setNewImages([]);
+    setIsAddModalOpen(false);
+  };
+
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Create FormData and append fields
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('description', data.description);
     formData.append('Category', data.Category);
     formData.append('userName', data.userName);
     formData.append('userImg', data.UserImg);
+    formData.append('AddMoreBlog', JSON.stringify(data.AddMoreBlog));
 
-    // Check if an image is selected
     if (image) {
-        formData.append('image', image); // Append the image file
+      formData.append('image', image);
     } else {
-        toast.error("Please select an image before submitting.");
-        return;
+      toast.error("Please select an image before submitting.");
+      return;
     }
 
     try {
-        const response = await axios.post('/api/blog', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data', // Ensure correct header
-            }
-        });
+      const response = await axios.post('/api/blog', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+      });
 
-        if (response.data.success) {
-            toast.success(response.data.msg);
-        } else {
-            toast.error("Error: " + response.data.msg);
-        }
+      if (response.data.success) {
+        toast.success(response.data.msg);
+      } else {
+        toast.error("Error: " + response.data.msg);
+      }
     } catch (error) {
-        if (axios.isAxiosError(error)) {
-            console.error("Axios error:", error.response?.data || error.message);
-            toast.error("Request failed: " + error.response?.data?.message || error.message);
-        } else {
-            console.error("Unexpected error:", error);
-            toast.error("An unexpected error occurred.");
-        }
+      if (axios.isAxiosError(error)) {
+        console.error("Axios error:", error.response?.data || error.message);
+        toast.error("Request failed: " + error.response?.data?.error || error.message);
+      } else {
+        console.error("Unexpected error:", error);
+        toast.error("An unexpected error occurred.");
+      }
     }
-};
+  };
 
   useEffect(() => {
     if (image) {
       const url = URL.createObjectURL(image);
       setImageURL(url);
-
-      // Cleanup the URL object when the component unmounts or image changes
       return () => URL.revokeObjectURL(url);
     }
   }, [image]);
 
   return (
-    
     <section>
-       
       <div>
         <h1 className='text-4xl text-orange-400 font-bold text-center mt-6'>Add Blog</h1>
       </div>
@@ -102,7 +135,6 @@ function Page() {
             }}
             type="file"
             id='image'
-            hidden
             required
           />
         </div>
@@ -134,7 +166,76 @@ function Page() {
             <option value="Jaun">Jaun</option>
           </select>
         </div>
-        <button type='submit' className='w-40 h-12 bg-primary text-white hover:bg-orange-400'>ADD</button>
+        {/* Add More Blog Titles and Descriptions */}
+        <div className='text-center flex flex-col'>
+          <button type='button' onClick={() => setIsAddModalOpen(true)} className='text-white bg-blue-500 py-2 px-4 rounded'>Add More</button>
+          {isAddModalOpen && (
+            <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'>
+              <div className='bg-white p-5 rounded flex flex-col'>
+                <h2>Add More Titles and Descriptions</h2>
+                <input
+                  value={newTitle}
+                  onChange={handleTitleChange}
+                  type="text"
+                  placeholder='Title'
+                  className='border p-2 mb-2'
+                />
+                <textarea
+                  value={newDescription}
+                  onChange={handleDescriptionChange}
+                  placeholder='Description'
+                  className='border p-2 mb-2'
+                />
+                <input
+                  type="file"
+                  multiple
+                  onChange={handleImagesChange}
+                />
+                <button
+                  onClick={addMoreBlog}
+                  className='text-white bg-blue-500 py-2 px-4 rounded mt-2'
+                >
+                  Add
+                </button>
+                <button
+                  onClick={() => setIsAddModalOpen(false)}
+                  className='text-white bg-red-500 py-2 px-4 rounded mt-2'
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* Preview of Added Entries Block */}
+        <div className='mt-8'>
+          <h2 className='text-2xl font-bold text-center mb-4'>Preview of Added Entries</h2>
+          {data.AddMoreBlog.map((entry, index) => (
+            <div key={index} className='mb-6 border p-4'>
+              <h2 className='text-xl font-bold'>{entry.title}</h2>
+              <span className='text-black font-semibold'>Description</span>
+              <p className='text-lg'>{entry.description}</p>
+              {entry.image && (
+                <div className='w-40 h-40 mt-4'>
+                  <Image
+                    src={entry.image}
+                    alt={`Preview Image ${index}`}
+                    width={100}
+                    height={100}
+                    className='object-cover'
+                  />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        {/* Submit Button */}
+        <button
+          type='submit'
+          className='w-full mt-6 py-3 bg-blue-600 text-white text-lg font-bold'
+        >
+          Submit
+        </button>
       </form>
     </section>
   );

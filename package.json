@@ -30,6 +30,7 @@
     "next": "^14.2.5",
     "next-auth": "^4.24.7",
     "next-cloudinary": "^6.9.0",
+    "next-connect": "^1.0.0",
     "npm-force-resolutions": "^0.0.10",
     "react": "latest",
     "react-dom": "latest",

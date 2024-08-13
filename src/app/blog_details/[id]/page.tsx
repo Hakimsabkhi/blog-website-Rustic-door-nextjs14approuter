@@ -6,7 +6,7 @@ import Block1 from '../components/Block1';
 import CommentsBlock from '../components/CommentsBlock';
 import { IBlog } from '@/models/Blog'; // Import the IBlog interface
 import Block2 from '../components/Block2';
-import Block3 from '../components/Block3';
+
 
 const BlogDetail: React.FC = () => {
   const params = useParams();
@@ -59,7 +59,6 @@ console.log(blog)
     <div>
       <Block1 blog={blog} />
       <Block2 blog={blog}/>
-      <Block3 blog={blog}/>
       <CommentsBlock />
     </div>
   );

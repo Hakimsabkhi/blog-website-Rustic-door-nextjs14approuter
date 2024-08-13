@@ -25,7 +25,7 @@ const Block1: React.FC<Block1Props> = ({ blog }) => {
           <Image 
             src={blog.image} 
             alt={blog.title} 
-            className='rounded-md w-[70%]' 
+            className='rounded-md w-full' 
             width={500} 
             height={100} 
           />

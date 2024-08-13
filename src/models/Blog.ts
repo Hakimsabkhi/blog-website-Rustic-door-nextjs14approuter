@@ -11,6 +11,11 @@ export interface IBlog extends Document {
   userImg: string;
   userName: string;
   date: Date;
+  AddMoreBlog: {        // Updated field
+    title: string;
+    description: string;
+    image?: string; // Optional field
+  }[];
 }
 
 // Define the Blog schema
@@ -24,6 +29,13 @@ const BlogSchema: Schema = new Schema({
   userImg: { type: String, required: true },
   userName: { type: String, required: true },
   date: { type: Date, default: Date.now },
+  AddMoreBlog: [        // Updated field
+    {
+      title: { type: String, required: true },
+      description: { type: String, required: true },
+      image: { type: String }, // Optional field
+    }
+  ]
 });
 
 // Create and export the Blog model

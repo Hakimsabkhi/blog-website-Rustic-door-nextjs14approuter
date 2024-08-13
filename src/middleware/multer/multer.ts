@@ -1,19 +1,21 @@
-// src/middleware/multer.ts
 import multer from 'multer';
-import { Request } from 'express';
 import path from 'path';
+import fs from 'fs';
 
-// Configure storage for multer
+const uploadDir = 'public/uploads/';
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/uploads'); // Directory where files will be uploaded
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}_${file.originalname}`); // Naming the file with timestamp
-  },
+    destination: function (req, file, cb) {
+        cb(null, uploadDir);
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
 });
 
-// Create multer instance
 const upload = multer({ storage });
 
 export default upload;
