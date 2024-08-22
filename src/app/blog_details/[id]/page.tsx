@@ -1,4 +1,70 @@
-'use client';
+// Use GetStatiqueParams Generation
+
+import React from 'react';
+import Block1 from '../components/Block1';
+import CommentsBlock from '../components/CommentsBlock';
+import Block2 from '../components/Block2';
+import { IBlog } from '@/src/models/Blog'; // Import the IBlog interface
+
+interface BlogDetailProps {
+  blog: IBlog | null;
+  error?: string;
+}
+
+// Function to fetch blog data
+const fetchBlogData = async (id: string) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/blog/Get/${id}`); // Adjust the API endpoint
+    if (!res.ok) {
+      throw new Error('Blog not found');
+    }
+    const data: IBlog = await res.json();
+    return { blog: data, error: null };
+  } catch (error) {
+    return { blog: null, error: (error as Error).message };
+  }
+};
+
+// Server component that handles data fetching and rendering
+const BlogDetail: React.FC<{ params: { id: string } }> = async ({ params }) => {
+  const { id } = params;
+  const { blog, error } = await fetchBlogData(id);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!blog) {
+    return <div>Blog not found</div>;
+  }
+
+  return (
+    <div>
+      <Block1 blog={blog} />
+      <Block2 blog={blog} />
+      <CommentsBlock />
+    </div>
+  );
+};
+
+// Generate static paths for all blog posts
+export async function generateStaticParams() {
+  const res = await fetch('http://localhost:3000/api/blog'); // Adjust the API endpoint
+  const blogs: IBlog[] = await res.json();
+
+  // Ensure that all blog objects have a defined `id` before mapping
+  const paths = blogs
+    .filter(blog => blog.id) // Filter out blogs without an id
+    .map(blog => ({
+      id: blog.id.toString(),
+    }));
+
+  return paths;
+}
+
+export default BlogDetail;
+{/* //OLD CODE
+  'use client';
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -11,12 +77,12 @@ import Block2 from '../components/Block2';
 const BlogDetail: React.FC = () => {
   const params = useParams();
 
-  const id = params?.id as string | undefined; // Ensure id is typed correctly
+  const id = params?.id as string | undefined; 
   const [blog, setBlog] = useState<IBlog | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  
-  useEffect(() => {
+  //console.log(blog)
+ useEffect(() => {
     const fetchBlog = async () => {
       if (!id) {
         setError('Invalid blog ID');
@@ -25,14 +91,16 @@ const BlogDetail: React.FC = () => {
       }
 
       try {
-        // Replace this URL with your API endpoint or data fetching logic
-        const response = await fetch(`/api/blog/${id}`);
+        
+        const response = await fetch('/api/blog/${id}');
         console.log(response);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data: IBlog = await response.json();
         setBlog(data);
+        console.log(data);
+        
       } catch (error) {
         setError((error as Error).message);
       } finally {
@@ -54,7 +122,7 @@ const BlogDetail: React.FC = () => {
   if (!blog) {
     return <div>Blog not found</div>;
   }
-console.log(blog)
+
   return (
     <div>
       <Block1 blog={blog} />
@@ -65,3 +133,4 @@ console.log(blog)
 };
 
 export default BlogDetail;
+  */}

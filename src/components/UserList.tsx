@@ -20,12 +20,12 @@ const UserList: React.FC<UserListProps> = ({ users, onDelete, onRoleChange }) =>
         </thead>
         <tbody>
           {users.map(user => (
-            <tr key={user._id}>
+            <tr key={user.id}>
               <td className="border border-gray-200 p-2">{user.email}</td>
               <td className="border border-gray-200 p-2">
                 <select
                   value={user.role}
-                  onChange={e => onRoleChange(user._id, e.target.value)}
+                  onChange={e => onRoleChange(user.id, e.target.value)}
                   className="p-2 border border-gray-300 rounded"
                 >
                   <option value="Visitor">Visitor</option>
@@ -35,7 +35,7 @@ const UserList: React.FC<UserListProps> = ({ users, onDelete, onRoleChange }) =>
               </td>
               <td className="border border-gray-200 p-2">
                 <button
-                  onClick={() => onDelete(user._id)}
+                  onClick={() => onDelete(user.id)}
                   className="bg-red-500 text-white p-2 rounded"
                 >
                   Delete

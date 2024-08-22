@@ -1,28 +1,28 @@
-"use client"; // Keep this here to mark the component as a Client Component
+// src/app/layout.tsx
+"use client"; // Ensure this is at the top
 
-import '../styles/globals.css'; // Ensure global styles are imported
-import { SessionProvider } from 'next-auth/react';
+import '../styles/globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Poppins } from "next/font/google";
-import SousFooter from '@/components/SousFooter';
+import SousFooter from '../components/SousFooter';
+import Providers from '../components/Providers';
+import SessionProviderWrapper from '../components/SessionProviderWrapper';
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
-
-
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SessionProvider>
-      <html lang="en">
-        <body className={poppins.className}>
+    <html lang="en">
+      <body className={poppins.className}>
+        <SessionProviderWrapper>
           <Header />
-          <main>{children}</main>
+          <Providers>{children}</Providers>
           <Footer />
-          <SousFooter/>
-        </body>
-      </html>
-    </SessionProvider>
+          <SousFooter />
+        </SessionProviderWrapper>
+      </body>
+    </html>
   );
 };
 

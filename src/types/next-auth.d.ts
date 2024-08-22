@@ -3,10 +3,10 @@ import NextAuth from "next-auth";
 declare module "next-auth" {
   interface Session {
     user?: {
-      id: string;
-      name: string;
-      email: string;
-      role: 'Visitor' | 'Rédacteur' | 'Admin';
+      id?: string;        // Make optional if it might not be present
+      name?: string;      // Make optional if it might not be present
+      email?: string;     // Make optional if it might not be present
+      role?: 'Visitor' | 'Rédacteur' | 'Admin'; // Make optional if it might not be present
     };
   }
 
@@ -18,6 +18,6 @@ declare module "next-auth" {
   }
 
   interface JWT {
-    role?: 'Visitor' | 'Rédacteur' | 'Admin';
+    role?: 'Visitor' | 'Rédacteur' | 'Admin'; // Make optional if it might not be present
   }
 }

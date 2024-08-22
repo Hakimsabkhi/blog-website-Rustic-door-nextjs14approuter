@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { IBlog } from '@/models/Blog'; // Import the Blog interface from your models
+import { IBlog } from '@/src/models/Blog'; // Import the Blog interface from your models
 
 interface Block3Props {
   blog: IBlog; // Use the Blog type here

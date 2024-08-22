@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, category, onSearchCha
                 >
                     <option value="All Category">All Category</option>
                     <option value="SIDI BOUSAID">SIDI BOUSAID</option>
-                    <option value="RADIAS">RADIAS</option>
+                    <option value="RADIAS">RADIAS</option> 
                     <option value="TUNIS">TUNIS</option>
                 </select>
                 <div className="relative w-full max-w-xs">

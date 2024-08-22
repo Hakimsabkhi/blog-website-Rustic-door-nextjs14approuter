@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { AboutImg,CollectionImg1,CollectionImg3,AboutImg2,CollectionImg4 } from 'public/img/image'
+import { AboutImg,CollectionImg1,CollectionImg3,AboutImg2,CollectionImg4 } from '@/public/img/image'
 
 function Bloc2() {
   return (

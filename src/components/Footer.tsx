@@ -1,8 +1,8 @@
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
-import { Logo3 } from 'public/img/image';
-import { quickLinks,helpfulLinks } from 'public/data';
+import { Logo3 } from '../../public/img/image';
+import { quickLinks,helpfulLinks } from '@/public/data';
 import Link from 'next/link';
 
 const contactItems = [

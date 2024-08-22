@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { AppelezImg } from 'public/img/image'; // Adjust the path as necessary
+import { AppelezImg } from '@/public/img/image'; // Adjust the path as necessary
 import Link from 'next/link';
 
 function AppelezNousMaintenant() {

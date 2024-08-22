@@ -1,7 +1,5 @@
-'use client';
-
+'use client'
 import Image from 'next/image';
-import axios from 'axios';
 import { CldImage } from 'next-cloudinary';
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
@@ -15,13 +13,14 @@ function Page() {
     Category: "Blue",
     userName: "Aziz Maaref",
     UserImg: "https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg",
-    AddMoreBlog: [] as { title: string; description: string; image?: string }[], // Updated field
+    AddMoreBlog: [] as { title: string; description: string; image?: string }[], 
   });
-  
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newImages, setNewImages] = useState<File[]>([]);
+  const [newImagePreviews, setNewImagePreviews] = useState<string[]>([]);
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
@@ -38,7 +37,9 @@ function Page() {
 
   const handleImagesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      setNewImages(Array.from(event.target.files));
+      const files = Array.from(event.target.files);
+      setNewImages(files);
+      setNewImagePreviews(files.map(file => URL.createObjectURL(file)));
     }
   };
 
@@ -57,6 +58,7 @@ function Page() {
     setNewTitle("");
     setNewDescription("");
     setNewImages([]);
+    setNewImagePreviews([]);
     setIsAddModalOpen(false);
   };
 
@@ -79,26 +81,29 @@ function Page() {
     }
 
     try {
-      const response = await axios.post('/api/blog', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        }
+      const response = await fetch('/api/blog/Post', {
+        method: 'POST',
+        body: formData,
+      
       });
 
-      if (response.data.success) {
-        toast.success(response.data.msg);
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success(result.msg);
       } else {
-        toast.error("Error: " + response.data.msg);
+        toast.error("Error: " + result.error);
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error("Axios error:", error.response?.data || error.message);
-        toast.error("Request failed: " + error.response?.data?.error || error.message);
-      } else {
-        console.error("Unexpected error:", error);
-        toast.error("An unexpected error occurred.");
-      }
+      toast.error("An unexpected error occurred.");
     }
+  };
+
+  const handleDelete = (index: number) => {
+    setData(prevData => ({
+      ...prevData,
+      AddMoreBlog: prevData.AddMoreBlog.filter((_, i) => i !== index)
+    }));
   };
 
   useEffect(() => {
@@ -109,10 +114,19 @@ function Page() {
     }
   }, [image]);
 
+  useEffect(() => {
+    const urls = newImages.map(file => URL.createObjectURL(file));
+    setNewImagePreviews(urls);
+
+    return () => {
+      urls.forEach(url => URL.revokeObjectURL(url));
+    };
+  }, [newImages]);
+
   return (
     <section>
       <div>
-        <h1 className='text-4xl text-orange-400 font-bold text-center mt-6'>Add Blog</h1>
+        <h1 className='text-4xl text-orange-400 font-bold text-center mt-6'>Create New Blog</h1>
       </div>
       <form onSubmit={onSubmitHandler} className='pt-5 px-5 sm:pt-12 sm:pl-16 flex flex-col gap-8 w-[60%] mx-auto '>
         {/* Image Upload Block */}
@@ -191,6 +205,18 @@ function Page() {
                   multiple
                   onChange={handleImagesChange}
                 />
+                <div className='mt-2 flex flex-wrap gap-2'>
+                  {newImagePreviews.map((preview, index) => (
+                    <Image
+                      key={index}
+                      src={preview}
+                      alt={`Preview ${index}`}
+                      width={100}
+                      height={100}
+                      className='object-cover border rounded'
+                    />
+                  ))}
+                </div>
                 <button
                   onClick={addMoreBlog}
                   className='text-white bg-blue-500 py-2 px-4 rounded mt-2'
@@ -209,33 +235,38 @@ function Page() {
         </div>
         {/* Preview of Added Entries Block */}
         <div className='mt-8'>
-          <h2 className='text-2xl font-bold text-center mb-4'>Preview of Added Entries</h2>
+          
           {data.AddMoreBlog.map((entry, index) => (
             <div key={index} className='mb-6 border p-4'>
               <h2 className='text-xl font-bold'>{entry.title}</h2>
               <span className='text-black font-semibold'>Description</span>
-              <p className='text-lg'>{entry.description}</p>
+              <p>{entry.description}</p>
               {entry.image && (
-                <div className='w-40 h-40 mt-4'>
-                  <Image
-                    src={entry.image}
-                    alt={`Preview Image ${index}`}
-                    width={100}
-                    height={100}
-                    className='object-cover'
-                  />
-                </div>
+                <Image
+                  src={entry.image}
+                  alt={`Preview ${index}`}
+                  width={100}
+                  height={100}
+                  className='object-cover border rounded mt-2'
+                />
               )}
+              <button
+                onClick={() => handleDelete(index)}
+                className='text-white bg-red-500 py-1 px-4 rounded mt-2'
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>
-        {/* Submit Button */}
-        <button
-          type='submit'
-          className='w-full mt-6 py-3 bg-blue-600 text-white text-lg font-bold'
-        >
-          Submit
-        </button>
+        <div className='text-center'>
+          <button
+            type='submit'
+            className='text-white bg-blue-500 py-2 px-4 rounded'
+          >
+            Add Blog
+          </button>
+        </div>
       </form>
     </section>
   );

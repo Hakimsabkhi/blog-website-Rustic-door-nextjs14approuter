@@ -2,7 +2,7 @@
 import React from 'react';
 import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
-import { DecouvreMore as DecouvreMoreData } from 'public/data'; // Import data
+import { DecouvreMore as DecouvreMoreData } from '@/public/data'; // Import data
 import Link from 'next/link';
 
 const DecouvreMore: React.FC = () => {

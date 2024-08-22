@@ -1,7 +1,7 @@
 // src/components/Block1.tsx
 import React from 'react';
 import Image from 'next/image';
-import { IBlog } from '@/models/Blog'; // Import the IBlog interface from your Blog model
+import { IBlog } from '@/src/models/Blog'; // Import the IBlog interface from your Blog model
 import Link from 'next/link';
 interface Block1Props {
   blog: IBlog; // Use the IBlog type here

@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --color-primary: #0B86ED;
+  --color-secondary: rgba(5, 30, 80, 1);
+  --color-cwhite: rgb(255, 255, 255);
+  --color-cblack: rgb(0, 0, 0);
+  --color-cbutton: rgba(3, 149, 135, 1);
+  --color-Navbutton: rgba(3, 149, 135, 1);
+  --color-NavbuttonH: rgba(179, 186, 230, 1);
+  --color-boxshadow: rgba(0, 0, 0, .952)
 }
 
 @media (prefers-color-scheme: dark) {

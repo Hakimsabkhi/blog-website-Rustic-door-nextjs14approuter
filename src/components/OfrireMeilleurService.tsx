@@ -1,5 +1,5 @@
 import React from 'react'
-import { ShoppingCartIcon, CheckCircleIcon, TruckIcon } from '@heroicons/react/solid'; // Import icons from Heroicons
+import { ShoppingCartIcon,CheckCircleIcon,TruckIcon } from 'lucide-react'; // Import icons from Heroicons
 import Link from 'next/link';
 
 function OfrireMeilleurService() {

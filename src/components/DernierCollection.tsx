@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Image from 'next/image.js';
-import { imagesCOLL } from 'public/data'; // Update this path
+import { imagesCOLL } from '@/public/data'; // Update this path
 import Link from 'next/link';
 
 

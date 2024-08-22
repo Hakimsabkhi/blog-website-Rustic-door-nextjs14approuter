@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { services } from 'public/data';
+import { services } from '@/public/data';
 
 const ServiceBar: React.FC = () => {
   return (

@@ -28,7 +28,7 @@ const SignIn = () => {
           router.push('/');
         }
     }
-  }, [session]);
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });

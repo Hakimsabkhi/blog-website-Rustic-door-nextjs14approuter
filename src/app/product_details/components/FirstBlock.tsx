@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Product } from 'public/data'; // Import the Product type
+import { Product } from '@/public/data'; // Import the Product type
 
 interface FirstBlockProps {
   products: Product[]; // Array of products passed as props

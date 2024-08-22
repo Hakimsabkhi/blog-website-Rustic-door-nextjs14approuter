@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import { Logo, locationIcone, phoneIcone, emailIcone } from 'public/img/image';
+import { Logo, locationIcone, phoneIcone, emailIcone } from '@/public/img/image';
 import Link from 'next/link';
-import SignIn from '@/app/(auth)/signin/page'; // Ensure the path is correct
-import SignUp from '@/app/(auth)/signup/page';
+import SignIn from '@/src/app/(auth)/signin/page'; // Ensure the path is correct
+import SignUp from '@/src/app/(auth)/signup/page';
 
 const Header: React.FC = () => {
   const { data: session } = useSession();
@@ -188,12 +188,14 @@ const Header: React.FC = () => {
                       </Link>
                     </li>
                     <li>
-                      <button
+                      <Link href="/">
+                      <span
                         onClick={handleSignOut}
                         className="block w-full px-4 py-2 text-gray-800 hover:bg-gray-100 text-left"
-                      >
+                        >
                         Sign Out
-                      </button>
+                        </span>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -228,12 +230,14 @@ const Header: React.FC = () => {
                       </Link>
                     </li>
                     <li>
-                      <button
+                    <Link href="/">
+                      <span
                         onClick={handleSignOut}
                         className="block w-full px-4 py-2 text-gray-800 hover:bg-gray-100 text-left"
-                      >
+                        >
                         Sign Out
-                      </button>
+                        </span>
+                      </Link>
                     </li>
                   </ul>
                 </div>

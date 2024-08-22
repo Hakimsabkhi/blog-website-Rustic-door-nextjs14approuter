@@ -1,5 +1,5 @@
 import React from 'react';
-import { testimonials } from 'public/data';
+import { testimonials } from '@/public/data';
 
 function Bloc3() {
   return (

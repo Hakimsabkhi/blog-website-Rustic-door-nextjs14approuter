@@ -4,7 +4,7 @@ import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import Image from 'next/image';
 import Link from 'next/link';
 import { StaticImageData } from 'next/image';
-import { products } from 'public/data';
+import { products } from '@/public/data';
 import SearchBar from './SearchBar';
 import PaginationBar from './PaginationBar';
 import { useRouter, useSearchParams } from 'next/navigation';
