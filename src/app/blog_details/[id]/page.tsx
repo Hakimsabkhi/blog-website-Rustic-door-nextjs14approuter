@@ -49,20 +49,45 @@ const BlogDetail: React.FC<{ params: { id: string } }> = async ({ params }) => {
 
 // Generate static paths for all blog posts
 export async function generateStaticParams() {
-  const res = await fetch('http://localhost:3000/api/blog'); // Adjust the API endpoint
-  const blogs: IBlog[] = await res.json();
+  try {
+    const res = await fetch('http://localhost:3000/api/blog'); // Adjust the API endpoint
 
-  // Ensure that all blog objects have a defined `id` before mapping
-  const paths = blogs
-    .filter(blog => blog.id) // Filter out blogs without an id
-    .map(blog => ({
-      id: blog.id.toString(),
-    }));
+    // Check if the response is OK and content-type is JSON
+    if (!res.ok) {
+      throw new Error('Failed to fetch blogs');
+    }
 
-  return paths;
+    const contentType = res.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const blogs: IBlog[] = await res.json();
+
+      // Ensure that all blog objects have a defined `id` before mapping
+      const paths = blogs
+        .filter(blog => blog.id) // Filter out blogs without an id
+        .map(blog => ({
+          id: blog.id.toString(),
+        }));
+
+      return paths;
+    } else {
+      const errorText = await res.text(); // Read the response as text
+      console.error('Unexpected response format:', errorText);
+      throw new Error('Unexpected response format, not JSON');
+    }
+  } catch (error) {
+    // Here, we assert that error is an instance of Error
+    if (error instanceof Error) {
+      console.error('Error fetching blogs:', error.message);
+      
+    } else {
+      console.error('Unknown error occurred');
+    }
+    return []; // Return an empty array on error to avoid build-time failures
+  }
 }
 
 export default BlogDetail;
+
 {/* //OLD CODE
   'use client';
 

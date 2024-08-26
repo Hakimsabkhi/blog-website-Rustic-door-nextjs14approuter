@@ -3,8 +3,8 @@ import Blog from '@/src/models/Blog';
 import { NextRequest, NextResponse } from 'next/server';
 import cloudinary from '@/src/lib/cloudinary';
 import stream from 'stream';
-import { getToken } from 'next-auth/jwt';
-import User from '@/src/models/User';
+
+
 
 const extractPublicIdFromUrl = (url: string): string => {
   const matches = url.match(/\/([^\/]+)\.(jpg|jpeg|png|gif|webp)$/);
@@ -17,15 +17,7 @@ export async function PUT(
 ) {
   await dbConnect();
 
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  if (!token) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  const user = await User.findOne({ email: token.email });
-  if (!user || (user.role !== 'Admin' && user.role !== 'Rédacteur')) {
-    return NextResponse.json({ error: 'Forbidden: Access is denied' }, { status: 403 });
-  }
+  
 
   try {
     const formData = await req.formData();
@@ -34,24 +26,21 @@ export async function PUT(
     const imageFile = formData.get("image") as File | null;
     const id = params.id;
 
+    // Validate the ID
     if (!id) {
-      return NextResponse.json(
-        { message: "ID is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "ID is required" }, { status: 400 });
     }
 
+    // Find the existing blog by ID
     const existingBlog = await Blog.findById(id);
     if (!existingBlog) {
-      return NextResponse.json(
-        { message: "Blog not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: "Blog not found" }, { status: 404 });
     }
 
     // Initialize imageUrl with the existing value
     let imageUrl = existingBlog.image;
 
+    // If there's a new image file, upload it and update the imageUrl
     if (imageFile) {
       if (existingBlog.image) {
         const publicId = extractPublicIdFromUrl(existingBlog.image);
@@ -85,11 +74,11 @@ export async function PUT(
       imageUrl = newImageUrl; // Update imageUrl with the uploaded URL
     }
 
-    // Update blog with new data
+    // Update the blog with new data
     const updatedBlog = {
       title,
       category,
-      imageUrl,
+      image: imageUrl, // Update the image URL field
     };
 
     const blog = await Blog.findByIdAndUpdate(id, updatedBlog, { new: true });

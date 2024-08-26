@@ -15,7 +15,7 @@ export interface IBlog extends Document {
   AddMoreBlog: { 
     title: string; // Title of additional blog entries
     description: string; // Description of additional blog entries
-    image: string; // URL image for AddMoreBlog entries, uploaded to Cloudinary
+    image: string; // imageURL, uploaded to Cloudinary
   }[];
 }
 
@@ -33,7 +33,7 @@ const BlogSchema: Schema = new Schema({
     {
       title: { type: String, required: true }, // Title of additional blog entries, must be provided
       description: { type: String, required: true }, // Description of additional blog entries, must be provided
-      image: { type: String } // URL image for AddMoreBlog entries, uploaded to Cloudinary
+      image: { type: String } // URL of image, 
     }
   ]
 });

@@ -3,24 +3,34 @@ import Image from 'next/image';
 import { CldImage } from 'next-cloudinary';
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import AddImage from '../comments/page';
+
 
 function Page() {
   const [image, setImage] = useState<File | null>(null);
-  const [imageURL, setImageURL] = useState<string | undefined>(undefined);
+  const [imageURL, setImageURL] = useState<string | null>(null);
   const [data, setData] = useState({
     title: "",
     description: "",
     Category: "Blue",
     userName: "Aziz Maaref",
     UserImg: "https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg",
-    AddMoreBlog: [] as { title: string; description: string; image?: string }[], 
+    AddMoreBlog: [] as Array<{ title: string; description: string; imageUrl: string | null }>,
   });
-
+ 
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
+  
+    // Fonction pour gérer l'URL de l'image après l'upload
+    const handleUploadSuccess = (url: string) => {
+      console.log('Image upload successful. URL:', url);
+      setImageUrl(url);
+    };
+    
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
-  const [newImages, setNewImages] = useState<File[]>([]);
-  const [newImagePreviews, setNewImagePreviews] = useState<string[]>([]);
+
+
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
@@ -35,13 +45,7 @@ function Page() {
     setNewDescription(event.target.value);
   };
 
-  const handleImagesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      const files = Array.from(event.target.files);
-      setNewImages(files);
-      setNewImagePreviews(files.map(file => URL.createObjectURL(file)));
-    }
-  };
+
 
   const addMoreBlog = () => {
     setData(prevData => ({
@@ -51,14 +55,13 @@ function Page() {
         {
           title: newTitle,
           description: newDescription,
-          image: newImages.length > 0 ? URL.createObjectURL(newImages[0]) : undefined
+          imageUrl: imageUrl 
         }
       ]
     }));
     setNewTitle("");
     setNewDescription("");
-    setNewImages([]);
-    setNewImagePreviews([]);
+    setImageURL(null);
     setIsAddModalOpen(false);
   };
 
@@ -76,15 +79,22 @@ function Page() {
     if (image) {
       formData.append('image', image);
     } else {
-      toast.error("Please select an image before submitting.");
+      toast.error("Please select a main image before submitting.");
       return;
     }
+
+    // Ajouter les images supplémentaires à FormData
+    data.AddMoreBlog.forEach((entry, index) => {
+    if (entry.imageUrl) {
+    formData.append(`addMoreBlogImages[${index}]`, entry.imageUrl);
+  }
+});
+   
 
     try {
       const response = await fetch('/api/blog/Post', {
         method: 'POST',
         body: formData,
-      
       });
 
       const result = await response.json();
@@ -114,14 +124,7 @@ function Page() {
     }
   }, [image]);
 
-  useEffect(() => {
-    const urls = newImages.map(file => URL.createObjectURL(file));
-    setNewImagePreviews(urls);
-
-    return () => {
-      urls.forEach(url => URL.revokeObjectURL(url));
-    };
-  }, [newImages]);
+  
 
   return (
     <section>
@@ -184,7 +187,7 @@ function Page() {
         <div className='text-center flex flex-col'>
           <button type='button' onClick={() => setIsAddModalOpen(true)} className='text-white bg-blue-500 py-2 px-4 rounded'>Add More</button>
           {isAddModalOpen && (
-            <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'>
+            <div className='fixed inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center'>
               <div className='bg-white p-5 rounded flex flex-col'>
                 <h2>Add More Titles and Descriptions</h2>
                 <input
@@ -200,26 +203,12 @@ function Page() {
                   placeholder='Description'
                   className='border p-2 mb-2'
                 />
-                <input
-                  type="file"
-                  multiple
-                  onChange={handleImagesChange}
-                />
-                <div className='mt-2 flex flex-wrap gap-2'>
-                  {newImagePreviews.map((preview, index) => (
-                    <Image
-                      key={index}
-                      src={preview}
-                      alt={`Preview ${index}`}
-                      width={100}
-                      height={100}
-                      className='object-cover border rounded'
-                    />
-                  ))}
+                 <AddImage onUploadSuccess={handleUploadSuccess} />
                 </div>
+                <div className='flex gap-4'>
                 <button
                   onClick={addMoreBlog}
-                  className='text-white bg-blue-500 py-2 px-4 rounded mt-2'
+                  className=' text-white bg-blue-500 py-2 px-4 rounded mt-2'
                 >
                   Add
                 </button>
@@ -229,8 +218,8 @@ function Page() {
                 >
                   Close
                 </button>
+                </div>
               </div>
-            </div>
           )}
         </div>
         {/* Preview of Added Entries Block */}
@@ -241,15 +230,18 @@ function Page() {
               <h2 className='text-xl font-bold'>{entry.title}</h2>
               <span className='text-black font-semibold'>Description</span>
               <p>{entry.description}</p>
-              {entry.image && (
-                <Image
-                  src={entry.image}
-                  alt={`Preview ${index}`}
-                  width={100}
-                  height={100}
-                  className='object-cover border rounded mt-2'
+              {/* Affiche l'image si elle est disponible */}
+              {entry.imageUrl && (
+              <div className="mt-4">
+                <Image 
+                  src={entry.imageUrl} 
+                  alt="Uploaded Image" 
+                  className="rounded-lg shadow-md" 
+                  width={200} 
+                  height={20} 
                 />
-              )}
+              </div>
+            )}
               <button
                 onClick={() => handleDelete(index)}
                 className='text-white bg-red-500 py-1 px-4 rounded mt-2'

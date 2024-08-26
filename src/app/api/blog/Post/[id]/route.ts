@@ -1,3 +1,4 @@
+//src/app/api/blog/Post/[id]/route.ts
 import connectToDatabase from '@/src/lib/db';
 import Blog from '@/src/models/Blog';
 import { NextRequest, NextResponse } from 'next/server';

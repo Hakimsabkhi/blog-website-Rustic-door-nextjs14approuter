@@ -4,20 +4,19 @@ import Blog from '@/src/models/Blog';
 import cloudinary from '@/src/lib/cloudinary';
 import stream from 'stream';
 
-// Function to upload a single image to Cloudinary
+// Fonction pour uploader une image unique sur Cloudinary
 async function uploadImage(imageFile: File): Promise<string> {
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+  if (!allowedTypes.includes(imageFile.type)) {
+    throw new Error('Invalid image type');
+  }
+
+  if (imageFile.size > 2 * 1024 * 1024) { // Limite de 2 Mo
+    throw new Error('Image size exceeds 2MB');
+  }
+
   return new Promise((resolve, reject) => {
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-
-    if (!allowedTypes.includes(imageFile.type)) {
-      return reject(new Error('Invalid image type'));
-    }
-
-    if (imageFile.size > 2 * 1024 * 1024) { // 2MB limit
-      return reject(new Error('Image size exceeds 2MB'));
-    }
-
-    // Convert File to Base64
     imageFile.arrayBuffer().then(imageBuffer => {
       const bufferStream = new stream.PassThrough();
       bufferStream.end(Buffer.from(imageBuffer));
@@ -46,19 +45,18 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
 
-    const title = formData.get('title') as string;
-    const description = formData.get('description') as string;
-    const category = formData.get('Category') as string;
-    const userName = formData.get('userName') as string;
-    const userImg = formData.get('userImg') as string;
-    const addMoreBlog = formData.get('AddMoreBlog') as string;
+    const title = formData.get('title') as string | null;
+    const description = formData.get('description') as string | null;
+    const category = formData.get('Category') as string | null;
+    const userName = formData.get('userName') as string | null;
+    const userImg = formData.get('userImg') as string | null;
+    const addMoreBlog = formData.get('AddMoreBlog') as string | null;
+    console.log(formData);
 
-    // Validate required fields
     if (!title || !description || !category || !userImg || !userName || !addMoreBlog) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
-    
-    // Parse AddMoreBlog from JSON
+
     let parsedAddMoreBlog: { title: string; description: string; image?: string }[] = [];
     try {
       parsedAddMoreBlog = JSON.parse(addMoreBlog);
@@ -67,47 +65,48 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid JSON format for AddMoreBlog' }, { status: 400 });
     }
 
-    // ---- Handle Main Image Upload ----
     const imageFile = formData.get('image') as File | null;
     let mainImage = null;
 
     if (imageFile) {
       try {
-        mainImage = await uploadImage(imageFile); // Upload the main image
+        mainImage = await uploadImage(imageFile);
       } catch (uploadError) {
         console.error('Cloudinary upload error:', uploadError);
         return NextResponse.json({ error: 'Error uploading main image' }, { status: 500 });
       }
     }
 
-    // ---- Handle AddMoreBlog Images Upload ----
-    const addMoreBlogFiles = formData.getAll('addMoreBlogImages') as File[];
-
-    const addMoreBlogImages: string[] = [];
     
-    for (const file of addMoreBlogFiles) {
-      try {
-        const imageUrl = await uploadImage(file); // Upload each addMoreBlog image
-        addMoreBlogImages.push(imageUrl);
-      } catch (uploadError) {
-        console.error('Cloudinary upload error:', uploadError);
-        return NextResponse.json({ error: 'Error uploading additional images' }, { status: 500 });
-      }
-    }
+const addMoreBlogFiles = Array.from(formData.getAll('addMoreBlogImages')) as File[];
+const addMoreBlogImages: string[] = [];
+for (const file of addMoreBlogFiles) {
+  try {
+    const imageUrl = await uploadImage(file);
+    addMoreBlogImages.push(imageUrl);
+    console.log('Uploaded Image URL:', imageUrl);
+  } catch (uploadError) {
+    console.error('Cloudinary upload error:', uploadError);
+    return NextResponse.json({ error: 'Error uploading additional images' }, { status: 500 });
+  }
+}
 
-    // Create blog entry
+
+    // Associer les images supplémentaires aux entrées correspondantes
+    const updatedAddMoreBlog = parsedAddMoreBlog.map((entry, index) => ({
+      ...entry,
+      image: addMoreBlogImages[index] || '', // Assurer que chaque entrée a une image ou une chaîne vide // ici le problem
+    }));
+
     const blogData = {
-      image: mainImage, // Main image URL
+      image: mainImage,
       title,
       description,
       category,
       userImg,
       userName,
       date: new Date(),
-      AddMoreBlog: parsedAddMoreBlog.map((entry, index) => ({
-        ...entry,
-        image: addMoreBlogImages[index] || '', // Assign the corresponding image URL for AddMoreBlog
-      })),
+      AddMoreBlog: updatedAddMoreBlog,
     };
 
     await Blog.create(blogData);
