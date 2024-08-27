@@ -1,71 +1,85 @@
 "use client";
 import Link from 'next/link';
 import { useState,useEffect } from 'react';
-import { signIn, useSession } from 'next-auth/react';
+import { useSession, signIn, getProviders, ClientSafeProvider } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { FcGoogle } from "react-icons/fc";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { FaEye,FaEyeSlash } from 'react-icons/fa';
 
 
 config.autoAddCss = false;
+const SignIn: React.FC = () => {
+ // State for managing providers, credentials, errors, and password visibility
+ const [providers, setProviders] = useState<Record<string, ClientSafeProvider> | null>(null);
+ const [credentials, setCredentials] = useState({ email: '', password: '' });
+ const [error, setError] = useState<string | null>(null);
+ const [showPassword, setShowPassword] = useState(false); // Toggle password visibility
+ const [loading, setLoading] = useState(false);
+ const router = useRouter();
+ const { data: session } = useSession();
 
-const SignIn = () => {
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  const {data:session,status}=useSession();
-  console.log(session?.user?.role)
+ // Fetch providers on component mount
+ useEffect(() => {
+   const fetchProviders = async () => {
+     try {
+       const res = await getProviders();
+       if (res) {
+         setProviders(res);
+       } else {
+         setError('Failed to load authentication providers.');
+       }
+     } catch (error) {
+       console.error('Error fetching providers:', error);
+       setError('An unexpected error occurred while loading providers. Please try again.');
+     }
+   };
+   fetchProviders();
+ }, []);
 
-  useEffect(() => {
-    if (session) {
-      if (session?.user?.role === 'Admin') {
-          router.push('/admin');
-        } else {
-          router.push('/');
-        }
-    }
-  });
+ // Redirect based on user session
+ useEffect(() => {
+   if (session) {
+     if (session.user?.role === 'Admin') {
+       router.push('/admin');
+     } else {
+       router.push('/');
+     }
+   }
+ }, [session, router]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
-  };
+ // Handle input changes
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setCredentials({ ...credentials, [e.target.name]: e.target.value });
+};
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true); // Start loading
-  
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setError(null);
+  try {
     const result = await signIn('credentials', {
       redirect: false,
       email: credentials.email,
       password: credentials.password,
     });
-  
-    setLoading(false); // Stop loading
 
-    if (result?.ok && result?.status === 200) {
-      // Fetch user details from the server
-     
-      // Redirect based on user role
-      switch (session?.user?.role) {
-        case 'Admin':
-          router.push('/admin'); // Redirect to admin dashboard
-          break;
-        case 'Visitor':
-          router.push('/'); // Redirect to profile page or another page for writers
-          break;
-        default:
-          router.push('/'); // Redirect to home or a default page
-          break;
-      }
+    if (result?.ok) {
+      router.push('/');
     } else {
-      setError('Failed to sign in. Please check your credentials and try again.');
+      setError('Failed to sign in. Please check your email and password and try again.');
     }
-  };
+  } catch (error) {
+    console.error('Sign in error:', error);
+    setError('An unexpected error occurred. Please try again.');
+  }
+};
+
+const togglePasswordVisibility = () => {
+  setShowPassword(!showPassword);
+};
   
   return (
     
@@ -93,19 +107,28 @@ const SignIn = () => {
             />
           </div>
           {/*Password Bloc */}
-          <div className="mb-4">
-            <label className="block text-gray-900 text-sm mb-2" htmlFor="password">
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={credentials.password}
-              onChange={handleChange}
-             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm hover:border-orange-400  block w-full p-2.5  dark:placeholder-gray-400 dark:text-white" placeholder="******"
-              required
-            />
-          </div>
+          <div className="relative mb-4">
+  <label className="block text-gray-900 text-sm mb-2" htmlFor="password">
+    Password
+  </label>
+  <input
+    type={showPassword ? "text" : "password"} // Change input type based on visibility
+    name="password"
+    value={credentials.password}
+    onChange={handleChange}
+    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm hover:border-orange-400 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white pr-10" // Added padding-right to make space for the icon
+    placeholder="******"
+    required
+  />
+  <button
+    type="button"
+    onClick={togglePasswordVisibility}
+    className="absolute inset-y-0 right-0 flex items-center px-3 pt-6 text-gray-600"
+  >
+    {showPassword ? <FaEye className="w-5 h-5" /> : <FaEyeSlash className="w-5 h-5" />}
+  </button>
+</div>
+
           {/*Rmember Me */}
           <div className="flex items-start mb-5 flex-col gap-3 sm:gap-3 lg:justify-between lg:flex-row md:flex-row xl:flex-row ">
            <div className="flex items-center h-5">
@@ -148,8 +171,8 @@ const SignIn = () => {
       </div>
     </div>
   );
-};
 
+};
 export default SignIn;
 {/*
   

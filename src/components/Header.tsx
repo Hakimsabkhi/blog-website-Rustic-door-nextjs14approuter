@@ -6,10 +6,13 @@ import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import { Logo, locationIcone, phoneIcone, emailIcone } from '@/public/img/image';
+import Logo from './Logo';
 import Link from 'next/link';
 import SignIn from '@/src/app/(auth)/signin/page'; // Ensure the path is correct
 import SignUp from '@/src/app/(auth)/signup/page';
+import InfoBar from './InfoBar';
+import { User, Shield, Edit, LogOut } from 'lucide-react';
+import NavBar from './Navbar';
 
 const Header: React.FC = () => {
   const { data: session } = useSession();
@@ -90,32 +93,11 @@ const Header: React.FC = () => {
   return (
     <header className="bg-white">
       {/* InfoBar */}
-      <div className="bg-blue-600 text-white p-2 text-center">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 centred">
-          <div className="hidden sm:flex overflow-hidden items-center justify-center sm:justify-start text-xl sm:text-xl">
-            <Image src={locationIcone} alt="Location Icon" className="mr-2" />
-            <span>RUSTIKLink HOUSE, 5080 Teboulba, Monastir, Tunisie</span>
-          </div>
-          <div className="flex items-center justify-center sm:justify-start text-xl sm:text-xl">
-            <Image src={phoneIcone} alt="Phone Icon" className="mr-1 scale-50" />
-            <span>+1 206-214-2298</span>
-          </div>
-          <div className="hidden sm:flex items-center justify-center sm:justify-start text-xl sm:text-xl">
-            <Image src={emailIcone} alt="Email Icon" className="mr-1 scale-50" />
-            <span>support@rezilla.com</span>
-          </div>
-        </div>
-      </div>
+      <InfoBar/>
       {/* NavBar */}
       <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-1 lg:px-8 flex h-16 my-2 items-center justify-between">
-      
-        <div className="md:flex md:items-center md:gap-12">
-          
-          <Link className="block text-primary" href="/">
-            <span className="sr-only">Home</span>
-            <Image src={Logo} alt="Logo" width={140} height={140} />
-          </Link>
-        </div>
+      {/* Logo */}
+      <Logo/>
         {!session ? (
         <button
                   onClick={toggleModal} // Open modal
@@ -124,27 +106,8 @@ const Header: React.FC = () => {
                   Login
                 </button>
         ):(<div></div>)}
-        <div className="hidden md:flex md:items-center md:justify-center md:flex-grow">
-          <nav aria-label="Global">
-            <ul className="flex items-center gap-6 text-sm">
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/">Home</Link>
-              </li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/about">About Us</Link>
-              </li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/blog">Blog</Link>
-              </li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/product">Products</Link>
-              </li>
-              <li>
-                <Link className="text-gray-500 transition hover:text-primary" href="/contact">Contact</Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        {/* Navbar*/}
+        <NavBar/>
         <div className="hidden md:flex md:items-center gap-4 sm:gap-0 md:gap-0 lg:gap-2 xl:gap-4">
           {!session ? (
             <>
@@ -174,31 +137,37 @@ const Header: React.FC = () => {
                 <FontAwesomeIcon icon={faUser} className="text-xl" />
               </button>
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg">
-                  <ul className="flex flex-col">
-                    <li>
-                      <span className="block px-4 py-2 text-gray-800">{session.user?.name}</span>
-                    </li>
-                    <li>
-                      <span className="block px-4 py-2 text-gray-800">Role: {session.user?.role}</span>
-                    </li>
-                    <li>
-                      <Link href="/profile">
-                        <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={closeDropdown}>Profile</span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/">
+                <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 shadow-lg ">
+                <ul className="flex flex-col">
+                  <li className="flex items-center">
+                    <User className="w-4 h-4 text-gray-800 ml-2" />
+                    <span className="block px-4 py-2 text-gray-800">{session.user?.name}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Shield className="w-4 h-4 text-gray-800 ml-2" />
+                    <span className="block px-4 py-2 text-gray-800">Role: {session.user?.role}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Link href="/profile" className="flex items-center">
+                      <Edit className="w-4 h-4 text-gray-800 ml-2" />
+                      <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={closeDropdown}>
+                        Profile
+                      </span>
+                    </Link>
+                  </li>
+                  <li className="flex items-center">
+                    <Link href="/" className="flex items-center">
+                      <LogOut className="w-4 h-4 text-gray-800 ml-2" />
                       <span
                         onClick={handleSignOut}
                         className="block w-full px-4 py-2 text-gray-800 hover:bg-gray-100 text-left"
-                        >
+                      >
                         Sign Out
-                        </span>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                      </span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
               )}
             </div>
           )}
@@ -216,38 +185,44 @@ const Header: React.FC = () => {
                 <FontAwesomeIcon icon={faUser} className="text-xl" />
               </button>
               {isMobileDropdownOpen && (
-                <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white border border-gray-200 shadow-lg">
-                  <ul className="flex flex-col">
-                    <li>
-                      <span className="block px-4 py-2 text-gray-800">{session.user?.name}</span>
-                    </li>
-                    <li>
-                      <span className="block px-4 py-2 text-gray-800">Role: {session.user?.role}</span>
-                    </li>
-                    <li>
-                      <Link href="/profile">
-                        <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100"  onClick={() => setIsMobileDropdownOpen(false)}>Profile</span>
-                      </Link>
-                    </li>
-                    <li>
-                    <Link href="/">
-                      <span
-                        onClick={handleSignOut}
-                        className="block w-full px-4 py-2 text-gray-800 hover:bg-gray-100 text-left"
-                        >
-                        Sign Out
-                        </span>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white border border-gray-200 shadow-lg">
+  <ul className="flex flex-col">
+    <li className="flex items-center">
+      <User className="w-4 h-4 text-gray-800 ml-2" />
+      <span className="block px-4 py-2 text-gray-800">{session.user?.name}</span>
+    </li>
+    <li className="flex items-center">
+      <Shield className="w-4 h-4 text-gray-800 ml-2" />
+      <span className="block px-4 py-2 text-gray-800">Role: {session.user?.role}</span>
+    </li>
+    <li className="flex items-center">
+      <Link href="/profile" className="flex items-center">
+        <Edit className="w-4 h-4 text-gray-800 ml-2" />
+        <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setIsMobileDropdownOpen(false)}>
+          Edit Profile
+        </span>
+      </Link>
+    </li>
+    <li className="flex items-center">
+      <Link href="/" className="flex items-center">
+        <LogOut className="w-4 h-4 text-gray-800 ml-2" />
+        <span
+          onClick={handleSignOut}
+          className="block w-full px-4 py-2 text-gray-800 hover:bg-gray-100 text-left"
+        >
+          Sign Out
+        </span>
+      </Link>
+    </li>
+  </ul>
+</div>
               )}
             </div>
           )}
         </div>
       </div>
 
-{/* Mobile Menu */}
+{/* Mobile NavBar */}
 {isMenuOpen && (
           <div className="md:hidden">
             <nav aria-label="Global">

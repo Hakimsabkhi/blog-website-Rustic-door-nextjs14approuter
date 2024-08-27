@@ -13,47 +13,66 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
 const SignUp = () => {
-  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: '',
+    repeatPassword: '',
+    name: '',
+    lastname: '',
+    image: null as File | null, // Added image field
+  });
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // Added loading state
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, files } = e.target;
+    if (name === 'image') {
+      setCredentials({ ...credentials, image: files ? files[0] : null });
+    } else {
+      setCredentials({ ...credentials, [name]: value });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
-    setLoading(true);
+    setError(null); // Clear any previous errors
+    setLoading(true); // Set loading to true while processing
+
+    if (credentials.password !== credentials.repeatPassword) {
+      setError("Passwords do not match");
+      setLoading(false); // Set loading to false if there's an error
+      return;
+    }
 
     try {
-      const response = await fetch('/api/auth/signup', {
+      const formData = new FormData();
+      formData.append('name', credentials.name);
+      formData.append('lastname', credentials.lastname);
+      formData.append('email', credentials.email);
+      formData.append('password', credentials.password);
+      formData.append('role', 'Visiteur'); // Default role
+      if (credentials.image) {
+        formData.append('image', credentials.image);
+      }
+
+      const result = await fetch('/api/auth/signup', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
-      if (response.ok) {
-        const signInResult = await signIn('credentials', {
-          redirect: false,
-          email: formData.email,
-          password: formData.password,
-        });
+      const data = await result.json();
 
-        if (signInResult?.ok) {
-          router.push('/');
-        } else {
-          setError('Failed to sign in after sign-up. Please try logging in.');
-        }
+      if (result.ok) {
+        router.push('/signin'); // Redirect on successful signup
       } else {
-        const data = await response.json();
-        setError(data.error || 'Failed to sign up. Please try again.');
+        setError(data.message || 'An error occurred. Please try again.');
       }
-    } catch (err) {
-      setError('An unexpected error occurred. Please try again.');
+    } catch (error) {
+      setError("An error occurred. Please try again.");
     } finally {
-      setLoading(false);
+      setLoading(false); // Ensure loading is set to false after processing
     }
   };
 
@@ -67,16 +86,30 @@ const SignUp = () => {
         )}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-900 text-sm mb-2" htmlFor="username">
-              Username
+            <label className="block text-gray-900 text-sm mb-2" htmlFor="name">
+              First Name
             </label>
             <input
               type="text"
-              name="username"
-              value={formData.username}
+              name="name"
+              value={credentials.name}
               onChange={handleChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm hover:border-orange-400 block w-full p-2.5"
-              placeholder="Enter Username"
+              placeholder="Enter First Name"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-900 text-sm mb-2" htmlFor="lastname">
+              Last Name
+            </label>
+            <input
+              type="text"
+              name="lastname"
+              value={credentials.lastname}
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm hover:border-orange-400 block w-full p-2.5"
+              placeholder="Enter Last Name"
               required
             />
           </div>
@@ -87,7 +120,7 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              value={credentials.email}
               onChange={handleChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm hover:border-orange-400 block w-full p-2.5"
               placeholder="Enter Email Address"
@@ -101,11 +134,36 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
-              value={formData.password}
+              value={credentials.password}
               onChange={handleChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm hover:border-orange-400 block w-full p-2.5"
               placeholder="******"
               required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-900 text-sm mb-2" htmlFor="repeatPassword">
+              Repeat Password
+            </label>
+            <input
+              type="password"
+              name="repeatPassword"
+              value={credentials.repeatPassword}
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm hover:border-orange-400 block w-full p-2.5"
+              placeholder="******"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-900 text-sm mb-2" htmlFor="image">
+              Profile Image
+            </label>
+            <input
+              type="file"
+              name="image"
+              onChange={handleChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm hover:border-orange-400 block w-full p-2.5"
             />
           </div>
           <div className="flex flex-col items-center justify-center gap-4">

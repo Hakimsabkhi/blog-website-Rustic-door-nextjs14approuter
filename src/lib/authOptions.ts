@@ -1,18 +1,35 @@
-import { NextAuthOptions, Session, User, DefaultSession } from 'next-auth';
+// authOptions.ts
+import { NextAuthOptions, Session, User as NextAuthUser, DefaultSession } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { JWT } from 'next-auth/jwt';
-import connectToDatabase from '@/src/lib/db';
+import connectToDatabase from './db';
 import bcrypt from 'bcryptjs';
 import UserModel from '@/src/models/User';
 
-// Define UserType if not imported
+declare module 'next-auth' {
+  // Extend the DefaultSession interface
+  interface Session {
+    user: DefaultSession['user'] & {
+      id: string;
+      role: 'Visiteur' | 'Consulter' | 'Admin' | 'SuperAdmin';
+    };
+  }
+
+  // Extend the User interface
+  interface User {
+    id: string;
+    role: 'Visiteur' | 'Consulter' | 'Admin' | 'SuperAdmin';
+  }
+}
+
 type UserType = {
   _id: string;
   username: string;
   email: string;
   password?: string;
-  role: 'Visitor' | 'Rédacteur' | 'Admin';
+  role?: 'Visiteur' | 'Consulter' | 'Admin' | 'SuperAdmin' | null;
+  image?: string | null;
   save: () => Promise<UserType>;
 };
 
@@ -44,28 +61,38 @@ export const authOptions: NextAuthOptions = {
       },
       authorize: async (credentials) => {
         if (!credentials || !credentials.email || !credentials.password) {
+          console.error('Missing credentials');
           return null;
         }
 
         try {
           await connectToDatabase();
-          const user = await UserModel.findOne({ email: credentials.email }) as UserType | null;
 
-          if (user && bcrypt.compareSync(credentials.password, user.password || '')) {
-            return { 
-              id: user._id.toString(), 
-              name: user.username, 
-              email: user.email,
-              role: user.role 
-            };
-          } else {
+          const user = await UserModel.findOne({ email: credentials.email }) as UserType | null;
+          if (!user) {
+            console.error('No user found with this email:', credentials.email);
             return null;
           }
+
+          const isPasswordValid = bcrypt.compareSync(credentials.password, user.password || '');
+          if (!isPasswordValid) {
+            console.error('Invalid password for user:', credentials.email);
+            return null;
+          }
+
+          // Return the user object with role and image fields
+          return {
+            id: user._id.toString(),
+            name: user.username,
+            email: user.email,
+            image: user.image || null,
+            role: user.role || 'Visiteur', // Default to 'Visiteur' if no role is found
+          } as NextAuthUser;
         } catch (error) {
           console.error('Error during authorization:', error);
           return null;
         }
-      },
+      }
     }),
   ],
   pages: {
@@ -73,7 +100,7 @@ export const authOptions: NextAuthOptions = {
     signOut: '/auth/signout',
     error: '/auth/error',
     verifyRequest: '/auth/verify-request',
-    newUser: undefined,
+    newUser: undefined, // Disable the new user page
   },
   callbacks: {
     async session({ session, token }: { session: Session; token: JWT }) {
@@ -82,35 +109,40 @@ export const authOptions: NextAuthOptions = {
           id: token.id as string,
           name: token.name as string,
           email: token.email as string,
-          role: token.role as 'Visitor' | 'Rédacteur' | 'Admin', // Add role here
+          image: token.image as string | null,
+          role: token.role as 'Visiteur' | 'Consulter' | 'Admin' | 'SuperAdmin',
         };
       }
       return session;
     },
-    async jwt({ token, user }: { token: JWT; user?: User }) {
+    async jwt({ token, user }: { token: JWT; user?: NextAuthUser }) {
       if (user) {
+        const users=await UserModel.findOne({ email: user.email as string })
+        
         token.id = user.id;
-        token.role = user.role; // Add role here
+        token.role = users?.role;
+        token.image = user.image || null;
       }
       return token;
     },
-    async signIn({ user }: { user: User }) {
+    async signIn({ user }: { user: NextAuthUser }) {
       try {
         await connectToDatabase();
         const existingUser = await UserModel.findOne({ email: user.email as string }) as UserType | null;
         if (!existingUser) {
           const newUser = new UserModel({
             username: user.name!,
+            role: user.role,
             email: user.email as string,
             password: undefined,
-            role: 'Visitor' // Default role
+            image: user.image || null,
           }) as UserType;
           await newUser.save();
-        } else {
+        } /* else {
           existingUser.username = user.name!;
-          existingUser.role = user.role; // Update role if necessary
+          existingUser.role = user.role;
           await existingUser.save();
-        }
+        } */
         return true;
       } catch (error) {
         console.error('Error during sign-in:', error);
@@ -123,3 +155,4 @@ export const authOptions: NextAuthOptions = {
   },
   secret: nextAuthSecret,
 };
+

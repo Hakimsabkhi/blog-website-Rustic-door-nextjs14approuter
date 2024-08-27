@@ -1,38 +1,49 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
-import connectToDatabase from '@/lib/db'; // Adjust the path according to your project structure
-import  User  from '@/models/User'; // Adjust the path according to your project structure
+import connectToDatabase from '@/src/lib/db';
+import UserModel from '@/src/models/User';
 
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
   try {
-    await connectToDatabase();
+    const formData = await req.formData();
+    const firstname = formData.get('name') as string;
+    const lastname = formData.get('lastname') as string;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    const role = formData.get('role') as string;
+    const image = formData.get('image') as string; // Added image field
 
-    const { username, email, password } = await request.json();
+    // Combine firstname and lastname for the full username
+    const username = `${firstname} ${lastname}`;
 
-    // Check if the user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return NextResponse.json({ error: 'User already exists' }, { status: 400 });
+    // Check for missing fields
+    if (!username || !email || !password) {
+      return NextResponse.json({ message: 'Username, email, and password are required' }, { status: 400 });
     }
 
-    // Hash the password
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    await connectToDatabase();
 
-    // Create a new user
-    const newUser = new User({
+    // Check if the user already exists
+    const existingUser = await UserModel.findOne({ email });
+    if (existingUser) {
+      return NextResponse.json({ message: 'User already exists' }, { status: 400 });
+    }
+
+    // Hash the password before saving
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const newUser = new UserModel({
       username,
       email,
       password: hashedPassword,
-      role: 'Visitor', // Default role
+      role: role || 'Visiteur', // Default role if not provided
+      image, // Save image field
     });
 
-    // Save the new user to the database
+    // Save the new user
     await newUser.save();
-
-    // Return a successful response
-    return NextResponse.json({ success: true }, { status: 201 });
+    return NextResponse.json({ message: 'User created successfully' }, { status: 201 });
   } catch (error) {
-    console.error("Error during sign-up:", error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error('Error during signup:', error);
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }

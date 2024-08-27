@@ -14,7 +14,7 @@ interface BlogDetailProps {
 // Function to fetch blog data
 const fetchBlogData = async (id: string) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/blog/Get/${id}`); // Adjust the API endpoint
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/Get/${id}`); // Adjust the API endpoint
     if (!res.ok) {
       throw new Error('Blog not found');
     }

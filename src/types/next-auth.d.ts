@@ -6,7 +6,7 @@ declare module "next-auth" {
       id?: string;        // Make optional if it might not be present
       name?: string;      // Make optional if it might not be present
       email?: string;     // Make optional if it might not be present
-      role?: 'Visitor' | 'Rédacteur' | 'Admin'; // Make optional if it might not be present
+      role?: 'SuperAdmin' | 'Admin' | 'Consulter' | 'Visiteur'; // Make optional if it might not be present
     };
   }
 
@@ -14,10 +14,10 @@ declare module "next-auth" {
     id: string;
     name: string;
     email: string;
-    role: 'Visitor' | 'Rédacteur' | 'Admin';
+    role: 'SuperAdmin' | 'Admin' | 'Consulter' | 'Visiteur';
   }
 
   interface JWT {
-    role?: 'Visitor' | 'Rédacteur' | 'Admin'; // Make optional if it might not be present
+    role?: 'SuperAdmin' | 'Admin' | 'Consulter' | 'Visiteur'; // Make optional if it might not be present
   }
 }

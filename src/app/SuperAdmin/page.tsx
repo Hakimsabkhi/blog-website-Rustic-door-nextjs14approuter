@@ -1,20 +1,42 @@
 import React from 'react';
-
 import { FaCog, FaUser, FaChartBar } from 'react-icons/fa';
 import Image from 'next/image';
-import { CldImage } from 'next-cloudinary'; // Ensure this image exists in your public folder
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/src/lib/authOptions';
+import { Session } from 'next-auth';
 
-function Page() {
+// Define your page as an async server component
+export default async function Page() {
+  const session: Session | null = await getServerSession(authOptions);
+
+  // Check if the user is not a 'SuperAdmin'
+  if (session?.user?.role !== 'SuperAdmin') {
+    return (
+      <section>
+        <div>
+          <h1 className="text-xl text-center text-red-500">
+            You are not authorized to view this Page
+          </h1>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <div className="flex">
-      
-      <div className="flex-1 p-6 ">
+      <div className="flex-1 p-6">
         <h1 className="text-4xl text-center text-primary hover:text-orange-400 font-bold mb-8">
           Admin Panel
         </h1>
-        
-        <div className="mt-8 flex justify-center mb-8 ">
-          <Image src={"https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg"} alt="Admin" width={100} height={100} className="rounded-lg shadow-lg" />
+
+        <div className="mt-8 flex justify-center mb-8">
+          <Image
+            src="https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg"
+            alt="Admin"
+            width={100}
+            height={100}
+            className="rounded-lg shadow-lg"
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -45,10 +67,7 @@ function Page() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
 }
-
-export default Page;
