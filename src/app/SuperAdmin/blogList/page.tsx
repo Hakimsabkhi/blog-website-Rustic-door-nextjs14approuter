@@ -1,6 +1,6 @@
 // src/pages/BlogPage.tsx
-import BlogListServer from '@/src/app/admin/blogList/components/BlogList.server';
-import BlogActions from '@/src/app/admin/blogList/components/BlogActions.client';
+import BlogListServer from '@/src/app/SuperAdmin/blogList/components/BlogList.server';
+import BlogActions from '@/src/app/SuperAdmin/blogList/components/BlogActions.client';
 
 const Page = async () => {
     return (

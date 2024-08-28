@@ -1,19 +1,15 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 import connectToDatabase from '@/src/lib/db';
 import User from '@/src/models/User';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  await connectToDatabase();
-
-  if (req.method === 'GET') {
-    try {
-      // Fetch all users excluding those with 'Admin' role
-      const users = await User.find({ role: { $ne: 'Admin' } });
-      res.status(200).json({ success: true, users });
-    } catch (error) {
-      res.status(400).json({ success: false });
-    }
-  } else {
-    res.status(400).json({ success: false }); // Bad Request
+// Handle GET requests to fetch users
+export async function GET() {
+  try {
+    await connectToDatabase();
+    const users = await User.find({ role: { $ne: 'SuperAdmin' } });
+    return NextResponse.json({ success: true, users });
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    return NextResponse.json({ success: false, error: 'Failed to fetch users' }, { status: 500 });
   }
 }

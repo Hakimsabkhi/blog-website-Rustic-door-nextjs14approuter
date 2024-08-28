@@ -1,29 +1,68 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import connectToDatabase from '@/src/lib/db';
-import User from '@/src/models/User';
+// src/app/api/users/[userid]/route.ts
+import { NextResponse } from 'next/server';
+import connectToDatabase from '@/src/lib/db'; // Import your database connection function
+import User from '@/src/models/User'; // Import your User model
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  await connectToDatabase();
+// Handler for GET requests for a specific user
+export async function GET(request: Request, { params }: { params: { userid: string } }) {
+  try {
+    // Connect to the database
+    await connectToDatabase();
 
-  const { userId } = req.query;
-
-  if (req.method === 'GET') {
-    const user = await User.findById(userId);
+    // Fetch user by ID
+    const user = await User.findById(params.userid);
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
-    res.status(200).json({ user });
-  } else if (req.method === 'DELETE') {
-    await User.findByIdAndDelete(userId);
-    res.status(204).end();
-  } else if (req.method === 'PUT') {
-    const { role } = req.body;
-    const user = await User.findByIdAndUpdate(userId, { role }, { new: true });
+    return NextResponse.json({ user });
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    return NextResponse.json({ error: 'Failed to fetch user' }, { status: 500 });
+  }
+}
+
+// Handler for DELETE requests for a specific user
+export async function DELETE(req: Request, { params }: { params: { userId: string } }) {
+  try {
+    await connectToDatabase();
+    const { userId } = params;
+
+    // Validate userId
+    if (!userId) {
+      return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
+    }
+
+    // Delete user
+    const result = await User.deleteOne({ _id: userId });
+
+    if (result.deletedCount === 0) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
+
+// Handler for PUT requests for a specific user
+export async function PUT(request: Request, { params }: { params: { userid: string } }) {
+  try {
+    // Connect to the database
+    await connectToDatabase();
+
+    // Parse request body
+    const { role } = await request.json();
+
+    // Update user role by ID
+    const user = await User.findByIdAndUpdate(params.userid, { role }, { new: true });
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
-    res.status(200).json({ user });
-  } else {
-    res.status(405).end(); // Method Not Allowed
+    return NextResponse.json({ user });
+  } catch (error) {
+    console.error('Error updating user:', error);
+    return NextResponse.json({ error: 'Failed to update user' }, { status: 500 });
   }
 }

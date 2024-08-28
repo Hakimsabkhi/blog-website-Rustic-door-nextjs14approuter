@@ -42,6 +42,13 @@ const Header: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (session) {
+      setIsModalOpen(false); // Close modal on successful sign-in
+      setIsModalRegOpen(false); // Close registration modal as well
+    }
+  }, [session]);
+
   const handleNavigation = (url: string) => {
     try {
       router.push(url);
@@ -298,7 +305,7 @@ const Header: React.FC = () => {
       )}
       
       {/* Modal */}
-      {isModalOpen && (
+      {isModalOpen && !session &&  (
   <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
     <div
       ref={modalRef}
@@ -315,7 +322,7 @@ const Header: React.FC = () => {
   </div>
 )}
 
-{isModalRegOpen && (
+{isModalRegOpen && !session && (
   <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
     <div
       ref={modalRef}
