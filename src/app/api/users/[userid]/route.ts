@@ -22,29 +22,30 @@ export async function GET(request: Request, { params }: { params: { userid: stri
 }
 
 // Handler for DELETE requests for a specific user
-export async function DELETE(req: Request, { params }: { params: { userId: string } }) {
+
+export async function DELETE(req: Request, { params }: { params: { userid: string } }) {
   try {
     await connectToDatabase();
-    const { userId } = params;
 
-    // Validate userId
-    if (!userId) {
+    const { userid } = params;
+
+    if (!userid) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
     }
 
-    // Delete user
-    const result = await User.deleteOne({ _id: userId });
+    const user = await User.findByIdAndDelete(userid);
 
-    if (result.deletedCount === 0) {
+    if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({ message: 'User deleted successfully' }, { status: 200 });
   } catch (error) {
     console.error('Error deleting user:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to delete user' }, { status: 500 });
   }
 }
+
 
 // Handler for PUT requests for a specific user
 export async function PUT(request: Request, { params }: { params: { userid: string } }) {

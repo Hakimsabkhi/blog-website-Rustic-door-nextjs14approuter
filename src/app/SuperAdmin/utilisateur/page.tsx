@@ -41,20 +41,28 @@ const Utilisateur = () => {
   };
 
   const handleDeleteUser = async (userId: string) => {
-  try {
-    const res = await fetch(`/api/users/${userId}`, { method: "DELETE" });
-
-    if (res.ok) {
-      fetchUsers(); // Refresh the user list
-    } else {
-      const errorData = await res.json();
-      throw new Error(errorData.error || 'Failed to delete user');
+    try {
+      console.log('Deleting user with ID:', userId); // Debugging output
+  
+      if (!userId) {
+        throw new Error('User ID is required');
+      }
+  
+      const res = await fetch(`/api/users/${userId}`, { method: 'DELETE' });
+  
+      if (res.ok) {
+        fetchUsers(); // Refresh the user list
+      } else {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Failed to delete user');
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      toast.error('Error deleting user');
     }
-  } catch (error) {
-    console.error('Error deleting user:', error);
-    toast.error('Error deleting user');
-  }
-};
+  };
+  
+  
 
 
   const handleChangeRole = async (userId: string, newRole: string) => {
@@ -95,7 +103,7 @@ const Utilisateur = () => {
     <div className="container mx-auto py-12 px-4 sm:px-8 mt-12 bg-gray-100 min-h-screen">
       <ToastContainer />
       <h1 className="text-4xl font-bold mb-8 text-center text-gray-900">Liste Des Utilisateurs</h1>
-      <div className="relative shadow-lg rounded-lg bg-white overflow-x-auto">
+      <div className="relative shadow-lg rounded-lg bg-white ">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

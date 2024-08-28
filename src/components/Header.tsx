@@ -11,7 +11,7 @@ import Link from 'next/link';
 import SignIn from '@/src/app/(auth)/signin/page'; // Ensure the path is correct
 import SignUp from '@/src/app/(auth)/signup/page';
 import InfoBar from './InfoBar';
-import { User, Shield, Edit, LogOut } from 'lucide-react';
+import { User, Shield, Edit, LogOut,LayoutDashboard } from 'lucide-react';
 import NavBar from './Navbar';
 
 const Header: React.FC = () => {
@@ -154,6 +154,16 @@ const Header: React.FC = () => {
                     <Shield className="w-4 h-4 text-gray-800 ml-2" />
                     <span className="block px-4 py-2 text-gray-800">Role: {session.user?.role}</span>
                   </li>
+                  {session.user?.role === 'SuperAdmin' && (
+                      <li className="flex items-center">
+                        <Link href="/SuperAdmin" className="flex items-center">
+                        <LayoutDashboard className="w-4 h-4 text-gray-800 ml-2" />
+                          <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={closeDropdown}>
+                            Dashboard
+                          </span>
+                        </Link>
+                      </li>
+                    )}
                   <li className="flex items-center">
                     <Link href="/profile" className="flex items-center">
                       <Edit className="w-4 h-4 text-gray-800 ml-2" />
@@ -192,7 +202,7 @@ const Header: React.FC = () => {
                 <FontAwesomeIcon icon={faUser} className="text-xl" />
               </button>
               {isMobileDropdownOpen && (
-              <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white border border-gray-200 shadow-lg">
+              <div className="absolute left-1/4 transform -translate-x-[80%] mt-2 w-48 bg-white border border-gray-200 shadow-lg">
   <ul className="flex flex-col">
     <li className="flex items-center">
       <User className="w-4 h-4 text-gray-800 ml-2" />
@@ -202,6 +212,16 @@ const Header: React.FC = () => {
       <Shield className="w-4 h-4 text-gray-800 ml-2" />
       <span className="block px-4 py-2 text-gray-800">Role: {session.user?.role}</span>
     </li>
+    {session.user?.role === 'SuperAdmin' && (
+                      <li className="flex items-center">
+                        <Link href="/SuperAdmin" className="flex items-center">
+                        <LayoutDashboard className="w-4 h-4 text-gray-800 ml-2" />
+                          <span className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={closeDropdown}>
+                            Dashboard
+                          </span>
+                        </Link>
+                      </li>
+                    )}
     <li className="flex items-center">
       <Link href="/profile" className="flex items-center">
         <Edit className="w-4 h-4 text-gray-800 ml-2" />
