@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import SideBar from './components/SideBar';
+import SideBar from '../../components/admin/SideBar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
