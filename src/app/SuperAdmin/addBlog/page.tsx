@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import AddImage from '../comments/page';
 
-
 function Page() {
   const [image, setImage] = useState<File | null>(null);
   const [imageURL, setImageURL] = useState<string | null>(null);
@@ -17,57 +16,57 @@ function Page() {
     UserImg: "https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg",
     AddMoreBlog: [] as Array<{ title: string; description: string; imageUrl: string | null }>,
   });
- 
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
-  
-    // Fonction pour gérer l'URL de l'image après l'upload
-    const handleUploadSuccess = (url: string) => {
-      console.log('Image upload successful. URL:', url);
-      setImageUrl(url);
-    };
-    
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
+  const [tempImageUrl, setTempImageUrl] = useState<string | null>(null);
 
-
-
+  // Define onChangeHandler
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
     setData(prevData => ({ ...prevData, [name]: value }));
   };
 
+  // Define handleTitleChange
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTitle(event.target.value);
   };
 
+  // Define handleDescriptionChange
   const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNewDescription(event.target.value);
   };
 
-
+  const handleUploadSuccess = (url: string) => {
+    setTempImageUrl(url);
+  };
 
   const addMoreBlog = () => {
-    setData(prevData => ({
-      ...prevData,
-      AddMoreBlog: [
-        ...prevData.AddMoreBlog,
-        {
-          title: newTitle,
-          description: newDescription,
-          imageUrl: imageUrl 
-        }
-      ]
-    }));
-    setNewTitle("");
-    setNewDescription("");
-    setImageURL(null);
-    setIsAddModalOpen(false);
+    if (tempImageUrl) {
+      setData(prevData => ({
+        ...prevData,
+        AddMoreBlog: [
+          ...prevData.AddMoreBlog,
+          {
+            title: newTitle,
+            description: newDescription,
+            imageUrl: tempImageUrl  // Ensure the image URL is correctly set here
+          }
+        ]
+      }));
+      setNewTitle("");
+      setNewDescription("");
+      setTempImageUrl(null);
+      setIsAddModalOpen(false);
+    } else {
+      toast.error("Please upload an image before adding a blog.");
+    }
   };
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('description', data.description);
@@ -75,30 +74,30 @@ function Page() {
     formData.append('userName', data.userName);
     formData.append('userImg', data.UserImg);
     formData.append('AddMoreBlog', JSON.stringify(data.AddMoreBlog));
-
+  
     if (image) {
       formData.append('image', image);
     } else {
       toast.error("Please select a main image before submitting.");
       return;
     }
-
-    // Ajouter les images supplémentaires à FormData
-    data.AddMoreBlog.forEach((entry, index) => {
-    if (entry.imageUrl) {
-    formData.append(`addMoreBlogImages[${index}]`, entry.imageUrl);
-  }
-});
-   
-
+  
+    // Manual logging
+    console.log('title:', formData.get('title'));
+    console.log('description:', formData.get('description'));
+    console.log('Category:', formData.get('Category'));
+    console.log('userName:', formData.get('userName'));
+    console.log('userImg:', formData.get('userImg'));
+    console.log('AddMoreBlog:', formData.get('AddMoreBlog'));
+  
     try {
       const response = await fetch('/api/blog/Post', {
         method: 'POST',
         body: formData,
       });
-
+  
       const result = await response.json();
-
+  
       if (response.ok) {
         toast.success(result.msg);
       } else {
@@ -108,6 +107,7 @@ function Page() {
       toast.error("An unexpected error occurred.");
     }
   };
+  
 
   const handleDelete = (index: number) => {
     setData(prevData => ({
@@ -123,8 +123,6 @@ function Page() {
       return () => URL.revokeObjectURL(url);
     }
   }, [image]);
-
-  
 
   return (
     <section>
@@ -203,9 +201,9 @@ function Page() {
                   placeholder='Description'
                   className='border p-2 mb-2'
                 />
-                 <AddImage onUploadSuccess={handleUploadSuccess} />
-                </div>
-                <div className='flex gap-4'>
+                <AddImage onUploadSuccess={handleUploadSuccess} />
+              </div>
+              <div className='flex gap-4'>
                 <button
                   onClick={addMoreBlog}
                   className=' text-white bg-blue-500 py-2 px-4 rounded mt-2'
@@ -218,30 +216,28 @@ function Page() {
                 >
                   Close
                 </button>
-                </div>
               </div>
+            </div>
           )}
         </div>
         {/* Preview of Added Entries Block */}
         <div className='mt-8'>
-          
           {data.AddMoreBlog.map((entry, index) => (
             <div key={index} className='mb-6 border p-4'>
               <h2 className='text-xl font-bold'>{entry.title}</h2>
               <span className='text-black font-semibold'>Description</span>
               <p>{entry.description}</p>
-              {/* Affiche l'image si elle est disponible */}
               {entry.imageUrl && (
-              <div className="mt-4">
-                <Image 
-                  src={entry.imageUrl} 
-                  alt="Uploaded Image" 
-                  className="rounded-lg shadow-md" 
-                  width={200} 
-                  height={20} 
-                />
-              </div>
-            )}
+                <div className="mt-4">
+                  <Image 
+                    src={entry.imageUrl} 
+                    alt="Uploaded Image" 
+                    className="rounded-lg shadow-md" 
+                    width={200} 
+                    height={20} 
+                  />
+                </div>
+              )}
               <button
                 onClick={() => handleDelete(index)}
                 className='text-white bg-red-500 py-1 px-4 rounded mt-2'
