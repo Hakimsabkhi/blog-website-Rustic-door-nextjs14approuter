@@ -64,7 +64,6 @@ const Utilisateur = () => {
   
   
 
-
   const handleChangeRole = async (userId: string, newRole: string) => {
     try {
       const response = await fetch(`/api/users/${userId}`, {

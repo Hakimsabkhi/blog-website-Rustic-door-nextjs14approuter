@@ -1,9 +1,16 @@
+// src/components/BlogActions.client.tsx
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation'; // Assurez-vous d'importer useRouter de 'next/navigation'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
+
+interface BlogActionsProps {
+  params: { id: string };
+  onActionComplete?: () => void;
+}
 
 interface Blog {
   title: string;
@@ -11,7 +18,8 @@ interface Blog {
   image: string;
 }
 
-export default function BlogActions({ params }: { params: { id: string } }) {
+const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) => {
+  const router = useRouter(); // Utilisez useRouter ici
   const id = params.id;
   const [blog, setBlog] = useState<Blog>({
     title: '',
@@ -22,14 +30,12 @@ export default function BlogActions({ params }: { params: { id: string } }) {
   const [file, setFile] = useState<File | null>(null);
   const [imageURL, setImageURL] = useState<string | undefined>(undefined);
 
-
-  // Fetch blog data
   const getBlogData = useCallback(() => {
     fetch(`/api/blog/Get/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
-        setImageURL(data.image); // Set image URL to display the current image
+        setImageURL(data.image);
       })
       .catch((e) => {
         console.error(e.message);
@@ -38,10 +44,10 @@ export default function BlogActions({ params }: { params: { id: string } }) {
   }, [id]);
 
   useEffect(() => {
+    if (!id) return;
     getBlogData();
-  }, [getBlogData]);
+  }, [id, getBlogData]);
 
-  // Handle input change
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -52,7 +58,6 @@ export default function BlogActions({ params }: { params: { id: string } }) {
     }));
   };
 
-  // Handle file change
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
@@ -60,7 +65,6 @@ export default function BlogActions({ params }: { params: { id: string } }) {
     }
   };
 
-  // Handle form submission
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -85,8 +89,8 @@ export default function BlogActions({ params }: { params: { id: string } }) {
       if (response.ok) {
         toast.success('Blog updated successfully!');
         setIsFormOpen(false);
-        getBlogData(); // Refresh blog data to show updated image
-    
+        router.refresh(); // Rafraîchissement automatique
+        onActionComplete?.(); // Notify parent component of completion
       }
     } catch (error) {
       toast.error('Error updating blog');
@@ -94,28 +98,31 @@ export default function BlogActions({ params }: { params: { id: string } }) {
     }
   };
 
-  // Handle delete blog
   const handleDelete = async () => {
     try {
-      const response = await fetch(`/api/blog/Delete/${id}`, {
-        method: 'DELETE',
-      });
-      if (response.ok) {
+      if (!id) {
+        throw new Error('Blog ID is required');
+      }
+
+      const res = await fetch(`/api/blog/Delete/${id}`, { method: 'DELETE' });
+
+      if (res.ok) {
         toast.success('Blog deleted successfully');
-     
+        router.refresh(); // Rafraîchissement automatique
+      } else {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Failed to delete blog');
       }
     } catch (error) {
-      toast.error('Error deleting blog');
       console.error('Error deleting blog:', error);
+      toast.error('Error deleting blog');
     }
   };
 
-  // Open the form
   const handleOpenForm = () => {
     setIsFormOpen(true);
   };
 
-  // Close the form
   const handleCloseForm = () => {
     setIsFormOpen(false);
   };
@@ -141,77 +148,60 @@ export default function BlogActions({ params }: { params: { id: string } }) {
             <h2 className="text-lg font-bold mb-4">Edit Blog</h2>
             <form onSubmit={handleFormSubmit}>
               <div className="mb-4">
-                <label className="block text-gray-700">Title:</label>
+                <label className="block text-gray-700 mb-2" htmlFor="title">Title</label>
                 <input
                   type="text"
                   name="title"
                   value={blog.title}
                   onChange={handleInputChange}
-                  className="border rounded p-2 w-full"
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700">Category:</label>
-                <select
+                <label className="block text-gray-700 mb-2" htmlFor="category">Category</label>
+                <input
+                  type="text"
                   name="category"
                   value={blog.category}
                   onChange={handleInputChange}
-                  className="border rounded p-2 w-full"
-                >
-                  <option value="Blue">Blue</option>
-                  <option value="Red">Red</option>
-                  <option value="Yellow">Yellow</option>
-                </select>
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700">Image:</label>
+                <label className="block text-gray-700 mb-2" htmlFor="image">Image</label>
                 <input
                   type="file"
+                  name="image"
                   onChange={handleFileChange}
-                  className="border rounded p-2 w-full"
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
                 {imageURL && (
-                  <div className="mt-2">
-                    <Image
-                      src={imageURL}
-                      alt="Selected Image"
-                      width={200}
-                      height={200}
-                      className="object-cover border rounded"
-                    />
-                  </div>
+                  <img src={imageURL} alt="Preview" className="mt-2 w-32 h-32 object-cover" />
                 )}
               </div>
-              <div className="flex justify-end space-x-2">
-                <button
-                  type="button"
-                  onClick={handleCloseForm}
-                  className="px-4 py-2 bg-gray-300 text-black rounded"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white rounded"
-                >
-                  Save Changes
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-green-500 text-white rounded"
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                onClick={handleCloseForm}
+                className="px-4 py-2 bg-gray-500 text-white rounded ml-2"
+              >
+                Cancel
+              </button>
             </form>
           </div>
         </div>
       )}
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+
+      <ToastContainer />
     </div>
   );
-}
+};
+
+export default BlogActions;

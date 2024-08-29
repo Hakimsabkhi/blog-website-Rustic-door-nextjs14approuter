@@ -24,9 +24,9 @@ const BlogListServer = async () => {
 
         return (
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <h1 className='text-4xl font-semibold text-orange-400 text-center py-6
-                
-                '>Blog Liste</h1>
+                <h1 className='text-4xl font-semibold text-orange-400 text-center py-6'>
+                    Blog Liste
+                </h1>
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -65,7 +65,6 @@ const BlogListServer = async () => {
                                 <td className="px-6 py-4">{blog.category}</td>
                                 <td className="px-6 py-4">{new Date(blog.date).toLocaleDateString()}</td>
                                 <td className="px-6 py-4 flex space-x-2">
-                                    {/* Pass params object with id as expected by BlogActions */}
                                     <BlogActions params={{ id: blog._id }} />
                                 </td>
                             </tr>

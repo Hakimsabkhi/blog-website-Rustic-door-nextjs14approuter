@@ -40,7 +40,7 @@ const BlogDetail: React.FC<{ params: { id: string } }> = async ({ params }) => {
 
   return (
     <div>
-      <Block1 blog={blog} />
+      <Block1 blog={blog} userId={null} />
       <Block2 blog={blog} />
       <CommentsBlock />
     </div>

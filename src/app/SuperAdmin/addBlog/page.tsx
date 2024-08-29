@@ -18,19 +18,18 @@ function Page() {
     AddMoreBlog: [] as Array<{ title: string; description: string; imageUrl: string | null }>,
   });
  
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
   
-    // Fonction pour gérer l'URL de l'image après l'upload
-    const handleUploadSuccess = (url: string) => {
-      console.log('Image upload successful. URL:', url);
-      setImageUrl(url);
-    };
-    
+        
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
 
+    // Fonction pour gérer l'URL de l'image après l'upload
+    const handleUploadSuccess = (url: string) => {
+      setImageUrl(url);
+    };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
@@ -83,13 +82,6 @@ function Page() {
       return;
     }
 
-    // Ajouter les images supplémentaires à FormData
-    data.AddMoreBlog.forEach((entry, index) => {
-    if (entry.imageUrl) {
-    formData.append(`addMoreBlogImages[${index}]`, entry.imageUrl);
-  }
-});
-   
 
     try {
       const response = await fetch('/api/blog/Post', {
