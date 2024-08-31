@@ -3,8 +3,7 @@ import Image from 'next/image';
 import { CldImage } from 'next-cloudinary';
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import AddImage from '../comments/page';
-
+import AddImage from '@/src/components/admin/UploadImage';
 
 function Page() {
   const [image, setImage] = useState<File | null>(null);
@@ -14,22 +13,19 @@ function Page() {
     description: "",
     Category: "Blue",
     userName: "Aziz Maaref",
-    UserImg: "https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg",
+    userImg: "https://res.cloudinary.com/dzo2bvw5a/image/upload/v1723116603/profileImage_npkuum.jpg",
     AddMoreBlog: [] as Array<{ title: string; description: string; imageUrl: string | null }>,
   });
- 
-  
-        
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-
-    // Fonction pour gérer l'URL de l'image après l'upload
-    const handleUploadSuccess = (url: string) => {
-      setImageUrl(url);
-    };
+  // Handle the uploaded image URL
+  const handleUploadSuccess = (url: string) => {
+    setImageUrl(url);
+  };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
@@ -43,8 +39,6 @@ function Page() {
   const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNewDescription(event.target.value);
   };
-
-
 
   const addMoreBlog = () => {
     setData(prevData => ({
@@ -60,7 +54,7 @@ function Page() {
     }));
     setNewTitle("");
     setNewDescription("");
-    setImageURL(null);
+    setImageUrl(null);
     setIsAddModalOpen(false);
   };
 
@@ -72,7 +66,7 @@ function Page() {
     formData.append('description', data.description);
     formData.append('Category', data.Category);
     formData.append('userName', data.userName);
-    formData.append('userImg', data.UserImg);
+    formData.append('userImg', data.userImg);
     formData.append('AddMoreBlog', JSON.stringify(data.AddMoreBlog));
 
     if (image) {
@@ -81,7 +75,6 @@ function Page() {
       toast.error("Please select a main image before submitting.");
       return;
     }
-
 
     try {
       const response = await fetch('/api/blog/Post', {
@@ -115,8 +108,6 @@ function Page() {
       return () => URL.revokeObjectURL(url);
     }
   }, [image]);
-
-  
 
   return (
     <section>
@@ -170,9 +161,14 @@ function Page() {
         <div>
           <h1 className='text-xl'>Blog Category</h1>
           <select name="Category" onChange={onChangeHandler} value={data.Category} id="" className='w-40 mt-4 px-4 py-3 border text-gray-500'>
-            <option value="Blue">Blue</option>
-            <option value="Rouge">Rouge</option>
-            <option value="Jaun">Jaun</option>
+            <option value="Blue" className='text-blue-500'>Blue</option>
+            <option value="Rouge"className='text-red-600'>Rouge</option>
+            <option value="Jaun"className='text-yellow-500'>Jaun</option>
+            <option value="Blanc"className='text-white-800'>blanc</option>
+            <option value="Orange"className='text-orange-500'>Orange</option>
+            <option value="Noir"className='tex-gray-900'>Noir</option>
+            <option value="Vert"className='text-green-500'>Vert</option> 
+            <option value="Gris"className='text-gray-500'>Gris</option>
           </select>
         </div>
         {/* Add More Blog Titles and Descriptions */}
@@ -227,30 +223,20 @@ function Page() {
               <div className="mt-4">
                 <Image 
                   src={entry.imageUrl} 
-                  alt="Uploaded Image" 
-                  className="rounded-lg shadow-md" 
+                  alt="Image uploaded" 
                   width={200} 
-                  height={20} 
+                  height={150} 
+                  className="object-cover" 
                 />
               </div>
             )}
-              <button
-                onClick={() => handleDelete(index)}
-                className='text-white bg-red-500 py-1 px-4 rounded mt-2'
-              >
+              <button onClick={() => handleDelete(index)} className='mt-4 text-white bg-red-500 py-2 px-4 rounded'>
                 Delete
               </button>
             </div>
           ))}
         </div>
-        <div className='text-center'>
-          <button
-            type='submit'
-            className='text-white bg-blue-500 py-2 px-4 rounded'
-          >
-            Add Blog
-          </button>
-        </div>
+        <button className='text-white bg-green-500 py-2 px-4 rounded' type="submit">Add Blog</button>
       </form>
     </section>
   );
