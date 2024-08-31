@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -29,7 +28,7 @@ const Page: React.FC = async () => {
       <div className='grid gap-2 sm:gap-2 md:gap-6 lg:gap-6 xl:gap-6 2xl:gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3'>
         {blogs.map((blog) => (
           <div 
-            key={blog._id} // Use _id instead of id for MongoDB
+            key={String(blog._id)} // Cast _id to string
             className={`w-full mb-2 overflow-hidden block rounded-xl border shadow-xl transition hover:border-orange-400/10 hover:shadow-orange-400/10 flex-1`}
           >
             <Link href={`/blog_details/${blog._id}`} className="relative block">
@@ -55,7 +54,7 @@ const Page: React.FC = async () => {
                 </div>
                 <div className="flex items-center gap-1">
                   <AiOutlineComment className="text-[15px] sm:text-[15px] md:text-[20px] lg:text-[20px] xl:text-[20px] 2xl:text-[20px]" />
-                  <Link href={`/blog_details/${blog._id}`} className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">{blog.comments}</Link>
+                  <Link href={`/blog_details/${blog._id}`} className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]"></Link>
                   <p className="text-gray-800 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:text-[15px]">comments</p>
                 </div>
               </div>

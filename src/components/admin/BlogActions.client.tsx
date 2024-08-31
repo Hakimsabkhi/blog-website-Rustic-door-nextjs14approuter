@@ -1,8 +1,8 @@
-// src/components/BlogActions.client.tsx
+// src/components/admin/BlogActions.client.tsx
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation'; // Assurez-vous d'importer useRouter de 'next/navigation'
+import { useRouter } from 'next/navigation';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
@@ -19,8 +19,8 @@ interface Blog {
 }
 
 const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) => {
-  const router = useRouter(); // Utilisez useRouter ici
-  const id = params.id;
+  const router = useRouter();
+  const id = params?.id;
   const [blog, setBlog] = useState<Blog>({
     title: '',
     category: '',
@@ -30,8 +30,15 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
   const [file, setFile] = useState<File | null>(null);
   const [imageURL, setImageURL] = useState<string | undefined>(undefined);
 
+  // States for confirmation modals
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [confirmText, setConfirmText] = useState('');
+  const [actionType, setActionType] = useState<'delete' | 'update' | null>(null);
+
   const getBlogData = useCallback(() => {
-    fetch(`/api/blog/Get/${id}`)
+    if (!id) return;
+
+    fetch(`/api/blog/get/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
@@ -44,9 +51,8 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
   }, [id]);
 
   useEffect(() => {
-    if (!id) return;
     getBlogData();
-  }, [id, getBlogData]);
+  }, [getBlogData]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -65,9 +71,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
     }
   };
 
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleFormSubmit = async () => {
     if (blog.title === '' || blog.category === '') {
       toast.error('Please fill in all fields');
       return;
@@ -81,7 +85,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
     }
 
     try {
-      const response = await fetch(`/api/blog/Update/${id}`, {
+      const response = await fetch(`/api/blog/put/${id}`, {
         method: 'PUT',
         body: formData,
       });
@@ -89,8 +93,8 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
       if (response.ok) {
         toast.success('Blog updated successfully!');
         setIsFormOpen(false);
-        router.refresh(); // Rafraîchissement automatique
-        onActionComplete?.(); // Notify parent component of completion
+        router.refresh();
+        onActionComplete?.();
       }
     } catch (error) {
       toast.error('Error updating blog');
@@ -99,23 +103,31 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
   };
 
   const handleDelete = async () => {
-    try {
-      if (!id) {
-        throw new Error('Blog ID is required');
-      }
+    if (confirmText === 'blog') {
+      try {
+        if (!id) {
+          throw new Error('Blog ID is required');
+        }
 
-      const res = await fetch(`/api/blog/Delete/${id}`, { method: 'DELETE' });
+        const res = await fetch(`/api/blog/delete/${id}`, { method: 'DELETE' });
 
-      if (res.ok) {
-        toast.success('Blog deleted successfully');
-        router.refresh(); // Rafraîchissement automatique
-      } else {
-        const errorData = await res.json();
-        throw new Error(errorData.error || 'Failed to delete blog');
+        if (res.ok) {
+          toast.success('Blog deleted successfully');
+          router.refresh();
+        } else {
+          const errorData = await res.json();
+          throw new Error(errorData.error || 'Failed to delete blog');
+        }
+      } catch (error) {
+        console.error('Error deleting blog:', error);
+        toast.error('Error deleting blog');
+      } finally {
+        setIsConfirmOpen(false);
+        setConfirmText('');
+        setActionType(null);
       }
-    } catch (error) {
-      console.error('Error deleting blog:', error);
-      toast.error('Error deleting blog');
+    } else {
+      toast.error('Please type "blog" to confirm');
     }
   };
 
@@ -127,17 +139,28 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
     setIsFormOpen(false);
   };
 
+  const handleOpenConfirm = (type: 'delete' | 'update') => {
+    setActionType(type);
+    setIsConfirmOpen(true);
+  };
+
+  const handleCloseConfirm = () => {
+    setIsConfirmOpen(false);
+    setConfirmText('');
+    setActionType(null);
+  };
+
   return (
     <div id="main" className="flex space-x-2">
       <button
         className="px-4 py-2 bg-blue-500 text-white rounded"
         onClick={handleOpenForm}
       >
-        Update
+        Open Form
       </button>
       <button
         className="px-4 py-2 bg-red-500 text-white rounded"
-        onClick={handleDelete}
+        onClick={() => handleOpenConfirm('delete')}
       >
         Delete
       </button>
@@ -146,7 +169,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-lg font-bold mb-4">Edit Blog</h2>
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={(e) => { e.preventDefault(); handleOpenConfirm('update'); }}>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2" htmlFor="title">Title</label>
                 <input
@@ -182,7 +205,8 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
                 )}
               </div>
               <button
-                type="submit"
+                type="button"
+                onClick={() => handleOpenConfirm('update')}
                 className="px-4 py-2 bg-green-500 text-white rounded"
               >
                 Save
@@ -195,6 +219,46 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
                 Cancel
               </button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {isConfirmOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-lg font-bold mb-4">Confirm {actionType === 'update' ? 'Update' : 'Delete'}</h2>
+            <p className="mb-4">
+              {actionType === 'update'
+                ? 'Type "update" to confirm your action.'
+                : 'Type "blog" to confirm your action.'
+              }
+            </p>
+            <input
+              type="text"
+              value={confirmText}
+              onChange={(e) => setConfirmText(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded mb-4"
+            />
+            {confirmText === (actionType === 'update' ? 'update' : 'blog') && (
+              <button
+                onClick={() => {
+                  if (actionType === 'update') {
+                    handleFormSubmit();
+                  } else {
+                    handleDelete();
+                  }
+                }}
+                className="px-4 py-2 bg-green-500 text-white rounded mr-2"
+              >
+                {actionType === 'update' ? 'Update' : 'Delete'}
+              </button>
+            )}
+            <button
+              onClick={handleCloseConfirm}
+              className="px-4 py-2 bg-gray-500 text-white rounded"
+            >
+              Cancel
+            </button>
           </div>
         </div>
       )}

@@ -10,7 +10,7 @@ import UserModel from '@/src/models/User';
 declare module 'next-auth' {
   // Extend the DefaultSession interface
   interface Session {
-    user: DefaultSession['user'] & {
+    username: DefaultSession['user'] & {
       id: string;
       role: 'Visiteur' | 'Consulter' | 'Admin' | 'SuperAdmin';
     };
@@ -29,7 +29,7 @@ type UserType = {
   email: string;
   password?: string;
   role?: 'Visiteur' | 'Consulter' | 'Admin' | 'SuperAdmin' | null;
-  image?: string | null;
+  
   save: () => Promise<UserType>;
 };
 
@@ -85,7 +85,7 @@ export const authOptions: NextAuthOptions = {
             id: user._id.toString(),
             name: user.username,
             email: user.email,
-            image: user.image || null,
+          
             role: user.role || 'Visiteur', // Default to 'Visiteur' if no role is found
           } as NextAuthUser;
         } catch (error) {
@@ -109,7 +109,7 @@ export const authOptions: NextAuthOptions = {
           id: token.id as string,
           name: token.name as string,
           email: token.email as string,
-          image: token.image as string | null,
+          
           role: token.role as 'Visiteur' | 'Consulter' | 'Admin' | 'SuperAdmin',
         };
       }
@@ -121,7 +121,7 @@ export const authOptions: NextAuthOptions = {
         
         token.id = user.id;
         token.role = users?.role;
-        token.image = user.image || null;
+        
       }
       return token;
     },
@@ -135,7 +135,7 @@ export const authOptions: NextAuthOptions = {
             role: user.role,
             email: user.email as string,
             password: undefined,
-            image: user.image || null,
+            
           }) as UserType;
           await newUser.save();
         } /* else {

@@ -41,13 +41,14 @@ const ProductPage: React.FC<{ params: { id: string } }> = async ({ params }) => 
 };
 
 // Generate static paths for all products
+// Generate static params for all products
 export async function generateStaticParams() {
   // Get all product IDs to generate static paths
-  const paths = products.map((product) => ({
+  const params = products.map((product) => ({
     id: product.id.toString(),
   }));
 
-  return { paths, fallback: 'blocking' }; // Use 'blocking' for SSR fallback or 'false' for no fallback
+  return params; // Return just the array of params
 }
 
 export default ProductPage;

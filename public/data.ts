@@ -11,6 +11,7 @@ import { StaticImageData } from 'next/image';
 
 
 
+
 {/*MetaData Layout */}
 export const metadata: Metadata = {
   title: 'Rustika House',

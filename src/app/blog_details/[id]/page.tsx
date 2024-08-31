@@ -1,5 +1,4 @@
 // Use GetStatiqueParams Generation
-
 import React from 'react';
 import Block1 from '../components/Block1';
 import CommentsBlock from '../components/CommentsBlock';
@@ -14,7 +13,7 @@ interface BlogDetailProps {
 // Function to fetch blog data
 const fetchBlogData = async (id: string) => {
   try {
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/Get/${id}`); // Adjust the API endpoint
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/get/${id}`); // Adjust the API endpoint
     if (!res.ok) {
       throw new Error('Blog not found');
     }
@@ -40,7 +39,7 @@ const BlogDetail: React.FC<{ params: { id: string } }> = async ({ params }) => {
 
   return (
     <div>
-      <Block1 blog={blog} userId={null} />
+      <Block1 blog={blog} />
       <Block2 blog={blog} />
       <CommentsBlock />
     </div>
@@ -50,7 +49,7 @@ const BlogDetail: React.FC<{ params: { id: string } }> = async ({ params }) => {
 // Generate static paths for all blog posts
 export async function generateStaticParams() {
   try {
-    const res = await fetch('http://localhost:3000/api/blog'); // Adjust the API endpoint
+    const res = await fetch('${process.env.NEXTAUTH_URL}/api/blog'); // Adjust the API endpoint
 
     // Check if the response is OK and content-type is JSON
     if (!res.ok) {
