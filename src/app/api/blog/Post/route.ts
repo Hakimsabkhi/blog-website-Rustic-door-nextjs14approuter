@@ -11,7 +11,7 @@ async function uploadImage(imageFile: File): Promise<string> {
   if (!allowedTypes.includes(imageFile.type)) {
     throw new Error('Invalid image type');
   }
-   
+
   if (imageFile.size > 2 * 1024 * 1024) { // Limite de 2 Mo
     throw new Error('Image size exceeds 2MB');
   }
@@ -57,15 +57,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    let parsedAddMoreBlog: { title: string; description: string; imageUrl?: string; image?: string }[] = []; {/*icic faire modification aussi add this ->imageUrl?: string;*/}
+    let parsedAddMoreBlog: { title: string; description: string; imageUrl?: string }[] = [];
     try {
       parsedAddMoreBlog = JSON.parse(addMoreBlog);
     } catch (parseError) {
       console.error('JSON parse error:', parseError);
       return NextResponse.json({ error: 'Invalid JSON format for AddMoreBlog' }, { status: 400 });
     }
-
-
 
     const imageFile = formData.get('image') as File | null;
     let mainImage = null;
@@ -79,25 +77,12 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    
-const addMoreBlogFiles = Array.from(formData.getAll('addMoreBlogImages')) as File[];
-const addMoreBlogImages: string[] = [];
-for (const file of addMoreBlogFiles) {
-  try {
-    const imageUrl = await uploadImage(file);
-    addMoreBlogImages.push(imageUrl);
-  } catch (uploadError) {
-    console.error('Cloudinary upload error:', uploadError);
-    return NextResponse.json({ error: 'Error uploading additional images' }, { status: 500 });
-  }
-}
+    // Associer les images supplémentaires aux entrées correspondantes n'est plus nécessaire
 
-console.log('AddMoreBlog Images:', addMoreBlogImages);
-
-    // Associer les images supplémentaires aux entrées correspondantes
-    const updatedAddMoreBlog = parsedAddMoreBlog.map((entry, index) => ({
+    // Mise à jour des entrées AddMoreBlog sans images supplémentaires
+    const updatedAddMoreBlog = parsedAddMoreBlog.map((entry) => ({
       ...entry,
-      image: entry.imageUrl || addMoreBlogImages[index] || '', // Assurer que chaque entrée a une image ou une chaîne vide // ici le problem {/* Le solution ->entry.imageUrl || */}
+      image: entry.imageUrl || '', // Assurer que chaque entrée a une image ou une chaîne vide
     }));
 
     const blogData = {

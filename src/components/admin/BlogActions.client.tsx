@@ -156,7 +156,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
         className="px-4 py-2 bg-blue-500 text-white rounded"
         onClick={handleOpenForm}
       >
-        Open Form
+        Update
       </button>
       <button
         className="px-4 py-2 bg-red-500 text-white rounded"

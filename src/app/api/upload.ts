@@ -93,9 +93,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           const newBlog = new Blog({
             ...fields,
             image: imageUrls[0] || '', // URL de l'image principale
-            AddMoreBlog: fields.AddMoreBlog?.map((entry: any, index: number) => ({
+            AddMoreBlog: fields.AddMoreBlog?.map((entry: any) => ({
               ...entry,
-              image: imageUrls[index + 1] || '', // Assigner correctement l'URL de l'image pour AddMoreBlog
+              image: '', // Assigner une chaîne vide pour les images supplémentaires qui ne sont plus gérées
             })) || [],
           });
 
@@ -149,9 +149,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             blogToUpdate.image = imageUrls[0];
           }
 
-          blogToUpdate.AddMoreBlog = fields.AddMoreBlog?.map((entry: any, index: number) => ({
+          blogToUpdate.AddMoreBlog = fields.AddMoreBlog?.map((entry: any) => ({
             ...entry,
-            image: imageUrls[index + 1] || '',
+            image: '', // Assigner une chaîne vide pour les images supplémentaires qui ne sont plus gérées
           })) || [];
 
           await blogToUpdate.save(); // Sauvegarder l'article de blog mis à jour dans la base de données
@@ -196,6 +196,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             await cloudinary.uploader.destroy(blogToDelete.image);
           }
 
+          // Remove additional blog images during deletion
           for (const addMoreBlogEntry of blogToDelete.AddMoreBlog) {
             if (addMoreBlogEntry.image) {
               await cloudinary.uploader.destroy(addMoreBlogEntry.image);
