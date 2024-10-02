@@ -1,7 +1,7 @@
 // src/components/admin/BlogActions.client.tsx
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,28 +35,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
   const [confirmText, setConfirmText] = useState('');
   const [actionType, setActionType] = useState<'delete' | 'update' | null>(null);
 
-  const getBlogData = useCallback(() => {
-    if (!id) return;
-
-    fetch(`/api/blog/get/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBlog(data);
-        setImageURL(data.image);
-      })
-      .catch((e) => {
-        console.error(e.message);
-        toast.error('Error fetching blog data');
-      });
-  }, [id]);
-
-  useEffect(() => {
-    getBlogData();
-  }, [getBlogData]);
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setBlog((prevState) => ({
       ...prevState,
@@ -95,6 +74,8 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
         setIsFormOpen(false);
         router.refresh();
         onActionComplete?.();
+      } else {
+        toast.error('Failed to update blog');
       }
     } catch (error) {
       toast.error('Error updating blog');
@@ -131,12 +112,29 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
     }
   };
 
-  const handleOpenForm = () => {
-    setIsFormOpen(true);
+  const handleOpenForm = async () => {
+    try {
+      const res = await fetch(`/api/blog/Get/${id}`, { method: 'GET' });
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch blog data');
+      }
+
+      const data = await res.json(); // Assuming the response is JSON
+      setBlog(data); // Assuming the API returns the blog object directly
+      setImageURL(data.image); // Set the image URL if available
+
+      setIsFormOpen(true);
+    } catch (error) {
+      console.error('Error fetching blog data:', error);
+      toast.error('Error fetching blog data');
+    }
   };
 
   const handleCloseForm = () => {
     setIsFormOpen(false);
+    setFile(null); // Clear the file when closing the form
+    setImageURL(undefined); // Clear the image URL when closing the form
   };
 
   const handleOpenConfirm = (type: 'delete' | 'update') => {
@@ -169,7 +167,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-lg font-bold mb-4">Edit Blog</h2>
-            <form onSubmit={(e) => { e.preventDefault(); handleOpenConfirm('update'); }}>
+            <form onSubmit={(e) => { e.preventDefault(); handleFormSubmit(); }}>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2" htmlFor="title">Title</label>
                 <input
@@ -205,8 +203,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
                 )}
               </div>
               <button
-                type="button"
-                onClick={() => handleOpenConfirm('update')}
+                type="submit"
                 className="px-4 py-2 bg-green-500 text-white rounded"
               >
                 Save
@@ -248,14 +245,15 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
                     handleDelete();
                   }
                 }}
-                className="px-4 py-2 bg-green-500 text-white rounded mr-2"
+                className="px-4 py-2 bg-green-500 text-white rounded"
               >
-                {actionType === 'update' ? 'Update' : 'Delete'}
+                Confirm
               </button>
             )}
             <button
+              type="button"
               onClick={handleCloseConfirm}
-              className="px-4 py-2 bg-gray-500 text-white rounded"
+              className="px-4 py-2 bg-gray-500 text-white rounded ml-2"
             >
               Cancel
             </button>

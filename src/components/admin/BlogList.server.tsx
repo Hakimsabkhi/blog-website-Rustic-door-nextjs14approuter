@@ -13,14 +13,19 @@ export interface BlogType {
     category: string;
     date: string;
 }
+async function fetchblog() {
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/Get`);
+    if (!res.ok) {
+        throw new Error('Failed to fetch data');
+    }
+    return res.json();
+}
 
 const BlogListServer = async () => {
     try {
-        if (mongoose.connection.readyState !== 1) {
-            await mongoose.connect(process.env.MONGODB_URI || '');
-        }
+     
 
-        const blogs: BlogType[] = await Blog.find().lean();
+        const blogs: BlogType[] = await fetchblog();
 
         return (
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

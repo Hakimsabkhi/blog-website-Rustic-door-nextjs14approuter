@@ -50,5 +50,5 @@ export async function middleware(req: NextRequest) {
 export { default } from 'next-auth/middleware';
 
 export const config = {
-  matcher: ['/SuperAdmin', '/profile', '/protected/:path*'],
+  matcher: ['/SuperAdmin/:path*', '/profile', '/protected/:path*'],
 };
