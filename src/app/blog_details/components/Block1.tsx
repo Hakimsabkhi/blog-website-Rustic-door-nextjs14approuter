@@ -1,8 +1,10 @@
 // src/components/Block1.tsx
+'use client'
 import React from 'react';
 import Image from 'next/image';
-import { IBlog } from '@/models/Blog'; // Import the IBlog interface from your Blog model
+import { IBlog } from '@/src/models/Blog'; // Import the IBlog interface from your Blog model
 import Link from 'next/link';
+import { Provider, LikeButton } from "@lyket/react";
 interface Block1Props {
   blog: IBlog; // Use the IBlog type here
 }
@@ -18,18 +20,25 @@ const Block1: React.FC<Block1Props> = ({ blog }) => {
             Posted on {new Date(blog.date).toDateString()} by {blog.userName}
           </span>
           <div className='flex gap-4'>
-            <span className='bg-gray-500 text-white rounded-md px-2 text-sm'>{blog.Categorie}</span>
+            <span className='bg-gray-500 text-white rounded-md px-2 text-sm'>{blog.category}</span>
           </div>
         </div>
         <div>
           <Image 
-            src={blog.imgSrc} 
+            src={blog.image} 
             alt={blog.title} 
-            className='rounded-md w-[70%]' 
+            className='rounded-md w-full' 
             width={500} 
             height={100} 
           />
         </div>
+        <Provider apiKey="acc0dbccce8e557db5ebbe6d605aaa">
+        <LikeButton
+         namespace="my-blog-post"
+         id="how-to-beat-me-at-chess"
+         component={LikeButton.templates.Twitter}
+        />
+        </Provider>
         <div>
           <p className='w-full sm:w-full md:w-[90%]'>{blog.description}</p>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { testimonials,headers,navLinks } from 'public/data';
+import { testimonials,headers,navLinks } from '@/public/data';
 import Link from 'next/link';
 
 const visibleTestimonialIndex = 0; 

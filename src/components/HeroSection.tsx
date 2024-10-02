@@ -10,12 +10,12 @@ const HeroSection: React.FC = () => {
         {/* Image Section */}
         
         <CldImage
-  width="960"
-  height="600"
-  src="https://res.cloudinary.com/dzo2bvw5a/image/upload/v1722931963/Rustika-House/ntvfij8tpd8377qlq47f.jpg"
-  sizes="100vw"
-  alt="HeroImg"
-   className="rounded-xl w-full h-auto sm:h-full sm:w-auto md:w-full md:h-full lg:max-w-[1200px] xl:max-w-[2000px] 2xl:maw-w-[1200px] object-cover"
+         width="960"
+         height="600"
+         src="https://res.cloudinary.com/dzo2bvw5a/image/upload/v1722931963/Rustika-House/ntvfij8tpd8377qlq47f.jpg"
+         sizes="100vw"
+         alt="HeroImg"
+         className="rounded-xl w-full h-auto sm:h-full sm:w-auto md:w-full md:h-full lg:max-w-[1200px] xl:max-w-[2000px] 2xl:maw-w-[1200px] object-cover"
 />
 
         {/* Text Content Section */}

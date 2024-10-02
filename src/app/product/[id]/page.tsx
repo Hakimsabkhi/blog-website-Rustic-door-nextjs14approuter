@@ -1,24 +1,28 @@
-"use client";
+// app/product_details/[id]/page.tsx
 
 import React from 'react';
-import { useParams } from 'next/navigation';
-import { products } from 'public/data'; // Adjust path as needed
-import FirstBlock from '@/app/product_details/components/FirstBlock';
-import SecondBlock from '@/app/product_details/components/SecondBlock';
-import ThredBlock from '@/app/product_details/components/ThredBlock';
-import ContactBlock from '@/app/product_details/components/ContactBlock';
-import BlockFive from '@/app/product_details/components/BlockFive'; // Adjust path as needed
-import DecouvreMore from '@/app/product_details/components/DecouvreMore';
+import { products } from '@/public/data'; // Adjust path as needed
+import FirstBlock from '@/src/app/product_details/components/FirstBlock';
+import SecondBlock from '@/src/app/product_details/components/SecondBlock';
+import ThredBlock from '@/src/app/product_details/components/ThredBlock';
+import ContactBlock from '@/src/app/product_details/components/ContactBlock';
+import BlockFive from '@/src/app/product_details/components/BlockFive';
+import DecouvreMore from '@/src/app/product_details/components/DecouvreMore';
 
-const ProductPage: React.FC = () => {
-  const params = useParams();
-  const { id } = params as { id: string }; // Type assertion to ensure id is a string
+// Define the props for the component
+interface ProductPageProps {
+  product: typeof products[number] | null;
+}
 
-  // Ensure id is defined and is a number
-  const productId = id ? parseInt(id, 10) : NaN;
+// Fetch product data
+const fetchProduct = (id: number) => {
+  return products.find((product) => product.id === id) || null;
+};
 
-  // Find the product based on the id from the URL
-  const product = products.find((product) => product.id === productId);
+// Server-side component that fetches data
+const ProductPage: React.FC<{ params: { id: string } }> = async ({ params }) => {
+  const id = parseInt(params.id, 10);
+  const product = fetchProduct(id);
 
   if (!product) {
     return <div>Product not found</div>;
@@ -31,15 +35,20 @@ const ProductPage: React.FC = () => {
       <ThredBlock products={[product]} />
       <ContactBlock products={[product]} />
       <BlockFive products={[product]} />
-      <DecouvreMore/>
-
-
-
-
-
-      
+      <DecouvreMore />
     </div>
   );
 };
+
+// Generate static paths for all products
+// Generate static params for all products
+export async function generateStaticParams() {
+  // Get all product IDs to generate static paths
+  const params = products.map((product) => ({
+    id: product.id.toString(),
+  }));
+
+  return params; // Return just the array of params
+}
 
 export default ProductPage;

@@ -1,14 +1,15 @@
-import { Product1, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Product10, Product11, Product12, Product13, Product14, Product15, } from 'public/img/image';
-import {Blog1, Blog2,Blog3,Blog4,Blog5} from 'public/img/image';
-import {CollectionImg1,CollectionImg2,CollectionImg3,CollectionImg4 ,CollectionImg7, CollectionImg6, CollectionImg5,CollectionImg8,CollectionImg9, UserImg } from 'public/img/image';
-import { AiderImg,AiderImg1,AiderImg2 } from 'public/img/image';
-import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from 'public/img/image';
+import { getCldImageUrl } from 'next-cloudinary';
+import { Product1, Product2, Product3, Product4, Product5, Product6, Product7, Product8, Product9, Product10, Product11, Product12, Product13, Product14, Product15, } from '../public/img/image';
+import {Blog1, Blog2,Blog3,Blog4,Blog5} from '@/public/img/image';
+import {CollectionImg1,CollectionImg2,CollectionImg3,CollectionImg4 ,CollectionImg7, CollectionImg6, CollectionImg5,CollectionImg8,CollectionImg9, UserImg } from '../public/img/image';
+import { AiderImg,AiderImg1,AiderImg2 } from '../public/img/image';
+import { Gamme1, Gamme2, Gamme3, Gamme4, Gamme5 } from '../public/img/image';
 import { Phone, PhoneCall, Printer, Mail, Info, MapPin } from 'lucide-react';
 import type { Metadata } from 'next';
-import { faTruck, faCheckCircle, faHeadset } from '@fortawesome/free-solid-svg-icons';
+import { FaTruck,FaCheckCircle,FaHeadset } from 'react-icons/fa';
 import { StaticImageData } from 'next/image';
-import { CldImage } from 'next-cloudinary';
-import { getCldImageUrl } from 'next-cloudinary';
+
+
 
 
 {/*MetaData Layout */}
@@ -20,17 +21,17 @@ export const metadata: Metadata = {
 {/*ServiceBar Components */}
 export const services = [
   {
-    icon: faTruck,
+    icon: FaTruck,
     title: 'Free Delivery',
     description: 'Lorem ipsum dolor sit amet.',
   },
   {
-    icon: faCheckCircle,
+    icon: FaCheckCircle,
     title: '100% Authentic',
     description: 'Lorem ipsum dolor sit amet.',
   },
   {
-    icon: faHeadset,
+    icon: FaHeadset,
     title: 'Support 24/7',
     description: 'Lorem ipsum dolor sit amet.',
   },

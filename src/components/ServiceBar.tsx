@@ -1,6 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { services } from 'public/data';
+import { services } from '@/public/data';
 
 const ServiceBar: React.FC = () => {
   return (
@@ -8,7 +7,7 @@ const ServiceBar: React.FC = () => {
       <div className="max-w-screen-xl flex justify-around items-center text-gray-700 w-full">
         {services.map((service, index) => (
           <div key={index} className="flex flex-col items-center gap-2 text-center">
-            <FontAwesomeIcon icon={service.icon} className="text-gray-600 text-4xl" />
+            <service.icon className="text-gray-600 text-4xl" />
             <p className="font-medium text-sm">
               {service.title} <br />
               <span className="text-[10px] text-gray-500 font-light">{service.description}</span>

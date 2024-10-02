@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { imagesINFO, contactSections } from 'public/data';
+import { imagesINFO, contactSections } from '@/public/data';
 import { Phone, PhoneCall, Printer, Mail, Info, MapPin,} from 'lucide-react';
 import Link from 'next/link';
 

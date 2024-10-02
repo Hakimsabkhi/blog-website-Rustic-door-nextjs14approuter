@@ -1,5 +1,5 @@
 import React from 'react'
-import { Blog5 } from 'public/img/image'
+import { Blog5 } from '@/public/img/image'
 import Image from 'next/image'
 
 function Bloc1() {

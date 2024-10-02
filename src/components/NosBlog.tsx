@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineHeart, AiOutlineComment } from 'react-icons/ai';
 import { FaArrowRight } from 'react-icons/fa';
-import { blogs } from 'public/data'
+import { blogs } from '@/public/data'
 
 const NosBlog: React.FC = () => {
   return (
