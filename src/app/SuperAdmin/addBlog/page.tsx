@@ -90,7 +90,7 @@ function Page() {
     }
     
     try {
-      const response = await fetch('/api/blog/post', {
+      const response = await fetch('/api/blog/Post', {
         method: 'POST',
         body: formData,
       });

@@ -6,11 +6,7 @@ import stream from 'stream';
 
 // Fonction pour uploader une image unique sur Cloudinary
 async function uploadImage(imageFile: File): Promise<string> {
-  const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
-  if (!allowedTypes.includes(imageFile.type)) {
-    throw new Error('Invalid image type');
-  }
 
   if (imageFile.size > 2 * 1024 * 1024) { // Limite de 2 Mo
     throw new Error('Image size exceeds 2MB');
@@ -22,7 +18,7 @@ async function uploadImage(imageFile: File): Promise<string> {
       bufferStream.end(Buffer.from(imageBuffer));
 
       const uploadStream = cloudinary.uploader.upload_stream(
-        { folder: 'Blogs' },
+        { folder: 'Blogs', format: 'webp' },
         (error, result) => {
           if (error) {
             return reject(error);

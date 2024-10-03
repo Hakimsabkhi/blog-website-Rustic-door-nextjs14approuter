@@ -14,7 +14,11 @@ export interface BlogType {
     date: string;
 }
 async function fetchblog() {
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/Get`);
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/Get`, {
+        method: 'GET',
+       
+        next: { revalidate: 0 }, // Disable caching to always fetch the latest data
+      })
     if (!res.ok) {
         throw new Error('Failed to fetch data');
     }

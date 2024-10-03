@@ -16,6 +16,13 @@ interface Blog {
   title: string;
   category: string;
   image: string;
+  AddMoreBlog:Morebloger[]
+}
+interface Morebloger{
+  _id:string;
+  title: string;
+  description: string;
+  image: string;
 }
 
 const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) => {
@@ -25,6 +32,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
     title: '',
     category: '',
     image: '',
+    AddMoreBlog:[],
   });
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -90,7 +98,7 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
           throw new Error('Blog ID is required');
         }
 
-        const res = await fetch(`/api/blog/delete/${id}`, { method: 'DELETE' });
+        const res = await fetch(`/api/blog/Delete/${id}`, { method: 'DELETE' });
 
         if (res.ok) {
           toast.success('Blog deleted successfully');
@@ -201,6 +209,47 @@ const BlogActions: React.FC<BlogActionsProps> = ({ params, onActionComplete }) =
                 {imageURL && (
                   <img src={imageURL} alt="Preview" className="mt-2 w-32 h-32 object-cover" />
                 )}
+              </div>
+              {/*morebloger */}
+              <label className="block text-gray-700 mb-2" >More Blog</label>
+             <div className='grid grid-cols-2'>
+              {blog.AddMoreBlog.map((more) =>(
+               <div key={more._id} >
+              <div className="mb-4 ">
+                <label className="block text-gray-700 mb-2" htmlFor="moretitle">Title</label>
+                <input
+                  type="text"
+                  name="moretitle"
+                  value={more.title}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 mb-2" htmlFor="moredescription">description</label>
+                <input
+                  type="text"
+                  name="moredescription"
+                  value={more.description}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 mb-2" htmlFor="moreimage">Image</label>
+                <input
+                  type="file"
+                  name="moreimage"
+                  onChange={handleFileChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                />
+                {more.image && (
+                  <img src={more.image} alt="Preview" className="mt-2 w-32 h-32 object-cover" />
+                )}
+              </div>
+              </div>))}
               </div>
               <button
                 type="submit"
